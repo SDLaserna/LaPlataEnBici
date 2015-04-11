@@ -1,6 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1" %> 
+<!DOCTYPE html>
 <html>
 <head>
 <title>Login</title>
@@ -55,11 +54,11 @@
                     </div>
                     <div class="form-group">
                         <label for="inputPassword" class="col-md-3 control-label">
-                            Password:</label>
+                            Contrase&ntilde;a:</label>
                         <div class="col-md-9">
                             <div class="input-icon right">
                                 <i class="fa fa-lock"></i>
-                                <input id="inputPassword" type="text" placeholder="password" class="form-control"></div>
+                                <input id="inputPassword" type="password" placeholder="contrase&ntilde;a" class="form-control"></div>
                         </div>
                     </div>
                     <div class="form-group mbn">
