@@ -6,9 +6,17 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Administrador</title>
 <%@ include file="configHead.jsp"%>
+<script>
 
+function activarNav() {
+	document.getElementById("inicio").setAttribute("class", "active");
+	document.getElementById("bicicletas").setAttribute("class", "");
+	document.getElementById("usuarios").setAttribute("class", "");
+    document.getElementById("estaciones").setAttribute("class", "");
+}
+</script>
 </head>
-<body>
+<body onload="activarNav()">
 	<div>
 		<!-- Incluir  Cabecera -->
 		<%@ include file="header.jsp"%>

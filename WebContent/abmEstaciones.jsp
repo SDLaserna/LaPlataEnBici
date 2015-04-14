@@ -11,6 +11,15 @@
 
 <script src="script/bootstrap.min.js" type="text/javascript"></script>
 <script src="script/jquery.dataTables.js" type="text/javascript"></script>
+<script>
+
+function activarNav() {
+	document.getElementById("inicio").setAttribute("class", "");
+	document.getElementById("bicicletas").setAttribute("class", "");
+	document.getElementById("usuarios").setAttribute("class", "");
+    document.getElementById("estaciones").setAttribute("class", "active");
+}
+</script>
 <script src="script/dataTables.bootstrap.js" type="text/javascript"></script>
 <!-- paginado script -->
 <script type="text/javascript">
@@ -20,7 +29,7 @@
 </script>
 
 </head>
-<body>
+<body onload="activarNav()">
 	<div>
 		<!-- Incluir  Cabecera -->
 		<%@ include file="header.jsp"%>
@@ -41,9 +50,11 @@
 						</div>
 						<!-- /.box-header -->
 						<div style="margin-top: 3%; margin-bottom: 2%;">
+							<a href="redireccionAltaEstacion">
 							<button class="btn btn-success">
 								<i class="fa fa-plus-circle"></i> <span class="menu-title">Agregar</span>
 							</button>
+							</a>
 						</div>
 						<div class="box-body table-responsive">
 							<table id="example1" class="table table-bordered table-striped">

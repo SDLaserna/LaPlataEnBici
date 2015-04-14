@@ -7,15 +7,15 @@
 		<ul id="side-menu" class="nav">
 
 			<div class="clearfix"></div>
-			<li class="active"><a href="adminBase"> <i class="fa fa-home fa-fw"></i>
+			<li class="active" id="inicio"><a href="adminBase"> <i class="fa fa-home fa-fw"></i>
 					<span class="menu-title">Inicio</span></a></li>
 			<div class="clearfix"></div>
-			<li><a href="abmEstaciones"> <i class="fa fa-flag fa-fw"></i>
+			<li id="estaciones"><a href="abmEstaciones"> <i class="fa fa-flag fa-fw"></i>
 					<span class="menu-title">Estaciones</span></a></li>
-			<li><a href=""><i class="fa fa-bicycle fa-fw">
+			<li id="bicicletas"><a href="abmBicicletas"><i class="fa fa-bicycle fa-fw">
 						<div class="icon-bg bg-pink"></div>
 				</i><span class="menu-title">Bicicletas</span></a></li>
-			<li><a href=""><i class="fa fa-group fa-fw">
+			<li id="usuarios"><a href="gestionDeUsuarios"><i class="fa fa-group fa-fw">
 						<div class="icon-bg bg-green"></div>
 				</i><span class="menu-title">Usuarios</span></a></li>
 		</ul>
