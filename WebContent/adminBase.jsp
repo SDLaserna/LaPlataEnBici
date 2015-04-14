@@ -40,7 +40,7 @@
 							<ul class="dropdown-menu dropdown-user pull-right" >
 								<li><a href="#"><i class="fa fa-user"></i>Mi Perfil</a></li>								
 								<li class="divider"></li>
-								<li><a href="Login.html"><i class="fa fa-key"></i>Cerrar
+								<li><a href=""><i class="fa fa-key"></i>Cerrar
 										Sesi&oacute;n</a></li>
 							</ul>
 						</li>
@@ -58,12 +58,12 @@
 					<ul id="side-menu" class="nav">
 
 						<div class="clearfix"></div>
-						<li class="active"><a href="dashboard.html"> <i
+						<li class="active"><a href=""> <i
 								class="fa fa-home fa-fw"></i> <span class="menu-title">Estaciones</span></a></li>
-						<li><a href="Layout.html"><i class="fa fa-bicycle fa-fw">
+						<li><a href=""><i class="fa fa-bicycle fa-fw">
 									<div class="icon-bg bg-pink"></div>
 							</i><span class="menu-title">Bicicletas</span></a></li>
-						<li><a href="UIElements.html"><i
+						<li><a href=""><i
 								class="fa fa-group fa-fw">
 									<div class="icon-bg bg-green"></div>
 							</i><span class="menu-title">Usuarios</span></a></li>
@@ -78,6 +78,10 @@
 							<h3 class="box-title">Lista de estaciones</h3>
 						</div>
 						<!-- /.box-header -->
+						<div style="  margin-top: 3%; margin-bottom: 2%;">
+							<button class="btn btn-success"><i class="fa fa-plus-circle"></i></button>
+							<label>Agregar</label>
+						</div>
 						<div class="box-body table-responsive">
 							<table id="example1" class="table table-bordered table-striped">
 								<thead>
