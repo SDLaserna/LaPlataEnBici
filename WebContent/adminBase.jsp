@@ -10,8 +10,6 @@
 	type="text/css">
 <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
 
-<link href="css/dataTables.bootstrap.css" rel="stylesheet"
-	type="text/css">
 <script
 	src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
 <script src="script/bootstrap-hover-dropdown.js"></script>
