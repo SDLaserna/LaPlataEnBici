@@ -16,7 +16,7 @@
     <div class="page-form">
         <div class="panel panel-blue">
             <div class="panel-body pan">
-                <form action="#" class="form-horizontal">
+                <form action="login" class="form-horizontal" method="post">
                 <div class="form-body pal">
                     <div class="col-md-12 text-center">
                         <h1 style="margin-top: -90px; font-size: 48px; color:white;">
@@ -36,13 +36,13 @@
                                 por favor ingresa tus datos para comenzar</p>
                         </div>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group" >
                         <label for="inputName" class="col-md-3 control-label">
                             Usuario:</label>
                         <div class="col-md-9">
                             <div class="input-icon right">
                                 <i class="fa fa-user"></i>
-                                <input id="inputName" type="text" placeholder="nombre de usuario" class="form-control"></div>
+                                <input id="inputName" type="text" placeholder="nombre de usuario" class="form-control" name="inputUser"></div>
                         </div>
                     </div>
                     <div class="form-group">
@@ -51,7 +51,7 @@
                         <div class="col-md-9">
                             <div class="input-icon right">
                                 <i class="fa fa-lock"></i>
-                                <input id="inputPassword" type="password" placeholder="contrase&ntilde;a" class="form-control"></div>
+                                <input id="inputPassword" type="password" placeholder="contrase&ntilde;a" class="form-control"  name="inputPass"></div>
                         </div>
                     </div>
                     <div class="form-group mbn">
@@ -61,7 +61,7 @@
                                     &nbsp;
                                 </div>
                                 <div class="col-lg-9">
-                                    <a href="Login.html" class="btn btn-default">Volver</a>&nbsp;&nbsp;
+                                    <a href="" class="btn btn-default">Volver</a>&nbsp;&nbsp;
                                     <button type="submit" class="btn btn-default">
                                         Iniciar Sesi&oacute;n</button>
                                 </div>

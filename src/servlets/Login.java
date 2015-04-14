@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebInitParam;
@@ -19,11 +20,11 @@ import clases.Usuario;
         urlPatterns = "/login",
         initParams =
         {
-            @WebInitParam(name = "usuario", value = "cande"),
-            @WebInitParam(name = "password", value = "321"),
+            @WebInitParam(name = "usuario", value = "user"),
+            @WebInitParam(name = "password", value = "user"),
             @WebInitParam(name = "rol", value = "usuario"),
-            @WebInitParam(name = "usuarioB", value = "sergio"),
-            @WebInitParam(name = "passwordB", value = "123"),
+            @WebInitParam(name = "usuarioB", value = "admin"),
+            @WebInitParam(name = "passwordB", value = "admin"),
             @WebInitParam(name = "rolB", value = "administrador")
         }
 )
@@ -68,18 +69,22 @@ public class Login extends HttpServlet {
 				if(usuario.getUser().equals(user)){
 					if(usuario.getPass().equals(pass)){
 						if(usuario.getRol().equals("administrador")){
-							response.sendRedirect("/LaPlataEnBici/administrador.jsp");
+							RequestDispatcher dispatcher=request.getRequestDispatcher("/adminBase");
+							if (dispatcher!=null) dispatcher.forward(request,response);
 						}
 						else{
 							if(usuario.getRol().equals("usuario")){
-								response.sendRedirect("/LaPlataEnBici/usuario.jsp");
+								RequestDispatcher dispatcher=request.getRequestDispatcher("/userBase");
+								if (dispatcher!=null) dispatcher.forward(request,response);
 							}
-							
 						}
 					}
 				}
-			}
+			}	
 		}
+		else{
+		response.sendRedirect("/LaPlataEnBici/login.jsp");}
+		
 	}
 
 
