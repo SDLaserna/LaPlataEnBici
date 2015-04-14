@@ -1,6 +1,8 @@
 package servlets;
 
 import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -20,7 +22,9 @@ public class Logout extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		response.sendRedirect("/LaPlataEnBici/login.jsp"); //uso este en el boton cerrar sesion
+		//uso este en el boton cerrar sesion
+		RequestDispatcher dispatcher=request.getRequestDispatcher("/inicio");
+		if (dispatcher!=null) dispatcher.forward(request,response); 
 	}
 
 }

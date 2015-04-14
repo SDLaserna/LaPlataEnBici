@@ -83,7 +83,8 @@ public class Login extends HttpServlet {
 			}	
 		}
 		else{
-		response.sendRedirect("/LaPlataEnBici/login.jsp");}
+			RequestDispatcher dispatcher=request.getRequestDispatcher("/inicio");
+			if (dispatcher!=null) dispatcher.forward(request,response); }
 		
 	}
 
