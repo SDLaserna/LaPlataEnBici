@@ -77,8 +77,10 @@
 						</div>
 						<!-- /.box-header -->
 						<div style="  margin-top: 3%; margin-bottom: 2%;">
-							<button class="btn btn-success"><i class="fa fa-plus-circle"></i></button>
-							<label>Agregar</label>
+							<button class="btn btn-success">
+								<i class="fa fa-plus-circle"></i>
+								<span class="menu-title">Agregar</span>
+							</button>
 						</div>
 						<div class="box-body table-responsive">
 							<table id="example1" class="table table-bordered table-striped">
