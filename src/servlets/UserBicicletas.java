@@ -19,7 +19,7 @@ public class UserBicicletas extends HttpServlet {
 		response.sendRedirect("/LaPlataEnBici/misBicicletas.jsp");
 	}
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		 response.sendRedirect("/LaPlataEnBici/misBicicletas.jsp");
+		response.sendRedirect("/LaPlataEnBici/misBicicletas.jsp");
 	}
 
 
