@@ -23,7 +23,6 @@ public class UserBase extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.sendRedirect("/LaPlataEnBici/userBase.jsp");
-		//llega estooooooosss¿?¿?
 	}
 
 }
