@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-configuration SYSTEM 
+"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+	<session-factory>
+		<property name="hibernate.dialect">
+			org.hibernate.dialect.MySQLDialect
+		</property>
+	 
+		<property name="hibernate.connection.driver_class">
+			com.mysql.jdbc.Driver
+		</property>
+
+		<property name="hibernate.connection.url">jdbc:mysql://localhost:3306/grupo8</property>
+		<property name="hibernate.connection.username">Grupo8</property>
+		<property name="hibernate.connection.password">Grupo8</property>
+		
+		<property name="hibernate.show_sql">true</property>
+		<property name="hibernate.format_sql">
+			true
+		</property>
+		<property name="hibernate.hbm2ddl.auto" >create</property> <!-- CONSULTAAAAR, ESTA LINEA LA SAQUE DE MI TRABAJO DE TALLER, NO APARECIA EN NADA DE ESTA MATERIA, PERO SIN ELLA NO ME CREA LA BASE DE DATOS -->
+																	<!--  TAMBIEN CONSULTAR LA LINEA 95 DEL TEST HIBERNATETESTCASE.JAVA DADO QUE ME SALTA UN ERROR DICIENDO JAVA.LANG.INTEGER CANNOT BE CAST TO JAVA.LANG.LONG -->
+		<mapping resource="hibernate/mappings.hbm.xml" />
+
+	</session-factory>
+</hibernate-configuration>
