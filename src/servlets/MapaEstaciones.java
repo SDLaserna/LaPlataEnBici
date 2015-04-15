@@ -19,7 +19,7 @@ public class MapaEstaciones extends HttpServlet {
 		response.sendRedirect("/LaPlataEnBici/mapaEstaciones.jsp");
 	}
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		response.sendRedirect("/LaPlataEnBici/mapaEstaciones.jsp");
+		 response.sendRedirect("/LaPlataEnBici/mapaEstaciones.jsp");
 	}
 
 
