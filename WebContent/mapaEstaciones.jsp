@@ -12,7 +12,6 @@
 	// 	var map;
 	var geocoder;
 	var map = new google.maps.Marker;
-	var marker = new google.maps.Marker;
 	function initialize() {
 		geocoder = new google.maps.Geocoder();
 		var mapOptions = {
@@ -22,6 +21,25 @@
 		};
 		map = new google.maps.Map(document.getElementById('map-canvas'),
 				mapOptions);
+		
+	    var marker = new google.maps.Marker({
+	        position: map.getCenter()
+	        , map: map
+	        , title: 'Estación 6'
+	        , icon: '/LaPlataEnBici/images/icons/estacion.png'
+	    });
+	 
+	    var popup = new google.maps.InfoWindow({
+	        content: '<b>Datos de la estación: </b><br>' +
+	        		 'Estado: Operativa. <br>' +
+	        		 'Cant. Bicicletas: 50. <br>' +
+	        		 'Cant. Estacionamientos libres: 30.'
+	    });
+	 	
+	    google.maps.event.addListener(marker, 'click', function(){
+	        popup.open(map, marker);
+	    });
+		
 	}
 
 	google.maps.event.addDomListener(window, 'load', initialize);
