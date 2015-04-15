@@ -1,13 +1,15 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+	pageEncoding="utf-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Administrador</title>
 
 <%@ include file="configHead.jsp"%>
 
-<link href="css/dataTables.bootstrap.css" rel="stylesheet"	type="text/css">
+<link href="css/dataTables.bootstrap.css" rel="stylesheet"
+	type="text/css">
 
 <script src="script/bootstrap.min.js" type="text/javascript"></script>
 <script src="script/jquery.dataTables.js" type="text/javascript"></script>
@@ -51,9 +53,9 @@ function activarNav() {
 						<!-- /.box-header -->
 						<div style="margin-top: 3%; margin-bottom: 2%;">
 							<a href="redireccionAltaEstacion">
-							<button class="btn btn-success">
-								<i class="fa fa-plus-circle"></i> <span class="menu-title">Agregar</span>
-							</button>
+								<button class="btn btn-success">
+									<i class="fa fa-plus-circle"></i> <span class="menu-title">Agregar</span>
+								</button>
 							</a>
 						</div>
 						<div class="box-body table-responsive">
@@ -75,12 +77,20 @@ function activarNav() {
 										<td>50</td>
 										<td>4</td>
 										<td>Operativa</td>
-										<td><button class="btn btn-primary">
-												<i class="fa fa-edit"></i>
-											</button>
+										<td><a href="verModificarEstacion">
+												<button class="btn btn-primary">
+													<i class="fa fa-edit"></i> Editar
+												</button>
+										</a>
 											<button class="btn btn-danger">
-												<i class="fa fa-eraser"></i>
-											</button></td>
+												<i class="fa fa-eraser"></i> Eliminar
+											</button> <a href="VerEstadisticas">
+												<button class="btn btn-info"
+													style="background-color: purple; border-color: aliceblue;">
+													<i class="fa fa-eye"></i> Estadisticas
+												</button>
+										</a></td>
+
 									</tr>
 									<tr>
 										<td>Estaci&oacute;n 2</td>
@@ -88,12 +98,19 @@ function activarNav() {
 										<td>50</td>
 										<td>5</td>
 										<td>Operativa</td>
-										<td><button class="btn btn-primary">
-												<i class="fa fa-edit"></i>
-											</button>
+										<td><a href="verModificarEstacion">
+												<button class="btn btn-primary">
+													<i class="fa fa-edit"></i> Editar
+												</button>
+										</a>
 											<button class="btn btn-danger">
-												<i class="fa fa-eraser"></i>
-											</button></td>
+												<i class="fa fa-eraser"></i> Eliminar
+											</button> <a href="VerEstadisticas">
+												<button class="btn btn-info"
+													style="background-color: purple; border-color: aliceblue;">
+													<i class="fa fa-eye"></i> Estadisticas
+												</button>
+										</a></td>
 									</tr>
 									<tr>
 										<td>Estaci&oacute;n 3</td>
@@ -101,12 +118,19 @@ function activarNav() {
 										<td>50</td>
 										<td>25</td>
 										<td>Operativa</td>
-										<td><button class="btn btn-primary">
-												<i class="fa fa-edit"></i>
-											</button>
+										<td><a href="verModificarEstacion">
+												<button class="btn btn-primary">
+													<i class="fa fa-edit"></i> Editar
+												</button>
+										</a>
 											<button class="btn btn-danger">
-												<i class="fa fa-eraser"></i>
-											</button></td>
+												<i class="fa fa-eraser"></i> Eliminar
+											</button> <a href="VerEstadisticas">
+												<button class="btn btn-info"
+													style="background-color: purple; border-color: aliceblue;">
+													<i class="fa fa-eye"></i> Estadisticas
+												</button>
+										</a></td>
 									</tr>
 									<tr>
 										<td>Estaci&oacute;n 4</td>
@@ -114,12 +138,19 @@ function activarNav() {
 										<td>50</td>
 										<td>25</td>
 										<td>Operativa</td>
-										<td><button class="btn btn-primary">
-												<i class="fa fa-edit"></i>
-											</button>
+										<td><a href="verModificarEstacion">
+												<button class="btn btn-primary">
+													<i class="fa fa-edit"></i> Editar
+												</button>
+										</a>
 											<button class="btn btn-danger">
-												<i class="fa fa-eraser"></i>
-											</button></td>
+												<i class="fa fa-eraser"></i> Eliminar
+											</button> <a href="VerEstadisticas">
+												<button class="btn btn-info"
+													style="background-color: purple; border-color: aliceblue;">
+													<i class="fa fa-eye"></i> Estadisticas
+												</button>
+										</a></td>
 									</tr>
 									<tr>
 										<td>Estaci&oacute;n 5</td>
@@ -127,12 +158,19 @@ function activarNav() {
 										<td>50</td>
 										<td>30</td>
 										<td>Operativa</td>
-										<td><button class="btn btn-primary">
-												<i class="fa fa-edit"></i>
-											</button>
+										<td><a href="verModificarEstacion">
+												<button class="btn btn-primary">
+													<i class="fa fa-edit"></i> Editar
+												</button>
+										</a>
 											<button class="btn btn-danger">
-												<i class="fa fa-eraser"></i>
-											</button></td>
+												<i class="fa fa-eraser"></i> Eliminar
+											</button> <a href="VerEstadisticas">
+												<button class="btn btn-info"
+													style="background-color: purple; border-color: aliceblue;">
+													<i class="fa fa-eye"></i> Estadisticas
+												</button>
+										</a></td>
 									</tr>
 									<tr>
 										<td>Estaci&oacute;n 6</td>
@@ -140,12 +178,19 @@ function activarNav() {
 										<td>50</td>
 										<td>30</td>
 										<td>Operativa</td>
-										<td><button class="btn btn-primary">
-												<i class="fa fa-edit"></i>
-											</button>
+										<td><a href="verModificarEstacion">
+												<button class="btn btn-primary">
+													<i class="fa fa-edit"></i> Editar
+												</button>
+										</a>
 											<button class="btn btn-danger">
-												<i class="fa fa-eraser"></i>
-											</button></td>
+												<i class="fa fa-eraser"></i> Eliminar
+											</button> <a href="VerEstadisticas">
+												<button class="btn btn-info"
+													style="background-color: purple; border-color: aliceblue;">
+													<i class="fa fa-eye"></i> Estadisticas
+												</button>
+										</a></td>
 									</tr>
 									<tr>
 										<td>Estaci&oacute;n 7</td>
@@ -153,12 +198,19 @@ function activarNav() {
 										<td>50</td>
 										<td>30</td>
 										<td>Operativa</td>
-										<td><button class="btn btn-primary">
-												<i class="fa fa-edit"></i>
-											</button>
+										<td><a href="verModificarEstacion">
+												<button class="btn btn-primary">
+													<i class="fa fa-edit"></i> Editar
+												</button>
+										</a>
 											<button class="btn btn-danger">
-												<i class="fa fa-eraser"></i>
-											</button></td>
+												<i class="fa fa-eraser"></i> Eliminar
+											</button> <a href="VerEstadisticas">
+												<button class="btn btn-info"
+													style="background-color: purple; border-color: aliceblue;">
+													<i class="fa fa-eye"></i> Estadisticas
+												</button>
+										</a></td>
 									</tr>
 									<tr>
 										<td>Estaci&oacute;n 8</td>
@@ -166,12 +218,19 @@ function activarNav() {
 										<td>70</td>
 										<td>30</td>
 										<td>Operativa</td>
-										<td><button class="btn btn-primary">
-												<i class="fa fa-edit"></i>
-											</button>
+										<td><a href="verModificarEstacion">
+												<button class="btn btn-primary">
+													<i class="fa fa-edit"></i> Editar
+												</button>
+										</a>
 											<button class="btn btn-danger">
-												<i class="fa fa-eraser"></i>
-											</button></td>
+												<i class="fa fa-eraser"></i> Eliminar
+											</button> <a href="VerEstadisticas">
+												<button class="btn btn-info"
+													style="background-color: purple; border-color: aliceblue;">
+													<i class="fa fa-eye"></i> Estadisticas
+												</button>
+										</a></td>
 									</tr>
 									<tr>
 										<td>Estaci&oacute;n 9</td>
@@ -179,12 +238,19 @@ function activarNav() {
 										<td>70</td>
 										<td>30</td>
 										<td>Operativa</td>
-										<td><button class="btn btn-primary">
-												<i class="fa fa-edit"></i>
-											</button>
+										<td><a href="verModificarEstacion">
+												<button class="btn btn-primary">
+													<i class="fa fa-edit"></i> Editar
+												</button>
+										</a>
 											<button class="btn btn-danger">
-												<i class="fa fa-eraser"></i>
-											</button></td>
+												<i class="fa fa-eraser"></i> Eliminar
+											</button> <a href="VerEstadisticas">
+												<button class="btn btn-info"
+													style="background-color: purple; border-color: aliceblue;">
+													<i class="fa fa-eye"></i> Estadisticas
+												</button>
+										</a></td>
 									</tr>
 									<tr>
 										<td>Estaci&oacute;n 10</td>
@@ -192,12 +258,19 @@ function activarNav() {
 										<td>70</td>
 										<td>30</td>
 										<td>Cerrada</td>
-										<td><button class="btn btn-primary">
-												<i class="fa fa-edit"></i>
-											</button>
+										<td><a href="verModificarEstacion">
+												<button class="btn btn-primary">
+													<i class="fa fa-edit"></i> Editar
+												</button>
+										</a>
 											<button class="btn btn-danger">
-												<i class="fa fa-eraser"></i>
-											</button></td>
+												<i class="fa fa-eraser"></i> Eliminar
+											</button> <a href="VerEstadisticas">
+												<button class="btn btn-info"
+													style="background-color: purple; border-color: aliceblue;">
+													<i class="fa fa-eye"></i> Estadisticas
+												</button>
+										</a></td>
 									</tr>
 									<tr>
 										<td>Estaci&oacute;n 11</td>
@@ -205,12 +278,19 @@ function activarNav() {
 										<td>70</td>
 										<td>30</td>
 										<td>Cerrada</td>
-										<td><button class="btn btn-primary">
-												<i class="fa fa-edit"></i>
-											</button>
+										<td><a href="verModificarEstacion">
+												<button class="btn btn-primary">
+													<i class="fa fa-edit"></i> Editar
+												</button>
+										</a>
 											<button class="btn btn-danger">
-												<i class="fa fa-eraser"></i>
-											</button></td>
+												<i class="fa fa-eraser"></i> Eliminar
+											</button> <a href="VerEstadisticas">
+												<button class="btn btn-info"
+													style="background-color: purple; border-color: aliceblue;">
+													<i class="fa fa-eye"></i> Estadisticas
+												</button>
+										</a></td>
 									</tr>
 									<tr>
 										<td>Estaci&oacute;n 12</td>
@@ -218,12 +298,19 @@ function activarNav() {
 										<td>78</td>
 										<td>30</td>
 										<td>Cerrada</td>
-										<td><button class="btn btn-primary">
-												<i class="fa fa-edit"></i>
-											</button>
+										<td><a href="verModificarEstacion">
+												<button class="btn btn-primary">
+													<i class="fa fa-edit"></i> Editar
+												</button>
+										</a>
 											<button class="btn btn-danger">
-												<i class="fa fa-eraser"></i>
-											</button></td>
+												<i class="fa fa-eraser"></i> Eliminar
+											</button> <a href="VerEstadisticas">
+												<button class="btn btn-info"
+													style="background-color: purple; border-color: aliceblue;">
+													<i class="fa fa-eye"></i> Estadisticas
+												</button>
+										</a></td>
 									</tr>
 									<tr>
 										<td>Estaci&oacute;n 13</td>
@@ -231,12 +318,19 @@ function activarNav() {
 										<td>0</td>
 										<td>-</td>
 										<td>En construcci&oacute;n</td>
-										<td><button class="btn btn-primary">
-												<i class="fa fa-edit"></i>
-											</button>
+										<td><a href="verModificarEstacion">
+												<button class="btn btn-primary">
+													<i class="fa fa-edit"></i> Editar
+												</button>
+										</a>
 											<button class="btn btn-danger">
-												<i class="fa fa-eraser"></i>
-											</button></td>
+												<i class="fa fa-eraser"></i> Eliminar
+											</button> <a href="VerEstadisticas">
+												<button class="btn btn-info"
+													style="background-color: purple; border-color: aliceblue;">
+													<i class="fa fa-eye"></i> Estadisticas
+												</button>
+										</a></td>
 									</tr>
 								</tbody>
 								<tfoot>

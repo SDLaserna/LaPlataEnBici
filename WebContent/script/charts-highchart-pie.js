@@ -8,7 +8,7 @@ $(function () {
             plotShadow: false
         },
         title: {
-            text: 'Browser market shares at a specific website, 2010'
+            text: 'Estacionamientos'
         },
         tooltip: {
             pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
@@ -27,19 +27,19 @@ $(function () {
         },
         series: [{
             type: 'pie',
-            name: 'Browser share',
+            name: 'Disponibilidad',
             data: [
-                ['Firefox',   45.0],
-                ['IE',       26.8],
+                ['Enero',   45.0],
+                ['Febrero',       26.8],
                 {
-                    name: 'Chrome',
+                    name: 'Marzo',
                     y: 12.8,
                     sliced: true,
                     selected: true
                 },
-                ['Safari',    8.5],
-                ['Opera',     6.2],
-                ['Others',   0.7]
+                ['Abril',    8.5],
+                ['Mayo',     6.2],
+                ['Junio',   0.7]
             ]
         }]
     });

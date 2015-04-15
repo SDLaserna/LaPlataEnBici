@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
-    pageEncoding="utf-8"%>
+	pageEncoding="utf-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,7 +7,8 @@
 <title>ABM bicicletas</title>
 <%@ include file="configHead.jsp"%>
 
-<link href="css/dataTables.bootstrap.css" rel="stylesheet"	type="text/css">
+<link href="css/dataTables.bootstrap.css" rel="stylesheet"
+	type="text/css">
 
 <script src="script/bootstrap.min.js" type="text/javascript"></script>
 <script src="script/jquery.dataTables.js" type="text/javascript"></script>
@@ -50,9 +51,9 @@ function activarNav() {
 						<!-- /.box-header -->
 						<div style="margin-top: 3%; margin-bottom: 2%;">
 							<a href="redireccionAltaBici">
-							<button class="btn btn-success">
-								<i class="fa fa-plus-circle"></i> <span class="menu-title">Agregar</span>
-							</button>
+								<button class="btn btn-success">
+									<i class="fa fa-plus-circle"></i> <span class="menu-title">Agregar</span>
+								</button>
 							</a>
 						</div>
 						<div class="box-body table-responsive">
@@ -72,13 +73,15 @@ function activarNav() {
 										<td>01/02/2014</td>
 										<td>Apta Para el uso</td>
 										<td>Estaci&oacute;n 1</td>
-										<td>
-											<button class="btn btn-info">
-												<i class="fa fa-eye"></i> Ver disponibilidad
-											</button>
-											<button class="btn btn-primary">
-												<i class="fa fa-edit"></i> Modificar
-											</button>
+										<td><a href="verDisponibilidadBici">
+												<button class="btn btn-info">
+													<i class="fa fa-eye"></i> Ver disponibilidad
+												</button>
+										</a> <a href="verModificarBici">
+												<button class="btn btn-primary">
+													<i class="fa fa-edit"></i> Modificar
+												</button>
+										</a>
 											<button class="btn btn-danger">
 												<i class="fa fa-eraser"></i> Eliminar
 											</button></td>
@@ -88,13 +91,15 @@ function activarNav() {
 										<td>01/02/2014</td>
 										<td>Apta Para el uso</td>
 										<td>Estaci&oacute;n 1</td>
-										<td>
-											<button class="btn btn-info">
-												<i class="fa fa-eye"></i> Ver disponibilidad
-											</button>
-											<button class="btn btn-primary">
-												<i class="fa fa-edit"></i> Modificar
-											</button>
+										<td><a href="verDisponibilidadBici">
+												<button class="btn btn-info">
+													<i class="fa fa-eye"></i> Ver disponibilidad
+												</button>
+										</a> <a href="verModificarBici">
+												<button class="btn btn-primary">
+													<i class="fa fa-edit"></i> Modificar
+												</button>
+										</a>
 											<button class="btn btn-danger">
 												<i class="fa fa-eraser"></i> Eliminar
 											</button></td>
@@ -104,13 +109,15 @@ function activarNav() {
 										<td>01/02/2014</td>
 										<td>Apta Para el uso</td>
 										<td>Estaci&oacute;n 1</td>
-										<td>
-											<button class="btn btn-info">
-												<i class="fa fa-eye"></i> Ver disponibilidad
-											</button>
-											<button class="btn btn-primary">
-												<i class="fa fa-edit"></i> Modificar
-											</button>
+										<td><a href="verDisponibilidadBici">
+												<button class="btn btn-info">
+													<i class="fa fa-eye"></i> Ver disponibilidad
+												</button>
+										</a> <a href="verModificarBici">
+												<button class="btn btn-primary">
+													<i class="fa fa-edit"></i> Modificar
+												</button>
+										</a>
 											<button class="btn btn-danger">
 												<i class="fa fa-eraser"></i> Eliminar
 											</button></td>
@@ -120,13 +127,15 @@ function activarNav() {
 										<td>01/02/2014</td>
 										<td>En desuso</td>
 										<td>Estaci&oacute;n 3</td>
-										<td>
-											<button class="btn btn-info">
-												<i class="fa fa-eye"></i> Ver disponibilidad
-											</button>
-											<button class="btn btn-primary">
-												<i class="fa fa-edit"></i> Modificar
-											</button>
+										<td><a href="verDisponibilidadBici">
+												<button class="btn btn-info">
+													<i class="fa fa-eye"></i> Ver disponibilidad
+												</button>
+										</a> <a href="verModificarBici">
+												<button class="btn btn-primary">
+													<i class="fa fa-edit"></i> Modificar
+												</button>
+										</a>
 											<button class="btn btn-danger">
 												<i class="fa fa-eraser"></i> Eliminar
 											</button></td>
@@ -136,13 +145,15 @@ function activarNav() {
 										<td>01/02/2014</td>
 										<td>Denunciada</td>
 										<td>Estaci&oacute;n 1</td>
-										<td>
-											<button class="btn btn-info">
-												<i class="fa fa-eye"></i> Ver disponibilidad
-											</button>
-											<button class="btn btn-primary">
-												<i class="fa fa-edit"></i> Modificar
-											</button>
+										<td><a href="verDisponibilidadBici">
+												<button class="btn btn-info">
+													<i class="fa fa-eye"></i> Ver disponibilidad
+												</button>
+										</a> <a href="verModificarBici">
+												<button class="btn btn-primary">
+													<i class="fa fa-edit"></i> Modificar
+												</button>
+										</a>
 											<button class="btn btn-danger">
 												<i class="fa fa-eraser"></i> Eliminar
 											</button></td>
@@ -152,18 +163,20 @@ function activarNav() {
 										<td>01/02/2014</td>
 										<td>En reparaci&oacute;n</td>
 										<td>Estaci&oacute;n 1</td>
-										<td>
-											<button class="btn btn-info">
-												<i class="fa fa-eye"></i> Ver disponibilidad
-											</button>
-											<button class="btn btn-primary">
-												<i class="fa fa-edit"></i> Modificar
-											</button>
+										<td><a href="verDisponibilidadBici">
+												<button class="btn btn-info">
+													<i class="fa fa-eye"></i> Ver disponibilidad
+												</button>
+										</a> <a href="verModificarBici">
+												<button class="btn btn-primary">
+													<i class="fa fa-edit"></i> Modificar
+												</button>
+										</a>
 											<button class="btn btn-danger">
 												<i class="fa fa-eraser"></i> Eliminar
 											</button></td>
 									</tr>
-									
+
 								</tbody>
 								<tfoot>
 									<tr>

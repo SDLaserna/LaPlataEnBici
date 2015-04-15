@@ -33,7 +33,7 @@ function activarNav() {
 					<!--   Contenedor -->
 					<div class="panel panel-green">
                                             <div class="panel-heading">
-                                                Alta Bicicleta</div>
+                                                Modificar Bicicleta</div>
                                             <div class="panel-body pan">
                                                 <form action="#">
                                                 <div class="form-body pal">
@@ -81,7 +81,7 @@ function activarNav() {
                                                 </div>
                                                 <div class="form-actions text-right pal">
                                                     <button type="submit" class="btn btn-success">
-                                                        Agregar</button>
+                                                        Modificar</button>
                                                 </div>
                                                 </form>
                                             </div>

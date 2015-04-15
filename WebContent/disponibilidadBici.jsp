@@ -6,11 +6,26 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Administrador</title>
 <%@ include file="configHead.jsp"%>
-<script>
+<link href="css/zabuto_calendar.min.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="script/zabuto_calendar.min.js"></script>
 
+<script type="application/javascript">
+$(document).ready(function () {
+    $("#my-calendar").zabuto_calendar({	 cell_border: true, show_days: true, language: "es",
+    																	action: function(){
+    																		return clickEnFecha(this.id);}
+    });
+});
+
+function clickEnFecha(id){ 
+	var fecha = $("#" + id).data("date");
+	alert("abrir los horarios del "+fecha);}
+</script>
+
+<script>
 function activarNav() {
-	document.getElementById("inicio").setAttribute("class", "active");
-	document.getElementById("bicicletas").setAttribute("class", "");
+	document.getElementById("inicio").setAttribute("class", "");
+	document.getElementById("bicicletas").setAttribute("class", "active");
 	document.getElementById("usuarios").setAttribute("class", "");
     document.getElementById("estaciones").setAttribute("class", "");
 }
@@ -31,7 +46,8 @@ function activarNav() {
 				<div class="page-content">
 
 					<!--   Contenedor -->
-					
+					<h3>Disponibilidades</h3>
+		             <div id="my-calendar"></div>
 
 					<!-- Contenedor Fin -->
 
