@@ -293,12 +293,13 @@ hr {
   margin-right: 15px;
 }
 #topbar .navbar-top-links li.open > a {
-  background: #366794 !important;
+ /* background: #366794 !important;*/
+ background: rgb(118, 0, 0) !important;
   color: #ffffff !important;
 }
 #topbar .navbar-top-links li.open > a:hover,
 #topbar .navbar-top-links li.open > a:focus {
-  background: #366794 !important;
+  /*background: #366794 !important;*/
 }
 #topbar .navbar-top-links li.open > a i {
   color: #ffffff;
@@ -312,7 +313,7 @@ hr {
 }
 #topbar .navbar-top-links li > a:hover,
 #topbar .navbar-top-links li > a:focus {
-  background: #366794 !important;
+  /*background: #366794 !important; */
 }
 #topbar .navbar-top-links li > a i {
   font-size: 16px;

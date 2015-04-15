@@ -1,4 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,11 +8,24 @@
 
 <%@ include file="configHead.jsp"%>
 
-<link href="css/dataTables.bootstrap.css" rel="stylesheet"	type="text/css">
+<link href="css/dataTables.bootstrap.css" rel="stylesheet"
+	type="text/css">
+
 
 <script src="script/bootstrap.min.js" type="text/javascript"></script>
 <script src="script/jquery.dataTables.js" type="text/javascript"></script>
 <script src="script/dataTables.bootstrap.js" type="text/javascript"></script>
+
+<script>
+	function activarNav() {
+		document.getElementById("inicio").setAttribute("class", "");
+		document.getElementById("mapaEstaciones").setAttribute("class", "");
+		document.getElementById("listaEstaciones").setAttribute("class",
+				"active");
+		document.getElementById("misBicicletas").setAttribute("class", "");
+	}
+</script>
+
 <!-- paginado script -->
 <script type="text/javascript">
 	$(function() {
@@ -20,7 +34,7 @@
 </script>
 
 </head>
-<body>
+<body onLoad="activarNav()">
 	<div>
 		<!-- Incluir  Cabecera -->
 		<%@ include file="header.jsp"%>
@@ -40,7 +54,7 @@
 							<h3 class="box-title">Lista de estaciones</h3>
 						</div>
 						<!-- /.box-header -->
-						
+
 						<div class="box-body table-responsive">
 							<table id="example1" class="table table-bordered table-striped">
 								<thead>
@@ -50,6 +64,7 @@
 										<th>Cant.Bicicletas</th>
 										<th>Cant. Estacionamientos libres</th>
 										<th>Estado</th>
+										<th>Cant. Bicicletas a Retirar</th>
 									</tr>
 								</thead>
 								<tbody>
@@ -59,6 +74,14 @@
 										<td>50</td>
 										<td>4</td>
 										<td>Operativa</td>
+										<td>
+											<div>
+												<input type="number" value="0" min="0" max="3">
+												<button class="btn btn-success">
+													<i class="fa fa-bicycle"></i> <span class="menu-title">Retirar</span>
+												</button>
+											</div>
+										</td>
 									</tr>
 									<tr>
 										<td>Estaci&oacute;n 2</td>
@@ -66,6 +89,14 @@
 										<td>50</td>
 										<td>5</td>
 										<td>Operativa</td>
+										<td>
+											<div>
+												<input type="number" value="0" min="0" max="3">
+												<button class="btn btn-success">
+													<i class="fa fa-bicycle"></i> <span class="menu-title">Retirar</span>
+												</button>
+											</div>
+										</td>
 									</tr>
 									<tr>
 										<td>Estaci&oacute;n 3</td>
@@ -73,6 +104,14 @@
 										<td>50</td>
 										<td>25</td>
 										<td>Operativa</td>
+										<td>
+											<div>
+												<input type="number" value="0" min="0" max="3">
+												<button class="btn btn-success">
+													<i class="fa fa-bicycle"></i> <span class="menu-title">Retirar</span>
+												</button>
+											</div>
+										</td>
 									</tr>
 									<tr>
 										<td>Estaci&oacute;n 4</td>
@@ -80,6 +119,14 @@
 										<td>50</td>
 										<td>25</td>
 										<td>Operativa</td>
+										<td>
+											<div>
+												<input type="number" value="0" min="0" max="3">
+												<button class="btn btn-success">
+													<i class="fa fa-bicycle"></i> <span class="menu-title">Retirar</span>
+												</button>
+											</div>
+										</td>
 									</tr>
 									<tr>
 										<td>Estaci&oacute;n 5</td>
@@ -87,6 +134,14 @@
 										<td>50</td>
 										<td>30</td>
 										<td>Operativa</td>
+										<td>
+											<div>
+												<input type="number" value="0" min="0" max="3">
+												<button class="btn btn-success">
+													<i class="fa fa-bicycle"></i> <span class="menu-title">Retirar</span>
+												</button>
+											</div>
+										</td>
 									</tr>
 									<tr>
 										<td>Estaci&oacute;n 6</td>
@@ -94,6 +149,14 @@
 										<td>50</td>
 										<td>30</td>
 										<td>Operativa</td>
+										<td>
+											<div>
+												<input type="number" value="0" min="0" max="3">
+												<button class="btn btn-success">
+													<i class="fa fa-bicycle"></i> <span class="menu-title">Retirar</span>
+												</button>
+											</div>
+										</td>
 									</tr>
 									<tr>
 										<td>Estaci&oacute;n 7</td>
@@ -101,6 +164,14 @@
 										<td>50</td>
 										<td>30</td>
 										<td>Operativa</td>
+										<td>
+											<div>
+												<input type="number" value="0" min="0" max="3">
+												<button class="btn btn-success">
+													<i class="fa fa-bicycle"></i> <span class="menu-title">Retirar</span>
+												</button>
+											</div>
+										</td>
 									</tr>
 									<tr>
 										<td>Estaci&oacute;n 8</td>
@@ -108,6 +179,14 @@
 										<td>70</td>
 										<td>30</td>
 										<td>Operativa</td>
+										<td>
+											<div>
+												<input type="number" value="0" min="0" max="3" >
+												<button class="btn btn-success">
+													<i class="fa fa-bicycle"></i> <span class="menu-title">Retirar</span>
+												</button>
+											</div>
+										</td>
 									</tr>
 									<tr>
 										<td>Estaci&oacute;n 9</td>
@@ -115,6 +194,14 @@
 										<td>70</td>
 										<td>30</td>
 										<td>Operativa</td>
+										<td>
+											<div>
+												<input type="number" value="0"min="0" max="3" >
+												<button class="btn btn-success">
+													<i class="fa fa-bicycle"></i> <span class="menu-title">Retirar</span>
+												</button>
+											</div>
+										</td>
 									</tr>
 									<tr>
 										<td>Estaci&oacute;n 10</td>
@@ -122,6 +209,14 @@
 										<td>70</td>
 										<td>30</td>
 										<td>Cerrada</td>
+										<td>
+											<div >
+												<input type="number" value="0" min="0" max="3" disabled>
+												<button class="btn btn-success" disabled>
+													<i class="fa fa-bicycle"></i> <span class="menu-title">Retirar</span>
+												</button>
+											</div>
+										</td>
 									</tr>
 									<tr>
 										<td>Estaci&oacute;n 11</td>
@@ -129,6 +224,14 @@
 										<td>70</td>
 										<td>30</td>
 										<td>Cerrada</td>
+										<td>
+											<div >
+												<input type="number" value="0" min="0" max="3" disabled>
+												<button class="btn btn-success" disabled>
+													<i class="fa fa-bicycle"></i> <span class="menu-title">Retirar</span>
+												</button>
+											</div>
+										</td>
 									</tr>
 									<tr>
 										<td>Estaci&oacute;n 12</td>
@@ -136,6 +239,14 @@
 										<td>78</td>
 										<td>30</td>
 										<td>Cerrada</td>
+										<td>
+											<div >
+												<input type="number" value="0" min="0" max="3"  disabled>
+												<button class="btn btn-success" disabled>
+													<i class="fa fa-bicycle"></i> <span class="menu-title">Retirar</span>
+												</button>
+											</div>
+										</td>
 									</tr>
 									<tr>
 										<td>Estaci&oacute;n 13</td>
@@ -143,6 +254,14 @@
 										<td>0</td>
 										<td>-</td>
 										<td>En construcci&oacute;n</td>
+										<td>
+											<div >
+												<input type="number" value="0" min="0" max="3" disabled>
+												<button class="btn btn-success" disabled>
+													<i class="fa fa-bicycle"></i> <span class="menu-title">Retirar</span>
+												</button>
+											</div>
+										</td>
 									</tr>
 								</tbody>
 								<tfoot>
@@ -152,6 +271,7 @@
 										<th>Cant.Bicicletas</th>
 										<th>Cant. Estacionamientos libres</th>
 										<th>Estado</th>
+										<th>Cant. Bicicletas a Retirar</th>
 									</tr>
 								</tfoot>
 							</table>
@@ -159,6 +279,7 @@
 						<!-- /.box-body -->
 					</div>
 					<!-- /.box -->
+
 
 					<!-- Contenedor Fin -->
 
