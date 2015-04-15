@@ -61,7 +61,7 @@
                                     &nbsp;
                                 </div>
                                 <div class="col-lg-9">
-                                    <a href="" class="btn btn-default">Volver</a>&nbsp;&nbsp;
+                                    <a href="registrarse" class="btn btn-default">Registrarse</a>&nbsp;&nbsp;
                                     <button type="submit" class="btn btn-default">
                                         Iniciar Sesi&oacute;n</button>
                                 </div>
