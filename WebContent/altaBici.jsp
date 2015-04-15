@@ -43,7 +43,7 @@ function activarNav() {
                                                                 <label for="inputName" class="control-label">
                                                                     Color</label>
                                                                 <div class="input-icon right">
-                                                                    <i class="icon-tint"></i>
+                                                                    <i class="fa fa-tint"></i>
                                                                     <input id="inputName" type="text" placeholder="" class="form-control"></div>
                                                             </div>
                                                         </div>

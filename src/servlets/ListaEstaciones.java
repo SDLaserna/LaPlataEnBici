@@ -8,10 +8,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 @WebServlet("/listaEstaciones")
-public class listaEstaciones extends HttpServlet {
+public class ListaEstaciones extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    public listaEstaciones() {
+    public ListaEstaciones() {
         super();
     }
 
@@ -19,6 +19,8 @@ public class listaEstaciones extends HttpServlet {
 		response.sendRedirect("/LaPlataEnBici/listaEstaciones.jsp");
 	}
 
-
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		response.sendRedirect("/LaPlataEnBici/listaEstaciones.jsp");
+	}
 
 }

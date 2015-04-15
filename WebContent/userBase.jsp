@@ -7,8 +7,18 @@
 <title>Usuario</title>
 <%@ include file="configHead.jsp"%>
 
+<script>
+
+function activarNav() {
+	document.getElementById("inicio").setAttribute("class", "active");
+	document.getElementById("mapaEstaciones").setAttribute("class", "");
+    document.getElementById("listaEstaciones").setAttribute("class", "");
+	document.getElementById("misBicicletas").setAttribute("class", "");
+}
+</script>
+
 </head>
-<body>
+<body onLoad="activarNav()">
 	<div>
 		<!-- Incluir  Cabecera -->
 		<%@ include file="header.jsp"%>
