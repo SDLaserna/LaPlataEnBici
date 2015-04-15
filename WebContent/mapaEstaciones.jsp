@@ -7,8 +7,39 @@
 <title>Usuario</title>
 <%@ include file="configHead.jsp"%>
 
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
+<script>
+	// 	var map;
+	var geocoder;
+	var map = new google.maps.Marker;
+	var marker = new google.maps.Marker;
+	function initialize() {
+		geocoder = new google.maps.Geocoder();
+		var mapOptions = {
+			zoom : 12,
+			center : new google.maps.LatLng(-34.9205284, -57.9531702),
+			mapTypeId : google.maps.MapTypeId.ROADMAP
+		};
+		map = new google.maps.Map(document.getElementById('map-canvas'),
+				mapOptions);
+	}
+
+	google.maps.event.addDomListener(window, 'load', initialize);
+</script>
+
+<script>
+	function activarNav() {
+		document.getElementById("inicio").setAttribute("class", "");
+		document.getElementById("mapaEstaciones").setAttribute("class",
+				"active");
+		document.getElementById("listaEstaciones").setAttribute("class", "");
+		document.getElementById("misBicicletas").setAttribute("class", "");
+	}
+</script>
+
+
 </head>
-<body>
+<body onLoad="activarNav()">
 	<div>
 		<!-- Incluir  Cabecera -->
 		<%@ include file="header.jsp"%>
@@ -23,7 +54,35 @@
 				<div class="page-content">
 
 					<!--   Contenedor -->
-					
+
+					<div class="col-lg-4">
+						<div class="panel panel-blue" style="background: #fff;">
+							<div class="panel-heading">Mapa de estaciones</div>
+							<div class="panel-body pan">
+								<form action="">
+									<div class="form-body pal">
+										<div class="form-group mbn">
+											<label for="inputSubject" class="control-label">
+												Direcci&oacute;n a buscar</label>
+											<div class="input-icon right">
+												<i class="fa fa-map-marker"></i> <input id="inputSubject"
+													type="text" placeholder="" class="form-control" />
+											</div>
+										</div>
+									</div>
+									<div class="form-actions text-right pal">
+										<button type="submit" class="btn btn-primary">Buscar en Mapa</button>
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+
+
+					<div class="col-lg-6">
+						<div id="map-canvas" style="width: 507px; height: 527px;"
+							class="embed-responsive-item"></div>
+					</div>
 
 					<!-- Contenedor Fin -->
 

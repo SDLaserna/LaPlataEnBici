@@ -7,16 +7,19 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/userBicicletas")
-public class userBicicletas extends HttpServlet {
+@WebServlet("/mapaEstaciones")
+public class MapaEstaciones extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    public userBicicletas() {
+    public MapaEstaciones() {
         super();
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		response.sendRedirect("/LaPlataEnBici/misBicicletas.jsp");
+		response.sendRedirect("/LaPlataEnBici/mapaEstaciones.jsp");
+	}
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		response.sendRedirect("/LaPlataEnBici/mapaEstaciones.jsp");
 	}
 
 
