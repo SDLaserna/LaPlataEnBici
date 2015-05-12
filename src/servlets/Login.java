@@ -2,6 +2,7 @@ package servlets;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
@@ -14,30 +15,31 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import clases.Usuario;
+import entidades.Administrador;
+import entidades.Domicilio;
+import entidades.Persona;
+import entidades.Usuario;
 
 @WebServlet(
         urlPatterns = "/login",
         initParams =
         {
-            @WebInitParam(name = "usuario", value = "user"),
+            @WebInitParam(name = "usuario", value = "user@asd.com"),
             @WebInitParam(name = "password", value = "user"),
-            @WebInitParam(name = "rol", value = "usuario"),
-            @WebInitParam(name = "usuarioB", value = "admin"),
+            @WebInitParam(name = "usuarioB", value = "admin@asd.com"),
             @WebInitParam(name = "passwordB", value = "admin"),
-            @WebInitParam(name = "rolB", value = "administrador")
         }
 )
 public class Login extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private List<Usuario> users= new ArrayList<Usuario>();
+	private List<Persona> users= new ArrayList<Persona>();
 	
-	 public List<Usuario> getUsers() {
+	 public List<Persona> getUsers() {
 			return users;
 	}
 
 
-	public void setUsers(List<Usuario> users) {
+	public void setUsers(List<Persona> users) {
 		this.users = users;
 	}
 	
@@ -48,13 +50,14 @@ public class Login extends HttpServlet {
 		super.init(config);
 		String user = this.getInitParameter("usuario");
 		String pass=this.getInitParameter("password");
-		String rol=this.getInitParameter("rol");
-		Usuario usuario = new Usuario(user,pass,rol);
+		Long num= new Long(234);
+		Date fNaci= new Date();
+		Domicilio domi = new Domicilio("unacalle",num,"La Plata");
+		Persona usuario = new Usuario("3512356","gonc","cand",fNaci,"fem",domi,user,pass);
 		this.getUsers().add(usuario);
 		user = this.getInitParameter("usuarioB");
 		pass=this.getInitParameter("passwordB");
-		rol=this.getInitParameter("rolB");
-		usuario = new Usuario(user,pass,rol);
+		usuario = new Administrador("3812356","laser","serg",fNaci,"mascu",domi,user,pass);
 		this.getUsers().add(usuario);
 	}
 
@@ -63,23 +66,31 @@ public class Login extends HttpServlet {
 		String pass = request.getParameter("inputPass");
 		
 		if(!this.getUsers().isEmpty()){
-			Iterator<Usuario> it = this.getUsers().iterator();
+			Iterator<Persona> it = this.getUsers().iterator();
+			boolean encontrado = false;
 			while(it.hasNext()){
-				Usuario usuario = it.next();
-				if(usuario.getUser().equals(user)){
-					if(usuario.getPass().equals(pass)){
-						if(usuario.getRol().equals("administrador")){
+				Persona usuario = it.next();
+				String nameClass = usuario.getClass().getName();
+				if(usuario.getEmail().equals(user)){
+					if(usuario.getClave().equals(pass)){
+						if(nameClass.equals("entidades.Administrador")){
+							encontrado= true;
 							RequestDispatcher dispatcher=request.getRequestDispatcher("/adminBase");
 							if (dispatcher!=null) dispatcher.forward(request,response);
 						}
 						else{
-							if(usuario.getRol().equals("usuario")){
+							if(nameClass.equals("entidades.Usuario")){
+								encontrado= true;
 								RequestDispatcher dispatcher=request.getRequestDispatcher("/userBase");
 								if (dispatcher!=null) dispatcher.forward(request,response);
 							}
 						}
 					}
 				}
+			}
+			if(!it.hasNext() && !encontrado){
+				RequestDispatcher dispatcher=request.getRequestDispatcher("/inicio");
+				if (dispatcher!=null) dispatcher.forward(request,response);
 			}	
 		}
 		else{
