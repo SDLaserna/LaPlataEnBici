@@ -1,19 +1,35 @@
 package entidades;
 
 import java.util.ArrayList;
+import java.util.List;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+
+
+@Entity
 public class Estacion {
+	@Id
+	@GeneratedValue
 	private Long idEstacion;
 	private String nombre;
 	private Long cantBicicleta;
 	private Long cantEstacionamientosLibres;
 	private String estado;
-	/* uno a uno domicilio*/
+	/* uno a uno domicilio creo que no es necesario que sea bidireccional*/
+	@ManyToOne
 	private Domicilio ubicacion;
 	private boolean activa;
 	/* cero a muchas bicicletas*/
-	private ArrayList<Bicicleta> bicicletas =new ArrayList<Bicicleta>();
+	@OneToMany
+	private List<Bicicleta> bicicletas;
 	
+	protected Estacion() {
+	}
+
 	public Estacion(String nombre, Long cantBicicleta,
 			Long cantEstacionamientosLibres, String estado,
 			Domicilio ubicacion, ArrayList<Bicicleta> bicicletas) {
@@ -83,13 +99,14 @@ public class Estacion {
 		this.activa = activa;
 	}
 
-	public ArrayList<Bicicleta> getBicicletas() {
+	public List<Bicicleta> getBicicletas() {
 		return bicicletas;
 	}
 
-	public void setBicicletas(ArrayList<Bicicleta> bicicletas) {
+	public void setBicicletas(List<Bicicleta> bicicletas) {
 		this.bicicletas = bicicletas;
 	}
+
 	public void agregarBicicleta(Bicicleta bicicleta) {
 		this.getBicicletas().add(bicicleta);
 	}

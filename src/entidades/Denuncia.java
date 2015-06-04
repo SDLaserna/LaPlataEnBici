@@ -2,15 +2,28 @@ package entidades;
 
 import java.util.Date;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+
+@Entity
 public class Denuncia {
+	@Id
+	@GeneratedValue
 	private Long idDenuncia;
 	/*uno a uno*/
+	@ManyToOne
 	private Usuario usuario;
 	/*uno a uno*/
+	@ManyToOne
 	private Bicicleta bicicleta;
 	private Date fechaHora;
 	private String comentario;
 	
+	protected Denuncia() {
+	}
+
 	public Denuncia(Usuario usuario, Bicicleta bicicleta, Date fechaHora,
 			String comentario) {
 		super();

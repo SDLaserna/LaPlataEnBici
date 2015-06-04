@@ -1,6 +1,14 @@
 package entidades;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
+
+@Entity
 public class Domicilio {
+	@Id
+	@GeneratedValue
 	private Long idDomicilio;
 	private String calle;
 	private Long numero;
@@ -8,6 +16,8 @@ public class Domicilio {
 	private String longitud;
 	private String latitud;
 	
+	protected Domicilio() {
+	}
 	public Domicilio(String calle, Long numero, String localidad,
 			String longitud, String latitud) {
 		super();

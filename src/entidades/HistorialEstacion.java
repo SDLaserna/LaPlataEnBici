@@ -2,13 +2,27 @@ package entidades;
 
 import java.util.Date;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="Historial_estacion")
 public class HistorialEstacion {
+	@Id
+	@GeneratedValue
 	private Long idHistorial;
 	/* uno a uno */
+	@ManyToOne
 	private Estacion estacion;
 	private Date fechaHora;
 	private String estado;
 	
+	protected HistorialEstacion() {
+	}
+
 	public HistorialEstacion(Estacion estacion, Date fechaHora, String estado) {
 		super();
 		this.setEstacion(estacion);

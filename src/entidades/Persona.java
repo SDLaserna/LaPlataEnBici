@@ -2,8 +2,24 @@ package entidades;
 
 import java.util.Date;
 
+import javax.persistence.DiscriminatorColumn;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+import javax.persistence.ManyToOne;
+import javax.persistence.MappedSuperclass;
+import javax.persistence.Table;
+
+@Entity
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name = "TIPO")
 public abstract class Persona {
-	private Long id;
+	
+	@Id
+	@GeneratedValue
+	private Long idPersona;
 	private String dni;
 	private String apellido;
 	private String nombre;
@@ -13,8 +29,12 @@ public abstract class Persona {
 	private String clave;
 	private boolean activa ;
 	/* uno a uno domicilio*/
+	@ManyToOne
 	private Domicilio domicilio;
 	
+	protected Persona() {
+	}
+
 	public Persona(String dni, String apellido, String nombre, Date fechaNacimiento, String sexo, Domicilio domicilio, String email, String clave) {
 		super();
 		this.setDni(dni);
@@ -72,12 +92,14 @@ public abstract class Persona {
 		this.clave = clave;
 	}
 	
-	public Long getId() {
-		return id;
+	public Long getIdPersona() {
+		return idPersona;
 	}
-	public void setId(Long id) {
-		this.id = id;
+
+	public void setIdPersona(Long idPersona) {
+		this.idPersona = idPersona;
 	}
+
 	public boolean isActiva() {
 		return activa;
 	}

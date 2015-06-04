@@ -15,6 +15,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import daos.EMF;
+import daos.FactoryDAO;
+import daos.UsuarioDAOImp;
 import entidades.Administrador;
 import entidades.Domicilio;
 import entidades.Persona;
@@ -44,6 +47,9 @@ public class Login extends HttpServlet {
 	}
 	
 	public Login() {
+		/*Esto lo puse para probar la conexion, no fue intencion el uso de este dao en el
+		 * login por el momento*/
+		UsuarioDAOImp ud = FactoryDAO.getUsuarioDAO();
 	}
 
 	public void init(ServletConfig config) throws ServletException {

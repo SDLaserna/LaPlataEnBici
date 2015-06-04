@@ -2,19 +2,35 @@ package entidades;
 
 import java.util.Date;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+
+@Entity
 public class Prestamo {
+	
+	@Id
+	@GeneratedValue
 	private Long idPrestamo;
 	/* uno a uno */
+	@ManyToOne
 	private Usuario usuario;
 	/* uno a uno*/
+	@ManyToOne
 	private Bicicleta bicicleta;
-	/* es muchas a muchas o uno a uno en cada estacion¿?*/
+	/* es muchas a muchas o uno a uno en cada estacionï¿½?*/
+	@ManyToOne
 	private Estacion estacionPrestamo;
+	@ManyToOne
 	private Estacion estacionDevolucion;
 	private Date fechaPrestamo;
 	private Date fechaDevolucion;
 	private String estado;
 	
+	protected Prestamo() {
+	}
+
 	public Prestamo(Usuario usuario, Bicicleta bicicleta,
 			Estacion estacionPrestamo, Date fechaPrestamo) {
 		super();

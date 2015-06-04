@@ -2,6 +2,11 @@ package entidades;
 
 import java.util.Date;
 
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
+
+@Entity
+@DiscriminatorValue("ADM")
 public class Administrador extends Persona {
 
 	public Administrador(String dni, String apellido, String nombre,

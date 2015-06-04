@@ -2,12 +2,27 @@ package entidades;
 
 import java.util.Date;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+
+
+@Entity
 public class Bicicleta {
+	@Id
+	@GeneratedValue
 	private Long idBicicleta;
 	private Date fechaIngreso;
 	private String estado;
 	private boolean activa;
 	private boolean prestada;
+	
+	@ManyToOne
+	private Estacion estacion;
+
+	protected Bicicleta() {
+	}
 
 	public Bicicleta(Date fechaIngreso, String estado) {
 		super();
@@ -55,6 +70,14 @@ public class Bicicleta {
 
 	public void setPrestada(boolean prestada) {
 		this.prestada = prestada;
+	}
+
+	public Estacion getEstacion() {
+		return estacion;
+	}
+
+	public void setEstacion(Estacion estacion) {
+		this.estacion = estacion;
 	}
 	
 	
