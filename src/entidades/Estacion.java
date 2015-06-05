@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 
 @Entity
@@ -19,8 +20,8 @@ public class Estacion {
 	private Long cantBicicleta;
 	private Long cantEstacionamientosLibres;
 	private String estado;
-	/* uno a uno domicilio creo que no es necesario que sea bidireccional*/
-	@ManyToOne
+	
+	@OneToOne
 	private Domicilio ubicacion;
 	private boolean activa;
 	/* cero a muchas bicicletas*/
