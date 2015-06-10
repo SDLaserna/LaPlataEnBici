@@ -6,6 +6,7 @@ import java.util.Map;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.EntityTransaction;
 
 public abstract class GenericDAOImp<T> implements GenericDAO<T> {
 
@@ -13,7 +14,7 @@ public abstract class GenericDAOImp<T> implements GenericDAO<T> {
 	//ejemplo "usuarioDAOimp extends genericDAOImp<usuario>"
 
 	private Class<T> type;
-	private EntityManager entityManager;
+	protected EntityManager entityManager;
 	
 	
 	public GenericDAOImp() {
@@ -33,14 +34,23 @@ public abstract class GenericDAOImp<T> implements GenericDAO<T> {
 
 	@Override
 	public T crear(T t) {
+		/* Que pasaría si yo quiero realizar transacciones fuera del dao, por ejemplo
+		 * en un service? como obtengo
+		 * el EntityTransaction para poder hacer una especie de metodo transaccional?*/
+		EntityTransaction tx = this.entityManager.getTransaction();
+		tx.begin();
 		this.entityManager.persist(t);
+		tx.commit();
 		return null;
 	}
 
 	@Override
 	
 	public void borrar(Object id) {
+		EntityTransaction tx = this.entityManager.getTransaction();
+		tx.begin();
 		this.entityManager.remove( this.entityManager.getReference(type, id));  // ver que en una pagina pusieron como parametro "this.entityManager.getReference(type, id);
+		tx.commit();
 	}
 
 	@Override
@@ -53,12 +63,19 @@ public abstract class GenericDAOImp<T> implements GenericDAO<T> {
 	@Override
 	
 	public T actualizar(T t) {
-		return this.entityManager.merge(t);
-		
+		EntityTransaction tx = this.entityManager.getTransaction();
+		tx.begin();
+		 this.entityManager.merge(t);
+		tx.commit();
+		return null;
 	}
 	
 	public T obtener(Object id){
-		return (T) this.entityManager.find(type, id);
+		EntityTransaction tx = this.entityManager.getTransaction();
+		tx.begin();
+		T resul = (T) this.entityManager.find(type, id);
+		tx.rollback();
+		return resul;
 	}
 	
 	public List<T> listar(String entidad) {

@@ -1,7 +1,5 @@
 package daos;
 
-import entidades.Prestamo;
-
 public class FactoryDAO {
 	
 	public static UsuarioDAOImp getUsuarioDAO() {
