@@ -5,6 +5,7 @@ import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 
@@ -19,6 +20,7 @@ public class Bicicleta {
 	private boolean prestada;
 	
 	@ManyToOne
+	@JoinColumn(name="estacion")
 	private Estacion estacion;
 
 	protected Bicicleta() {

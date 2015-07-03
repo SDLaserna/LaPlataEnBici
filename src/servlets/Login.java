@@ -54,7 +54,7 @@ public class Login extends HttpServlet {
 	}
 
 	public void init(ServletConfig config) throws ServletException {
-		/*super.init(config);
+		super.init(config);
 		String user = this.getInitParameter("usuario");
 		String pass=this.getInitParameter("password");
 		Long num= new Long(234);
@@ -66,22 +66,6 @@ public class Login extends HttpServlet {
 		pass=this.getInitParameter("passwordB");
 		usuario = new Administrador("3812356","laser","serg",fNaci,"mascu",domi,user,pass);
 		this.getUsers().add(usuario);
-		EntityManagerFactory emf = EMF.getEMF();
-		EntityManager em = emf.createEntityManager();
-    	EntityTransaction tx = em.getTransaction();
-		
-		Domicilio dom= new Domicilio("calle 12", (long) 12, "La Plata");
-		Usuario usr=new Usuario("123", "Laserna", "Sergio", new Date(), "Masculino", dom, "sergio@mail.com", "123");
-		tx.begin();
-		/*UsuarioDAOImp ud = FactoryDAO.getUsuarioDAO();
-		ud.crear(usr);
-		usr.setNombre("Nombre Actualizado");
-		ud.actualizar(usr);*/
-//		Long id=(long) 1;
-//		System.out.println(ud.obtener(id).getDni());
-//		ud.borrar(id);*/
-		/*em.persist(dom);//aca hay q persistir con este em y no con el ud xq nunca lo creamos
-		tx.commit();*/
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

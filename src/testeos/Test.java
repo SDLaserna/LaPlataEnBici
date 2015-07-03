@@ -20,7 +20,7 @@ public class Test {
 		 * a la variable id, por ejemplo si persisti una vez, y lo quiero volver a ejecutar
 		 * entonces debería cambiar el valor de id a 2, para que lo encuentre. Cada vez que se
 		 * ejecuta el valor de id debe ser +1 al id que autogenera la bbdd*/
-		Long id = new Long(10);
+		Long id = new Long(2);
 		Usuario usr2=usuarioDAO.obtener(id);
 		
 		System.out.println("Apellido: "+usr2.getApellido());

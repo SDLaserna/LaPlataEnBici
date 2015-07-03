@@ -25,7 +25,7 @@ public class Estacion {
 	private Domicilio ubicacion;
 	private boolean activa;
 	/* cero a muchas bicicletas*/
-	@OneToMany
+	@OneToMany(mappedBy="estacion")
 	private List<Bicicleta> bicicletas;
 	
 	protected Estacion() {

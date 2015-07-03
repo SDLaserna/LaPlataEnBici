@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns=http://www.w3.org/1999/xhtml
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+	<meta charset="UTF-8">
+	<title>
+		<ui:insert name="titulo">Título por defecto</ui:insert>	
+	</title>
+	
+<!-- 	configHead.jsp -->
+<!-- 	En caso que no anden los css, probar con este tag -->
+<!-- 	<h:outputStylesheet library="tema1" name="css/estilo.css" /> -->
+	
+	<link rel="shortcut icon" href="images/icons/favicon.ico">
+	<link rel="apple-touch-icon" href="images/icons/favicon.png">
+	<link rel="apple-touch-icon" sizes="72x72"
+		href="images/icons/favicon-72x72.png">
+	<link rel="apple-touch-icon" sizes="114x114"
+		href="images/icons/favicon-114x114.png">
+		<!--Loading bootstrap css-->
+	<link type="text/css" rel="stylesheet"
+		href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,700">
+	<link type="text/css" rel="stylesheet"
+		href="http://fonts.googleapis.com/css?family=Oswald:400,700,300">
+	<link type="text/css" rel="stylesheet"
+		href="css/jquery-ui-1.10.4.custom.min.css">
+	<link type="text/css" rel="stylesheet" href="css/font-awesome.min.css">
+	<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css">
+	<link type="text/css" rel="stylesheet" href="css/animate.css">
+	<link type="text/css" rel="stylesheet" href="css/all.css">
+	<link type="text/css" rel="stylesheet" href="css/main.css">
+	<link type="text/css" rel="stylesheet" href="css/style-responsive.css">
+	<link type="text/css" rel="stylesheet"
+		href="css/zabuto_calendar.min.css">
+	<link type="text/css" rel="stylesheet" href="css/pace.css">
+	<link type="text/css" rel="stylesheet"
+		href="css/jquery.news-ticker.css">
+
+		<!-- Esto para que se despliegue el menu de la cabecera -->
+	<link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
+	<script
+		src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+	<script src="script/bootstrap-hover-dropdown.js"></script>
+<!-- fin configHead.jsp -->
+	<ui:insert name="headConfig"></ui:insert>
+
+</h:head>
+
+<h:body>
+
+	<ui:include src="header.xhtml"></ui:include>
+
+</h:body>
+</html>
