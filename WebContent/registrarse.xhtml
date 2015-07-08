@@ -2,145 +2,200 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:ui="http://java.sun.com/jsf/facelets"
-	>
+	xmlns:ui="http://java.sun.com/jsf/facelets">
 <h:head>
-<title>Registrarse</title>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
- <ui:include src="configHead.xhtml" ></ui:include>
+	<title>Registrarse</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<ui:include src="configHead.xhtml"></ui:include>
 </h:head>
 <body
 	style="background: url('images/bg/bgRegistrar.PNG') center center fixed;">
-<f:view>
-	<div class="col-lg-4" style="margin-left: 36%; margin-top: 3%;">
-		<div class="panel panel-orange">
-			<div class="panel-heading">Formulario de Registro</div>
-			<div class="panel-body pan">
-				<h:form>
-					<div class="form-body pal">
-<!-- 						<div class="form-group"> -->
-<!-- 							<div class="input-icon right"> -->
-<!-- 								<i class="fa fa-user"></i>  -->
-<!-- 								<input id="inputName" type="text" placeholder="Nombre de Usuario" class="form-control"> --> 
-<!-- 								<h:inputText value="#{Usuario.mail}"/> -->
-<!-- 							</div> -->
-<!-- 						</div> -->
-						<div class="form-group">
-							<div class="input-icon right">
-<!-- 								<input id="inputEmail" type="text" placeholder="Direccion de email"	class="form-control"> -->
-								<h:outputLabel>Email:</h:outputLabel><i class="fa fa-envelope"></i>
-								<h:inputText id="registrarEmail" validatorMessage="Formato de email incorrecto, identificador@ejemplo.com" value="#{usuarioMb.usuario.email}" styleClass="form-control"><f:validateRegex pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$" /></h:inputText>
-								<h:message for="registrarEmail" style="color:red;"/>
-							</div>
-						</div>
-<!-- 						<hr> -->
-						<div class="row">
-							<div class="col-md-6">
-								<div class="form-group">
-<!-- 									<input id="inputFirstName" type="text" placeholder="Nombre class="form-control">								 -->
-								<h:outputLabel>Nombre:</h:outputLabel><h:inputText id="registrarseNombre" value="#{usuarioMb.usuario.nombre}" styleClass="form-control" required="true"/> <h:message for="registrarseNombre" style="color:red" />
-					
+	<f:view>
+		<div class="col-lg-4" style="margin-left: 36%; margin-top: 3%;">
+			<div class="panel panel-orange">
+				<div class="panel-heading">Formulario de Registro</div>
+				<div class="panel-body pan">
+					<h:form>
+						<div class="form-body pal">
+							<!-- 						<div class="form-group"> -->
+							<!-- 							<div class="input-icon right"> -->
+							<!-- 								<i class="fa fa-user"></i>  -->
+							<!-- 								<input id="inputName" type="text" placeholder="Nombre de Usuario" class="form-control"> -->
+							<!-- 								<h:inputText value="#{Usuario.mail}"/> -->
+							<!-- 							</div> -->
+							<!-- 						</div> -->
+							<div class="form-group">
+								<div class="input-icon right">
+									<!-- 								<input id="inputEmail" type="text" placeholder="Direccion de email"	class="form-control"> -->
+									<h:outputLabel>Email:</h:outputLabel>
+									<i class="fa fa-envelope"></i>
+									<h:inputText id="registrarEmail"
+										validatorMessage="Formato de email incorrecto, identificador@ejemplo.com"
+										value="#{usuarioMb.usuario.email}" styleClass="form-control"
+										required="true" >
+										<f:validateRegex
+											pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$"
+											 />
+									</h:inputText>
+									<h:message for="registrarEmail" style="color:red;" />
 								</div>
 							</div>
-							<div class="col-md-6">
-								<div class="form-group">
-<!-- 									<input id="inputLastName" type="text" placeholder="Apellido" class="form-control"> -->
-								<h:outputLabel>Apellido:</h:outputLabel><h:inputText value="#{usuarioMb.usuario.apellido}" styleClass="form-control"/>
+							<hr />
+
+							<div class="row">
+								<div class="col-md-6">
+									<div class="form-group">
+										<!-- 									<input id="inputFirstName" type="text" placeholder="Nombre class="form-control">								 -->
+										<h:outputLabel>Nombre:</h:outputLabel>
+										<h:inputText id="registrarseNombre"
+											value="#{usuarioMb.usuario.nombre}" styleClass="form-control"
+											required="true" />
+										<h:message for="registrarseNombre" style="color:red" />
+
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="form-group">
+										<!-- 									<input id="inputLastName" type="text" placeholder="Apellido" class="form-control"> -->
+										<h:outputLabel>Apellido:</h:outputLabel>
+										<h:inputText value="#{usuarioMb.usuario.apellido}"
+											styleClass="form-control" id="registrarseApellido"
+											required="true" />
+										<h:message for="registrarseApellido" style="color:red" />
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-6">
+									<div class="form-group">
+										<h:outputLabel>DNI:</h:outputLabel>
+										<h:inputText id="registrarseDNI"
+											value="#{usuarioMb.usuario.dni}" styleClass="form-control"
+											required="true" />
+										<h:message for="registrarseDNI" style="color:red" />
+
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="form-group">
+										<h:outputLabel>Fecha Nacimiento:</h:outputLabel>
+										<h:inputText value="#{usuarioMb.usuario.fechaNacimiento}"
+											styleClass="form-control" id="registrarseFNaci"
+											required="true" >
+											 <f:convertDateTime pattern="dd-mm-yyyy" />
+										</h:inputText>
+										<h:message for="registrarseFNaci" style="color:red" />
+									</div>
+								</div>
+							</div>
+							<div class="form-group">
+								<h:outputLabel>Sexo:</h:outputLabel>
+								<h:selectOneRadio value="#{usuarioMb.usuario.sexo}"
+									styleClass="form-control" id="registrarseSexo"
+											required="true" >
+									<f:selectItem itemValue="Masculino" itemLabel="Masculino" />
+									<f:selectItem itemValue="Femenino" itemLabel="Femenino" />
+									<f:selectItem itemValue="Otro" itemLabel="Otro" />
+								</h:selectOneRadio>
+								<h:message for="registrarseSexo" style="color:red" />
+
+
+								<!-- 							<select class="form-control"> -->
+								<!-- 								<option>Genero</option> -->
+								<!-- 								<option value="0">Masculino</option> -->
+								<!-- 								<option value="1">Femenino</option> -->
+								<!-- 								<option value="2">Otro</option> -->
+								<!-- 							</select> -->
+							</div>
+							<hr />
+							<div class="form-group">
+								<div class="input-icon right">
+									<h:outputLabel>Calle:</h:outputLabel>
+									<i class="fa fa-home"></i>
+									<!-- 	<input id="inputConfirmPassword"	type="text" placeholder="Domicilio"	class="form-control">  -->
+									<h:inputText value="#{usuarioMb.domicilio.calle}"
+										styleClass="form-control" id="registrarseCalle"
+											required="true" />
+										<h:message for="registrarseCalle" style="color:red" />
+								</div>
+							</div>
+
+							<div class="form-group">
+								<div class="input-icon right">
+									<h:outputLabel>Numero:</h:outputLabel>
+									<i class="fa fa-home"></i>
+									<!-- 	<input id="inputConfirmPassword"	type="text" placeholder="Domicilio"	class="form-control">  -->
+									<h:inputText value="#{usuarioMb.domicilio.numero}"
+										styleClass="form-control" type="long" id="registrarseNumero"
+											required="true" />
+										<h:message for="registrarseNumero" style="color:red" />
+								</div>
+							</div>
+
+							<div class="form-group">
+								<div class="input-icon right">
+									<h:outputLabel>Localidad:</h:outputLabel>
+									<i class="fa fa-home"></i>
+									<!-- 	<input id="inputConfirmPassword"	type="text" placeholder="Domicilio"	class="form-control">  -->
+									<h:inputText value="#{usuarioMb.domicilio.localidad}"
+										styleClass="form-control" id="registrarseLocalidad"
+											required="true" />
+										<h:message for="registrarseLocalidad" style="color:red" />
+								</div>
+							</div>
+							<hr/>
+							
+
+							<!-- 						<div class="form-group"> -->
+							<!-- 							<div class="checkbox"> -->
+							<!-- 								<label> -->
+							<!-- 									<div class="icheckbox_minimal-grey" style="position: relative;"> -->
+							<!-- 										<input tabindex="5" type="checkbox" -->
+							<!-- 											style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; border: 0px; opacity: 0; background: rgb(255, 255, 255);"> -->
+							<!-- 										<ins class="iCheck-helper" -->
+							<!-- 											style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; border: 0px; opacity: 0; background: rgb(255, 255, 255);"></ins> -->
+							<!-- 									</div>&nbsp; Quiero recibir actualizaciones por mail -->
+							<!-- 								</label> -->
+							<!-- 							</div> -->
+							<!-- 						</div> -->
+							<!-- 						<div class="form-group mbn"> -->
+							<!-- 							<div class="checkbox"> -->
+							<!-- 								<label> -->
+							<!-- 									<div class="icheckbox_minimal-grey" style="position: relative;"> -->
+							<!-- 										<input tabindex="5" type="checkbox" -->
+							<!-- 											style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; border: 0px; opacity: 0; background: rgb(255, 255, 255);"> -->
+							<!-- 										<ins class="iCheck-helper" -->
+							<!-- 											style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; border: 0px; opacity: 0; background: rgb(255, 255, 255);"></ins> -->
+							<!-- 									</div>&nbsp; Acepto los t&eacute;rminos y condiciones -->
+							<!-- 								</label> -->
+							<!-- 							</div> -->
+							<!-- 						</div> -->
+
+							<div class="form-group">
+								<div class="input-icon right">
+									<h:outputLabel>Tu clave será</h:outputLabel>
+									<h:inputText value="#{usuarioMb.usuario.clave}" readonly="true"
+										styleClass="form-control" />
 								</div>
 							</div>
 						</div>
 
-						<div class="form-group">
-							<div class="input-icon right">
-								<h:outputLabel>Calle:</h:outputLabel>
- 								<i class="fa fa-home"></i>  
-								<!-- 	<input id="inputConfirmPassword"	type="text" placeholder="Domicilio"	class="form-control">  -->
-								<h:inputText value="#{usuarioMb.domicilio.calle}" styleClass="form-control"/>
-							</div>
+						<div class="col-md-6" style="margin-bottom: 4%;">
+							<!-- 						<button type="submit" class="btn btn-primary" style="margin-left: 24%;">Registrarse</button> -->
+							<h:commandButton value="Registrarse"
+								action="#{usuarioMb.registrar}" styleClass="btn btn-primary"
+								style="margin-left:24%;" />
 						</div>
-						
-						<div class="form-group">
-							<div class="input-icon right">
-								<h:outputLabel>Numero:</h:outputLabel>
- 								<i class="fa fa-home"></i>  
-								<!-- 	<input id="inputConfirmPassword"	type="text" placeholder="Domicilio"	class="form-control">  -->
-								<h:inputText value="#{usuarioMb.domicilio.numero}" styleClass="form-control" type="long"/>
-							</div>
+
+						<div class="col-md-6">
+							<h:link value="Volver" outcome="login" styleClass="btn btn-danger"/>
 						</div>
-						
-						<div class="form-group">
-							<div class="input-icon right">
- 								<h:outputLabel>Localidad:</h:outputLabel>  
- 								<i class="fa fa-home"></i>
-								<!-- 	<input id="inputConfirmPassword"	type="text" placeholder="Domicilio"	class="form-control">  -->
-								<h:inputText value="#{usuarioMb.domicilio.localidad}" styleClass="form-control"/>
-							</div>
-						</div>
-						
-						<div class="form-group">
-							<h:outputLabel>Sexo:</h:outputLabel>
-							<h:selectOneRadio value="#{usuarioMb.usuario.sexo}" styleClass="form-control">
-					   			<f:selectItem itemValue="Masculino" itemLabel="Masculino" />
-					   			<f:selectItem itemValue="Femenino" itemLabel="Femenino" />
-					   			<f:selectItem itemValue="Otro" itemLabel="Otro" />
-   							</h:selectOneRadio>
-   							
-   							
-<!-- 							<select class="form-control"> -->
-<!-- 								<option>Genero</option> -->
-<!-- 								<option value="0">Masculino</option> -->
-<!-- 								<option value="1">Femenino</option> -->
-<!-- 								<option value="2">Otro</option> -->
-<!-- 							</select> -->
-						</div>
-						
-<!-- 						<div class="form-group"> -->
-<!-- 							<div class="checkbox"> -->
-<!-- 								<label> -->
-<!-- 									<div class="icheckbox_minimal-grey" style="position: relative;"> -->
-<!-- 										<input tabindex="5" type="checkbox" -->
-<!-- 											style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; border: 0px; opacity: 0; background: rgb(255, 255, 255);"> -->
-<!-- 										<ins class="iCheck-helper" -->
-<!-- 											style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; border: 0px; opacity: 0; background: rgb(255, 255, 255);"></ins> -->
-<!-- 									</div>&nbsp; Quiero recibir actualizaciones por mail -->
-<!-- 								</label> -->
-<!-- 							</div> -->
-<!-- 						</div> -->
-<!-- 						<div class="form-group mbn"> -->
-<!-- 							<div class="checkbox"> -->
-<!-- 								<label> -->
-<!-- 									<div class="icheckbox_minimal-grey" style="position: relative;"> -->
-<!-- 										<input tabindex="5" type="checkbox" -->
-<!-- 											style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; border: 0px; opacity: 0; background: rgb(255, 255, 255);"> -->
-<!-- 										<ins class="iCheck-helper" -->
-<!-- 											style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; border: 0px; opacity: 0; background: rgb(255, 255, 255);"></ins> -->
-<!-- 									</div>&nbsp; Acepto los t&eacute;rminos y condiciones -->
-<!-- 								</label> -->
-<!-- 							</div> -->
-<!-- 						</div> -->
-					
-						<div class="form-group">
-							<div class="input-icon right">
-								<h:outputLabel>Tu clave será</h:outputLabel>
-								<h:inputText value="#{usuarioMb.usuario.clave}" readonly="true" styleClass="form-control"/>
-							</div>
-						</div>
-					</div>
-					
-					<div class="col-md-6" style="margin-bottom: 4%;">
-<!-- 						<button type="submit" class="btn btn-primary" style="margin-left: 24%;">Registrarse</button> -->
-						<h:commandButton value="Registrarse" action="#{usuarioMb.registrar}" styleClass="btn btn-primary" style="margin-left:24%;"/>
-					</div>
-					
-					<div class="col-md-6">
-						<a class="btn btn-danger" href="inicio">Volver</a>
-					</div>
-				</h:form>
+					</h:form>
+				</div>
 			</div>
 		</div>
-	</div>
-</f:view>
+	</f:view>
 </body>
 </html>

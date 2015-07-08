@@ -5,88 +5,84 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 <h:head>
-    <title>Login</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <ui:include src="configHead.xhtml" ></ui:include>
+	<title>Login</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<ui:include src="configHead.xhtml"></ui:include>
 </h:head>
 
-<body style="background: url('images/bg/bglogin.PNG') center center fixed;">
+<body
+	style="background: url('images/bg/bglogin.PNG') center center fixed;">
 	<f:view>
-    <div class="page-form">
-        <div class="panel panel-blue">
-            <div class="panel-body pan">
-<!--                 <form action="login" class="form-horizontal" method="post"> -->
-                
-                <h:form styleClass="form-horizontal">
-                <h:message/>
-                <div class="form-body pal">
-                    <div class="col-md-12 text-center">
-                        <h1 style="margin-top: -90px; font-size: 48px; color:white;">
-                            Iniciar Sesi&oacute;n</h1>
-                        <br></br>
-                    </div>
-                    <div class="form-group">
-                        <div class="col-md-3">
-                            <img src="images/avatar/profile-pic.png" class="img-responsive" style="margin-top: -35px;"/>
-                        </div>
-                        <div class="col-md-9 text-center">
-                            <h1>
-                                Bienvenid@
-                              </h1>
-                            <br></br>
-                            <p>
-                                por favor ingresa tus datos para comenzar</p>
-                        </div>
-                    </div>
-                    <div class="form-group" >
-                        <label for="inputName" class="col-md-3 control-label">
-                            Email:</label>
-                        <div class="col-md-9">
-                            <div class="input-icon right">
-                                <i class="fa fa-user"></i>
-<!--                                 <input id="inputName" type="text" placeholder="nombre de usuario" class="form-control" name="inputUser"> -->
-                                <h:inputText styleClass="form-control" id="inputName" value="#{loginMb.email}"></h:inputText>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="inputPassword" class="col-md-3 control-label">
-                            Contrase&ntilde;a:</label>
-                        <div class="col-md-9">
-                            <div class="input-icon right">
-                                <i class="fa fa-lock"></i>
-<!--                                 <input id="inputPassword" type="password" placeholder="contrase&ntilde;a" class="form-control"  name="inputPass">  -->
+		<div class="page-form">
+			<div class="panel panel-blue">
+				<div class="panel-body pan">
+					<h:form styleClass="form-horizontal">
+						<h:message />
+						<div class="form-body pal">
+							<div class="col-md-12 text-center">
+								<h1 style="margin-top: -90px; font-size: 48px; color: white;">
+									Iniciar Sesi&oacute;n</h1>
+								<br></br>
 							</div>
-									<h:inputSecret id="inputPassword" styleClass="form-control" value="#{loginMb.password}"/>
-                        </div>
-                    </div>
-                    <div class="form-group mbn">
-                        <div class="col-lg-12" align="right">
-                            <div class="form-group mbn">
-                                <div class="col-lg-3">
-                                    &nbsp;
-                                </div>
-                                <div class="col-lg-9">
-                                    <a href="registrarse" class="btn btn-default">Registrarse</a>&nbsp;&nbsp;
-<!--                                     <button type="submit" class="btn btn-default">Iniciar Sesi&oacute;n</button> -->
-									<h:commandButton action="#{loginMb.logueo}" styleClass="btn btn-default" value="Iniciar Sesion"/>	
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                </h:form>
-            </div>
-        </div>
-        <div class="col-lg-12 text-center">
-            <p>
-                Olvidaste la contrase&ntilde;a?
-            </p>
-        </div>
-    </div>
-  </f:view>
+							<div class="form-group">
+								<div class="col-md-3">
+									<img src="images/avatar/profile-pic.png" class="img-responsive"
+										style="margin-top: -35px;" />
+								</div>
+								<div class="col-md-9 text-center">
+									<h1>Bienvenid@</h1>
+									<br></br>
+									<p>por favor ingresa tus datos para comenzar</p>
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="inputName" class="col-md-3 control-label">
+									Email:</label>
+								<div class="col-md-9">
+									<div class="input-icon right">
+										<i class="fa fa-user"></i>
+										<h:inputText styleClass="form-control" id="inputEmail"
+											value="#{loginMb.email}" required="true"></h:inputText>
+										<h:message for="inputEmail" style="color:red" />
+									</div>
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="inputPassword" class="col-md-3 control-label">
+									Contrase&ntilde;a:</label>
+								<div class="col-md-9">
+									<div class="input-icon right">
+										<i class="fa fa-lock"></i>
+									</div>
+									<h:inputSecret id="inputPassword" styleClass="form-control"
+										value="#{loginMb.password}" required="true" />
+									<h:message for="inputPassword" style="color:red" />
+								</div>
+							</div>
+							<div class="form-group mbn">
+								<div class="col-lg-12" align="right">
+									<div class="form-group mbn">
+										<div class="col-lg-3"></div>
+										<div class="col-lg-9">
+<!-- 											<a href="registrarse" class="btn btn-default">Registrarse</a> -->
+											<h:link value="Registrarse" outcome="registrarse" styleClass="btn btn-default"/>
+											<h:commandButton action="#{loginMb.logueo}"
+												styleClass="btn btn-default" value="Iniciar Sesion" />
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</h:form>
+				</div>
+			</div>
+			<div class="col-lg-12 text-center">
+				<p>Olvidaste la contrase&ntilde;a?</p>
+			</div>
+		</div>
+	</f:view>
 </body>
 
 </html>
