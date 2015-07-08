@@ -9,7 +9,7 @@ import javax.persistence.Entity;
 @DiscriminatorValue("USR")
 public class Usuario extends Persona {
 
-	protected Usuario() {
+	public Usuario() {
 	}
 
 	public Usuario(String dni, String apellido, String nombre,

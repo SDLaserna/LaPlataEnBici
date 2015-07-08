@@ -4,6 +4,7 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets">
+<f:view>
 <h:head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<title><ui:insert name="titulo">Título por defecto</ui:insert>
@@ -15,16 +16,14 @@
 	<!-- 	<h:outputStylesheet library="tema1" name="css/estilo.css" /> 
 			<h:outputStylesheet name="images/icons/favicon.ico" />
 	-->
-	<ui:include src="configHead.xhtml" ></ui:include>
+	<ui:include src="../configHead.xhtml" ></ui:include>
 	
 	<ui:insert name="headConfig"></ui:insert>
-
 </h:head>
-
 <h:body>
 	<div>
 		<!-- Incluir  Cabecera -->
-		<ui:include src="header.xhtml"></ui:include>
+		<ui:include src="../header.xhtml"/>
 
 		<div id="wrapper">
 
@@ -45,4 +44,5 @@
 		</div>
 	</div>
 </h:body>
+</f:view>
 </html>

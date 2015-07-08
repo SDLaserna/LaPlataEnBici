@@ -5,4 +5,33 @@
     xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd"
     version="2.2">
 
+    <navigation-rule>
+    	<from-view-id>/registrarse.xhtml</from-view-id>
+    	<navigation-case>
+    		<from-outcome>success</from-outcome>
+    		<to-view-id>/registrarse.xhtml</to-view-id>
+    	</navigation-case>
+    	<navigation-case>
+    	    <from-outcome>error</from-outcome>
+    		<to-view-id>/registrarse.xhtml</to-view-id>
+    	</navigation-case>
+    </navigation-rule>
+
+	 <navigation-rule>
+	    	<from-view-id>/login.xhtml</from-view-id>
+	    	<navigation-case>
+	    		<from-outcome>successUsuario</from-outcome>
+	    		<to-view-id>/userBase.xhtml</to-view-id>
+	    	</navigation-case>
+	    	<navigation-case>
+	    	    <from-outcome>succesAdministrador</from-outcome>
+	    		<to-view-id>/adminBase.xhtml</to-view-id>
+	    	</navigation-case>
+	    	<navigation-case>
+	    	    <from-outcome>login</from-outcome>
+	    		<to-view-id>/login.xhtml</to-view-id>
+	    	</navigation-case>
+	    </navigation-rule>
+
+
 </faces-config>

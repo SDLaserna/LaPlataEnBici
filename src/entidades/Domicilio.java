@@ -16,7 +16,7 @@ public class Domicilio {
 	private String longitud;
 	private String latitud;
 	
-	protected Domicilio() {
+	public Domicilio() {
 	}
 	public Domicilio(String calle, Long numero, String localidad,
 			String longitud, String latitud) {
