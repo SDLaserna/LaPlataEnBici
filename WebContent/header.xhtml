@@ -14,7 +14,14 @@
 					data-hover="dropdown" href="#" class="dropdown-toggle"> <i
 						class="fa fa-tasks"></i> <span class="hidden-xs"><h:outputText value="#{sesionMb.usuario.nombre +=' '+= sesionMb.usuario.apellido}"></h:outputText></span><span class="caret"></span></a>
 					<ul class="dropdown-menu dropdown-user pull-right">
-						<li><a href="miPerfil.xhtml"><i class="fa fa-user"></i>Mi Perfil</a></li>
+						<li>
+<!-- 							<a href="miPerfil.xhtml"> -->
+							<h:link outcome="#{sesionMb.rol += 'MiPerfil'}">
+							
+								<i class="fa fa-user"></i>Mi Perfil
+<!-- 							</a> -->
+								</h:link>
+						</li>
 						<li class="divider"></li>
 						<li>
 							<h:form>

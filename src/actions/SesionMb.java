@@ -11,6 +11,7 @@ import entidades.Persona;
 @RequestScoped
 public class SesionMb {
 	private Persona usuario;
+	private String rol;
     private final HttpServletRequest httpServletRequest;
     private final FacesContext faceContext;
      
@@ -21,6 +22,7 @@ public class SesionMb {
         if(httpServletRequest.getSession().getAttribute("personaSesion")!=null)
         {
             usuario=(Persona)httpServletRequest.getSession().getAttribute("personaSesion");
+            rol=(String) httpServletRequest.getSession().getAttribute("rol");
         }
     }
      
@@ -38,5 +40,13 @@ public class SesionMb {
  
     public void setUsuario(Persona usuario) {
         this.usuario = usuario;
-    }    
+    }
+
+	public String getRol() {
+		return rol;
+	}
+
+	public void setRol(String rol) {
+		this.rol = rol;
+	}    
 }

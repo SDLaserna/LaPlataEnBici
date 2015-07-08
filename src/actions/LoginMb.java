@@ -40,10 +40,12 @@ public class LoginMb {
 					if (usuario.getClave().equals(this.getPassword())) {
 						this.httpServletRequest.getSession().setAttribute(
 								"personaSesion", usuario);
+						this.httpServletRequest.getSession().setAttribute(
+								"rol", "user");
 						resultado = "successUsuario";
 					} else {
 						FacesMessage mensaje = new FacesMessage(
-								"Contraseña incorrecta");
+								"Contraseï¿½a incorrecta");
 						FacesContext.getCurrentInstance().addMessage("loginForm",
 								mensaje);
 						resultado = "login";
@@ -55,10 +57,12 @@ public class LoginMb {
 						if (admin.getClave().equals(this.getPassword())) {
 							this.httpServletRequest.getSession().setAttribute(
 									"personaSesion", admin);
+							this.httpServletRequest.getSession().setAttribute(
+									"rol", "admin");
 							resultado = "successAdministrador";
 						} else {
 							FacesMessage mensaje = new FacesMessage(
-									"Contraseña incorrecta");
+									"Clave incorrecta");
 							FacesContext.getCurrentInstance().addMessage("loginForm",
 									mensaje);
 							resultado = "login";

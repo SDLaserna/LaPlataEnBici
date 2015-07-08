@@ -40,12 +40,28 @@
 		</navigation-case>
 	</navigation-rule>
 
-<!-- 	<navigation-rule> -->
-<!-- 		<from-view-id>*</from-view-id> -->
-<!-- 		<navigation-case> -->
-<!-- 			<from-outcome>logout</from-outcome> -->
-<!-- 			<to-view-id>/login.xhtml</to-view-id> -->
-<!-- 		</navigation-case> -->
-<!-- 	</navigation-rule> -->
+	<navigation-rule>
+		<from-view-id>/adminMiPerfil</from-view-id>
+		<navigation-case>
+			<from-outcome>successModificar</from-outcome>
+			<to-view-id>/adminMiPerfil.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>sesionCaducada</from-outcome>
+			<to-view-id>/login.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	
+		<navigation-rule>
+		<from-view-id>/userMiPerfil</from-view-id>
+		<navigation-case>
+			<from-outcome>successModificar</from-outcome>
+			<to-view-id>/userMiPerfil.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>sesionCaducada</from-outcome>
+			<to-view-id>/login.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
 
 </faces-config>

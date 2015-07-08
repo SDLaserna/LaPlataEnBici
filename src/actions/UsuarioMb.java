@@ -71,16 +71,22 @@ public class UsuarioMb {
 			String claveGenerada=this.randomizer();
 			this.getUsuario().setClave(claveGenerada);
 			this.usuarioService.persistir(this.getUsuario());
-			FacesMessage mensaje = new FacesMessage("Te registrate correctamente, se te ha generado una contrase�a");
+			FacesMessage mensaje = new FacesMessage("Te registrate correctamente, se te ha generado una contrase�a");
 			FacesContext.getCurrentInstance().addMessage("Registro", mensaje);
 			return "success";
 			}
 	}
 	
 	public String modificar(){
+		/* Uso los datos del usuario el cual tiene la sesion
+		 * entonces a la hora de modificar recupero los datos de la sesion (los cuales
+		 * se sincronizan con los que se ingresan en los input) y lo mando como parámetro del método
+		 * del service que realiza la modificacion*/
+		
 		HttpServletRequest httpSR =(HttpServletRequest)FacesContext.getCurrentInstance().getExternalContext().getRequest();
 		if(httpSR.getSession().getAttribute("personaSesion")!=null){
-			this.usuarioService.modificar(this.getUsuario());
+			Usuario userOn=(Usuario)httpSR.getSession().getAttribute("personaSesion");
+			this.usuarioService.modificar(userOn);
 			return "successModificar";
 		}
 		else{
