@@ -34,4 +34,9 @@ public class UsuarioServiceImp implements UsuarioService {
 		return this.usuarioDAO.existePersona(email);
 	}
 
+	@Override
+	public void modificar(Usuario u) {
+		this.usuarioDAO.actualizar(u);
+	}
+
 }

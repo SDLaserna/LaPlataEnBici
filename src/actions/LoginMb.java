@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import entidades.Administrador;
 import entidades.Usuario;
 import services.AdminService;
+import services.AdminServiceImp;
 import services.UsuarioService;
 import services.UsuarioServiceImp;
 
@@ -25,6 +26,7 @@ public class LoginMb {
 	public LoginMb(){
 		this.httpServletRequest=(HttpServletRequest)FacesContext.getCurrentInstance().getExternalContext().getRequest();
 		this.usuarioService = new UsuarioServiceImp();
+		this.adminService= new AdminServiceImp();
 	}
 	
 	public String logueo() {
@@ -41,31 +43,36 @@ public class LoginMb {
 						resultado = "successUsuario";
 					} else {
 						FacesMessage mensaje = new FacesMessage(
-								"ContraseÃ±a incorrecta");
-						FacesContext.getCurrentInstance().addMessage(null,
+								"Contraseña incorrecta");
+						FacesContext.getCurrentInstance().addMessage("loginForm",
 								mensaje);
 						resultado = "login";
 					}
 				} else {
-					Administrador admin = this.adminService
-							.obtenerAdministrador(this.getEmail());
-					if (admin.getClave().equals(this.getPassword())) {
-						this.httpServletRequest.getSession().setAttribute(
-								"personaSesion", admin);
-						resultado = "successAdministrador";
+					if (this.adminService.existeAdministrador(this.getEmail())) {
+						Administrador admin = this.adminService
+								.obtenerAdministrador(this.getEmail());
+						if (admin.getClave().equals(this.getPassword())) {
+							this.httpServletRequest.getSession().setAttribute(
+									"personaSesion", admin);
+							resultado = "successAdministrador";
+						} else {
+							FacesMessage mensaje = new FacesMessage(
+									"Contraseña incorrecta");
+							FacesContext.getCurrentInstance().addMessage("loginForm",
+									mensaje);
+							resultado = "login";
+						}
 					} else {
-						FacesMessage mensaje = new FacesMessage(
-								"ContraseÃ±a incorrecta");
-						FacesContext.getCurrentInstance().addMessage(null,
-								mensaje);
+						FacesMessage mensaje = new FacesMessage("Email inexistente, ");
+						FacesContext.getCurrentInstance().addMessage("loginForm", mensaje);
 						resultado = "login";
-
 					}
 				}
 
 			} else {
-				FacesMessage mensaje = new FacesMessage("Usuario incorrecto");
-				FacesContext.getCurrentInstance().addMessage(null, mensaje);
+				FacesMessage mensaje = new FacesMessage("Email inexistente");
+				FacesContext.getCurrentInstance().addMessage("loginForm", mensaje);
 				resultado = "login";
 			}
 		} catch (Exception e) {
@@ -74,7 +81,6 @@ public class LoginMb {
 		}
 		return resultado;
 	}
-	
 	
 	
 	public String getPassword() {

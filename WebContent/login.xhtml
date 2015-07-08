@@ -18,8 +18,7 @@
 		<div class="page-form">
 			<div class="panel panel-blue">
 				<div class="panel-body pan">
-					<h:form styleClass="form-horizontal">
-						<h:message />
+					<h:form styleClass="form-horizontal" id="loginForm">
 						<div class="form-body pal">
 							<div class="col-md-12 text-center">
 								<h1 style="margin-top: -90px; font-size: 48px; color: white;">
@@ -35,6 +34,7 @@
 									<h1>Bienvenid@</h1>
 									<br></br>
 									<p>por favor ingresa tus datos para comenzar</p>
+									<h:message for="loginForm" style="color:red;"/> <br /> 
 								</div>
 							</div>
 							<div class="form-group">
@@ -43,9 +43,9 @@
 								<div class="col-md-9">
 									<div class="input-icon right">
 										<i class="fa fa-user"></i>
-										<h:inputText styleClass="form-control" id="inputEmail"
+										<h:inputText styleClass="form-control" id="Email"
 											value="#{loginMb.email}" required="true"></h:inputText>
-										<h:message for="inputEmail" style="color:red" />
+										<h:message for="Email" style="color:red" />
 									</div>
 								</div>
 							</div>
@@ -56,9 +56,9 @@
 									<div class="input-icon right">
 										<i class="fa fa-lock"></i>
 									</div>
-									<h:inputSecret id="inputPassword" styleClass="form-control"
+									<h:inputSecret id="Contrasena" styleClass="form-control"
 										value="#{loginMb.password}" required="true" />
-									<h:message for="inputPassword" style="color:red" />
+									<h:message for="Contrasena" style="color:red" />
 								</div>
 							</div>
 							<div class="form-group mbn">

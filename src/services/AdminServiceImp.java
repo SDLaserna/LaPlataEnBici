@@ -1,10 +1,11 @@
 package services;
 
 import daos.AdministradorDAO;
+import daos.AdministradorDAOImp;
 import entidades.Administrador;
 
 public class AdminServiceImp implements AdminService {
-	private AdministradorDAO administradorDAO;
+	private AdministradorDAO administradorDAO= new AdministradorDAOImp();
 
 	@Override
 	public void persistir(Administrador A) {
@@ -14,13 +15,12 @@ public class AdminServiceImp implements AdminService {
 
 	@Override
 	public boolean existeAdministrador(String email) {
-		return false;
+		return this.administradorDAO.existeAdministrador(email);
 	}
 
 	@Override
 	public Administrador obtenerAdministrador(String email) {
-		// TODO Auto-generated method stub
-		return null;
+		return this.administradorDAO.obtenerAdministrador(email);
 	}
 
 }

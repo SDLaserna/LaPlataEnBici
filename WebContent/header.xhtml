@@ -1,5 +1,8 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns="http://www.w3.org/1999/xhtml">
+<f:view>
 <div id="header-topbar-option-demo" class="page-header-topbar">
 	<nav id="topbar" role="navigation" style="margin-bottom: 0;"
 		data-step="3" class=" navbar navbar-default navbar-static-top">
@@ -9,16 +12,19 @@
 				<li class="dropdown topbar-user"
 					style="background-color: rgb(118, 0, 0);"><a
 					data-hover="dropdown" href="#" class="dropdown-toggle"> <i
-						class="fa fa-tasks"></i> <span class="hidden-xs">Juan
-							Perez</span><span class="caret"></span></a>
+						class="fa fa-tasks"></i> <span class="hidden-xs"><h:outputText value="#{sesionMb.usuario.nombre +=' '+= sesionMb.usuario.apellido}"></h:outputText></span><span class="caret"></span></a>
 					<ul class="dropdown-menu dropdown-user pull-right">
-						<li><a href="#"><i class="fa fa-user"></i>Mi Perfil</a></li>
+						<li><a href="miPerfil.xhtml"><i class="fa fa-user"></i>Mi Perfil</a></li>
 						<li class="divider"></li>
-						<li><a href="logout"><i class="fa fa-key"></i>Cerrar
-								Sesión</a></li>
+						<li>
+							<h:form>
+								<h:commandLink action="#{sesionMb.cerrarSession}"><i class="fa fa-key"></i>Cerrar Sesion</h:commandLink>
+							</h:form>
+						</li>
 					</ul></li>
 			</ul>
 		</div>
 	</nav>
 </div>
+</f:view>
 </html>

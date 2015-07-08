@@ -8,4 +8,5 @@ public interface UsuarioService {
 	public boolean existeUsuario(String email);
 	public boolean existePersona(String email);
 	public Usuario obtenerUsuario(String email);
+	public void modificar(Usuario u);
 }

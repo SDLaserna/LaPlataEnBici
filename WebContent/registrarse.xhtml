@@ -17,8 +17,9 @@
 			<div class="panel panel-orange">
 				<div class="panel-heading">Formulario de Registro</div>
 				<div class="panel-body pan">
-					<h:form>
+					<h:form id="Registro">
 						<div class="form-body pal">
+						<h:message for="Registro" style="color:red" />
 							<!-- 						<div class="form-group"> -->
 							<!-- 							<div class="input-icon right"> -->
 							<!-- 								<i class="fa fa-user"></i>  -->
@@ -28,10 +29,9 @@
 							<!-- 						</div> -->
 							<div class="form-group">
 								<div class="input-icon right">
-									<!-- 								<input id="inputEmail" type="text" placeholder="Direccion de email"	class="form-control"> -->
 									<h:outputLabel>Email:</h:outputLabel>
 									<i class="fa fa-envelope"></i>
-									<h:inputText id="registrarEmail"
+									<h:inputText id="Email"
 										validatorMessage="Formato de email incorrecto, identificador@ejemplo.com"
 										value="#{usuarioMb.usuario.email}" styleClass="form-control"
 										required="true" >
@@ -39,7 +39,15 @@
 											pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$"
 											 />
 									</h:inputText>
-									<h:message for="registrarEmail" style="color:red;" />
+									<h:message for="Email" style="color:red;" />
+								</div>
+							</div>
+							<div class="form-group">
+								<div class="input-icon right">
+									<h:outputLabel>Tu clave será</h:outputLabel>
+									<h:inputText value="#{usuarioMb.usuario.clave}" readonly="true"
+										styleClass="form-control"  id="Clave"/>
+									
 								</div>
 							</div>
 							<hr />
@@ -47,23 +55,21 @@
 							<div class="row">
 								<div class="col-md-6">
 									<div class="form-group">
-										<!-- 									<input id="inputFirstName" type="text" placeholder="Nombre class="form-control">								 -->
 										<h:outputLabel>Nombre:</h:outputLabel>
-										<h:inputText id="registrarseNombre"
+										<h:inputText id="Nombre"
 											value="#{usuarioMb.usuario.nombre}" styleClass="form-control"
 											required="true" />
-										<h:message for="registrarseNombre" style="color:red" />
+										<h:message for="Nombre" style="color:red" />
 
 									</div>
 								</div>
 								<div class="col-md-6">
 									<div class="form-group">
-										<!-- 									<input id="inputLastName" type="text" placeholder="Apellido" class="form-control"> -->
 										<h:outputLabel>Apellido:</h:outputLabel>
 										<h:inputText value="#{usuarioMb.usuario.apellido}"
-											styleClass="form-control" id="registrarseApellido"
+											styleClass="form-control" id="Apellido"
 											required="true" />
-										<h:message for="registrarseApellido" style="color:red" />
+										<h:message for="Apellido" style="color:red" />
 									</div>
 								</div>
 							</div>
@@ -71,10 +77,10 @@
 								<div class="col-md-6">
 									<div class="form-group">
 										<h:outputLabel>DNI:</h:outputLabel>
-										<h:inputText id="registrarseDNI"
+										<h:inputText id="DNI"
 											value="#{usuarioMb.usuario.dni}" styleClass="form-control"
 											required="true" />
-										<h:message for="registrarseDNI" style="color:red" />
+										<h:message for="DNI" style="color:red" />
 
 									</div>
 								</div>
@@ -82,24 +88,24 @@
 									<div class="form-group">
 										<h:outputLabel>Fecha Nacimiento:</h:outputLabel>
 										<h:inputText value="#{usuarioMb.usuario.fechaNacimiento}"
-											styleClass="form-control" id="registrarseFNaci"
+											styleClass="form-control" id="FechaNacimiento"
 											required="true" >
-											 <f:convertDateTime pattern="dd-mm-yyyy" />
+											 <f:convertDateTime pattern="dd/mm/yyyy" />
 										</h:inputText>
-										<h:message for="registrarseFNaci" style="color:red" />
+										<h:message for="FechaNacimiento" style="color:red" />
 									</div>
 								</div>
 							</div>
 							<div class="form-group">
 								<h:outputLabel>Sexo:</h:outputLabel>
 								<h:selectOneRadio value="#{usuarioMb.usuario.sexo}"
-									styleClass="form-control" id="registrarseSexo"
+									styleClass="form-control" id="Sexo"
 											required="true" >
 									<f:selectItem itemValue="Masculino" itemLabel="Masculino" />
 									<f:selectItem itemValue="Femenino" itemLabel="Femenino" />
 									<f:selectItem itemValue="Otro" itemLabel="Otro" />
 								</h:selectOneRadio>
-								<h:message for="registrarseSexo" style="color:red" />
+								<h:message for="Sexo" style="color:red" />
 
 
 								<!-- 							<select class="form-control"> -->
@@ -116,9 +122,9 @@
 									<i class="fa fa-home"></i>
 									<!-- 	<input id="inputConfirmPassword"	type="text" placeholder="Domicilio"	class="form-control">  -->
 									<h:inputText value="#{usuarioMb.domicilio.calle}"
-										styleClass="form-control" id="registrarseCalle"
+										styleClass="form-control" id="Calle"
 											required="true" />
-										<h:message for="registrarseCalle" style="color:red" />
+										<h:message for="Calle" style="color:red" />
 								</div>
 							</div>
 
@@ -126,11 +132,10 @@
 								<div class="input-icon right">
 									<h:outputLabel>Numero:</h:outputLabel>
 									<i class="fa fa-home"></i>
-									<!-- 	<input id="inputConfirmPassword"	type="text" placeholder="Domicilio"	class="form-control">  -->
 									<h:inputText value="#{usuarioMb.domicilio.numero}"
-										styleClass="form-control" type="long" id="registrarseNumero"
+										styleClass="form-control" type="long" id="Numero"
 											required="true" />
-										<h:message for="registrarseNumero" style="color:red" />
+										<h:message for="Numero" style="color:red" />
 								</div>
 							</div>
 
@@ -138,11 +143,10 @@
 								<div class="input-icon right">
 									<h:outputLabel>Localidad:</h:outputLabel>
 									<i class="fa fa-home"></i>
-									<!-- 	<input id="inputConfirmPassword"	type="text" placeholder="Domicilio"	class="form-control">  -->
 									<h:inputText value="#{usuarioMb.domicilio.localidad}"
-										styleClass="form-control" id="registrarseLocalidad"
+										styleClass="form-control" id="Localidad"
 											required="true" />
-										<h:message for="registrarseLocalidad" style="color:red" />
+										<h:message for="Localidad" style="color:red" />
 								</div>
 							</div>
 							<hr/>
@@ -173,17 +177,10 @@
 							<!-- 							</div> -->
 							<!-- 						</div> -->
 
-							<div class="form-group">
-								<div class="input-icon right">
-									<h:outputLabel>Tu clave será</h:outputLabel>
-									<h:inputText value="#{usuarioMb.usuario.clave}" readonly="true"
-										styleClass="form-control" />
-								</div>
-							</div>
+					
 						</div>
 
 						<div class="col-md-6" style="margin-bottom: 4%;">
-							<!-- 						<button type="submit" class="btn btn-primary" style="margin-left: 24%;">Registrarse</button> -->
 							<h:commandButton value="Registrarse"
 								action="#{usuarioMb.registrar}" styleClass="btn btn-primary"
 								style="margin-left:24%;" />

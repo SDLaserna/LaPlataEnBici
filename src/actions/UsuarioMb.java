@@ -2,8 +2,11 @@ package actions;
 
 import java.util.Random;
 
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import javax.faces.context.FacesContext;
+import javax.servlet.http.HttpServletRequest;
 
 import services.UsuarioService;
 import services.UsuarioServiceImp;
@@ -26,7 +29,7 @@ public class UsuarioMb {
 		this.setDomicilio(new Domicilio());
 	}
 	
-	final String alphabet = "0123456789ABCDEFGHIJKLMNÃ‘OPQRSTUVWXYZ";
+	final String alphabet = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     final int N = alphabet.length();
     
     private String randomizer(){
@@ -59,6 +62,8 @@ public class UsuarioMb {
 	public String registrar(){
 		/* cambiamos existeUsuario por existePersona */
 		if (this.usuarioService.existePersona(this.getUsuario().getEmail())){
+			FacesMessage mensaje = new FacesMessage("El Email ya se ha registrado, ingrese otro");
+			FacesContext.getCurrentInstance().addMessage("Registro", mensaje);
 			return "error";
 		}
 		else{
@@ -66,8 +71,21 @@ public class UsuarioMb {
 			String claveGenerada=this.randomizer();
 			this.getUsuario().setClave(claveGenerada);
 			this.usuarioService.persistir(this.getUsuario());
+			FacesMessage mensaje = new FacesMessage("Te registrate correctamente, se te ha generado una contraseña");
+			FacesContext.getCurrentInstance().addMessage("Registro", mensaje);
 			return "success";
 			}
+	}
+	
+	public String modificar(){
+		HttpServletRequest httpSR =(HttpServletRequest)FacesContext.getCurrentInstance().getExternalContext().getRequest();
+		if(httpSR.getSession().getAttribute("personaSesion")!=null){
+			this.usuarioService.modificar(this.getUsuario());
+			return "successModificar";
+		}
+		else{
+			return "sesionCaducada";
+		}
 	}
 	
 	
