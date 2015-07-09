@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<ui:composition template="/WEB-INF/defaultTemplate.xhtml">
+	<ui:define name="titulo">
+		Administrador Disponibilidad Bicicleta
+	</ui:define>
+
+	<ui:define name="headConfig">
+		<link href="css/zabuto_calendar.min.css" rel="stylesheet"
+			type="text/css"/>
+		<script>
+			//$(document).ready(func) es para que se marque la opcion que se eligio cuando carga la pagina
+			$(document).ready(
+					function activarNav() {
+						document.getElementById("inicio").setAttribute("class",
+								"");
+						document.getElementById("bicicletas").setAttribute(
+								"class", "active");
+						document.getElementById("usuarios").setAttribute(
+								"class", "");
+						document.getElementById("estaciones").setAttribute(
+								"class", "");
+					})
+		</script>
+
+		<link href="css/dataTables.bootstrap.css" rel="stylesheet"
+			type="text/css"/>
+		<script src="script/bootstrap.min.js" type="text/javascript"></script>
+		<script src="script/jquery.dataTables.js" type="text/javascript"></script>
+		<script src="script/dataTables.bootstrap.js" type="text/javascript"></script>
+		<!-- paginado script -->
+		<script type="text/javascript">
+			$(function() {
+				$("#example1").dataTable();
+			});
+		</script>
+	</ui:define>
+
+	<ui:define name="navegador">
+		<ui:include src="adminNav.xhtml"></ui:include>
+	</ui:define>
+
+	<ui:define name="contenido">
+		<div class="box">
+			<div class="box-header">
+				<h3 class="box-title">Historial de disponibilidad</h3>
+			</div>
+			<!-- /.box-header -->
+
+			<div class="box-body table-responsive">
+				<table id="example1" class="table table-bordered table-striped">
+					<thead>
+						<tr>
+							<th>Fecha</th>
+							<th>Hora</th>
+							<th>Estado</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>25/01/2014</td>
+							<td>12:12:12 hs</td>
+							<td>Apta para el uso</td>
+						</tr>
+						<tr>
+							<td>25/05/2014</td>
+							<td>12:00:12 hs</td>
+							<td>Denunciada</td>
+						</tr>
+						<tr>
+							<td>25/08/2014</td>
+							<td>15:12:00 hs</td>
+							<td>En reparacion</td>
+						</tr>
+						<tr>
+							<td>30/08/2014</td>
+							<td>12:12:12 hs</td>
+							<td>Apta para el uso</td>
+						</tr>
+					</tbody>
+					<tfoot>
+						<tr>
+							<th>Fecha</th>
+							<th>Hora</th>
+							<th>Estado</th>
+						</tr>
+					</tfoot>
+				</table>
+			</div>
+			<!-- /.box-body -->
+		</div>
+		<!-- /.box -->
+	</ui:define>
+</ui:composition>
+</html>

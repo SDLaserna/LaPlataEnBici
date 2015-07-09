@@ -1,113 +1,102 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Usuario</title>
-<%@ include file="configHead.jsp"%>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html">
 
-<script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
-<script>
-	// 	var map;
-	var geocoder;
-	var map = new google.maps.Marker;
-	function initialize() {
-		geocoder = new google.maps.Geocoder();
-		var mapOptions = {
-			zoom : 12,
-			center : new google.maps.LatLng(-34.9205284, -57.9531702),
-			mapTypeId : google.maps.MapTypeId.ROADMAP
-		};
-		map = new google.maps.Map(document.getElementById('map-canvas'),
-				mapOptions);
-		
-	    var marker = new google.maps.Marker({
-	        position: map.getCenter()
-	        , map: map
-	        , title: 'Estación 6'
-	        , icon: '/LaPlataEnBici/images/icons/estacion.png'
-	    });
-	 
-	    var popup = new google.maps.InfoWindow({
-	        content: '<b>Datos de la estación: </b><br>' +
-	        		 'Estado: Operativa. <br>' +
-	        		 'Cant. Bicicletas: 50. <br>' +
-	        		 'Cant. Estacionamientos libres: 30.'
-	    });
-	 	
-	    google.maps.event.addListener(marker, 'click', function(){
-	        popup.open(map, marker);
-	    });
-		
-	}
+<ui:composition template="/WEB-INF/defaultTemplate.xhtml">
+	<ui:define name="titulo">
+		Usuario Mapa Estaciones
+	</ui:define>
 
-	google.maps.event.addDomListener(window, 'load', initialize);
-</script>
+	<ui:define name="headConfig">
+		<script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
+		<script>
+			// 	var map;
+			var geocoder;
+			var map = new google.maps.Marker;
+			function initialize() {
+				geocoder = new google.maps.Geocoder();
+				var mapOptions = {
+					zoom : 12,
+					center : new google.maps.LatLng(-34.9205284, -57.9531702),
+					mapTypeId : google.maps.MapTypeId.ROADMAP
+				};
+				map = new google.maps.Map(
+						document.getElementById('map-canvas'), mapOptions);
 
-<script>
-	function activarNav() {
-		document.getElementById("inicio").setAttribute("class", "");
-		document.getElementById("mapaEstaciones").setAttribute("class",
-				"active");
-		document.getElementById("listaEstaciones").setAttribute("class", "");
-		document.getElementById("misBicicletas").setAttribute("class", "");
-	}
-</script>
+				var marker = new google.maps.Marker({
+					position : map.getCenter(),
+					map : map,
+					title : 'EstaciÃ³n 6',
+					icon : '/LaPlataEnBici/images/icons/estacion.png'
+				});
 
+				var popup = new google.maps.InfoWindow({
+					content : '<b>Datos de la estaciÃ³n: </b><br/>'
+							+ 'Estado: Operativa. <br/>'
+							+ 'Cant. Bicicletas: 50. <br/>'
+							+ 'Cant. Estacionamientos libres: 30.'
+				});
 
-</head>
-<body onLoad="activarNav()">
-	<div>
-		<!-- Incluir  Cabecera -->
-		<%@ include file="header.jsp"%>
+				google.maps.event.addListener(marker, 'click', function() {
+					popup.open(map, marker);
+				});
 
-		<div id="wrapper">
+			}
 
-			<!-- Incluir Navegador lateral -->
-			<%@ include file="userNav.jsp"%>
+			google.maps.event.addDomListener(window, 'load', initialize);
+		</script>
 
-			<div id="page-wrapper"
-				style="margin-top: 8%; border: 6px solid #7B0000;">
-				<div class="page-content">
+		<script>
+			//$(document).ready(func) es para que se marque la opcion que se eligio cuando carga la pagina
+			$(document).ready(
+					function activarNav() {
+						document.getElementById("inicio").setAttribute("class",
+								"");
+						document.getElementById("mapaEstaciones").setAttribute(
+								"class", "active");
+						document.getElementById("listaEstaciones")
+								.setAttribute("class", "");
+						document.getElementById("misBicicletas").setAttribute(
+								"class", "");
+					})
+		</script>
+	</ui:define>
 
-					<!--   Contenedor -->
+	<ui:define name="navegador">
+		<ui:include src="userNav.xhtml"></ui:include>
+	</ui:define>
 
-					<div class="col-lg-4">
-						<div class="panel panel-blue" style="background: #fff;">
-							<div class="panel-heading">Mapa de estaciones</div>
-							<div class="panel-body pan">
-								<form action="">
-									<div class="form-body pal">
-										<div class="form-group mbn">
-											<label for="inputSubject" class="control-label">
-												Direcci&oacute;n a buscar</label>
-											<div class="input-icon right">
-												<i class="fa fa-map-marker"></i> <input id="inputSubject"
-													type="text" placeholder="" class="form-control" />
-											</div>
-										</div>
-									</div>
-									<div class="form-actions text-right pal">
-										<button type="submit" class="btn btn-primary">Buscar en Mapa</button>
-									</div>
-								</form>
+	<ui:define name="contenido">
+		<div class="col-lg-4">
+			<div class="panel panel-blue" style="background: #fff;">
+				<div class="panel-heading">Mapa de estaciones</div>
+				<div class="panel-body pan">
+					<h:form>
+						<div class="form-body pal">
+							<div class="form-group mbn">
+								<label for="inputSubject" class="control-label">
+									Direccion a buscar</label>
+								<div class="input-icon right">
+									<i class="fa fa-map-marker"></i> <input id="inputSubject"
+										type="text" placeholder="" class="form-control" />
+								</div>
 							</div>
 						</div>
-					</div>
-
-
-					<div class="col-lg-6">
-						<div id="map-canvas" style="width: 507px; height: 527px;"
-							class="embed-responsive-item"></div>
-					</div>
-
-					<!-- Contenedor Fin -->
-
+						<div class="form-actions text-right pal">
+							<button type="submit" class="btn btn-primary">Buscar en
+								Mapa</button>
+						</div>
+					</h:form>
 				</div>
 			</div>
 		</div>
-	</div>
 
-</body>
+
+		<div class="col-lg-6">
+			<div id="map-canvas" style="width: 507px; height: 527px;"
+				class="embed-responsive-item"></div>
+		</div>
+	</ui:define>
+</ui:composition>
 </html>

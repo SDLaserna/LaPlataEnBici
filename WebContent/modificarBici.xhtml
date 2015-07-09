@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<ui:composition template="/WEB-INF/defaultTemplate.xhtml">
+	<ui:define name="titulo">
+		Administrador Modificar Bicicleta
+	</ui:define>
+
+	<ui:define name="headConfig">
+		<script>
+			//$(document).ready(func) es para que se marque la opcion que se eligio cuando carga la pagina
+			$(document).ready(
+					function activarNav() {
+						document.getElementById("inicio").setAttribute("class",
+								"");
+						document.getElementById("bicicletas").setAttribute(
+								"class", "active");
+						document.getElementById("usuarios").setAttribute(
+								"class", "");
+						document.getElementById("estaciones").setAttribute(
+								"class", "");
+					})
+		</script>
+	</ui:define>
+
+	<ui:define name="navegador">
+		<ui:include src="adminNav.xhtml"></ui:include>
+	</ui:define>
+
+	<ui:define name="contenido">
+		<div class="panel panel-green">
+			<div class="panel-heading">Modificar Bicicleta</div>
+			<div class="panel-body pan">
+				<h:form >
+					<div class="form-body pal">
+						<div class="row">
+							<div class="col-md-6">
+								<div class="form-group">
+									<label for="inputName" class="control-label"> Color</label>
+									<div class="input-icon right">
+										<i class="fa fa-tint"></i> <input id="inputName" type="text"
+											placeholder="" class="form-control"/>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="form-group">
+									<label for="inputEmail" class="control-label"> Rodado</label>
+									<div class="input-icon right">
+										<i class="fa fa-bicycle"></i> <input type="text"
+											placeholder="" class="form-control"/>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="form-group">
+									<label for="inputName" class="control-label"> Marca</label>
+									<div class="input-icon right">
+										<i class="fa fa-tag"></i> <input id="inputName" type="text"
+											placeholder="" class="form-control"/>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="form-group">
+									<label for="inputEmail" class="control-label">
+										Estacion</label>
+									<div class="input-icon right">
+										<i class="fa fa-flag fa-fw"></i> <input type="text"
+											placeholder="" class="form-control"/>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="inputMessage" class="control-label">
+								Descripcion</label>
+							<textarea rows="5" class="form-control"></textarea>
+						</div>
+					</div>
+					<div class="form-actions text-right pal">
+						<button type="submit" class="btn btn-success">Modificar</button>
+					</div>
+				</h:form>
+			</div>
+		</div>
+	</ui:define>
+</ui:composition>
+</html>

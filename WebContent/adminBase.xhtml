@@ -1,5 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:h="http://java.sun.com/jsf/html">
@@ -11,14 +10,13 @@
 
 	<ui:define name="headConfig">
 		<script>
-			function activarNav() {
+		//$(document).ready(func) es para que se marque la opcion que se eligio cuando carga la pagina
+		$(document).ready(function activarNav() {
 			 	document.getElementById("inicio").setAttribute("class", "active");
 				document.getElementById("bicicletas").setAttribute("class", ""); 
 			 	document.getElementById("usuarios").setAttribute("class", ""); 
 			    document.getElementById("estaciones").setAttribute("class", ""); 
-			}
-// 			Esto es para que se marque la opcion que se eligio cuando carga la pagina
-			document.onload = activarNav();
+			})
 		 </script>
 	</ui:define>
 

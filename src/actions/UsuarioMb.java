@@ -87,6 +87,8 @@ public class UsuarioMb {
 		if(httpSR.getSession().getAttribute("personaSesion")!=null){
 			Usuario userOn=(Usuario)httpSR.getSession().getAttribute("personaSesion");
 			this.usuarioService.modificar(userOn);
+			FacesMessage mensaje = new FacesMessage("Se modificaron los datos correctamente");
+			FacesContext.getCurrentInstance().addMessage("Modificar", mensaje);
 			return "successModificar";
 		}
 		else{

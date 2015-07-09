@@ -5,7 +5,7 @@
 
 <ui:composition template="/WEB-INF/defaultTemplate.xhtml">
 	<ui:define name="titulo">
-		Administrador Gesti&oacuate;n Usuarios
+		Administrador Gestion Usuarios
 	</ui:define>
 
 	<ui:define name="headConfig">
@@ -22,17 +22,19 @@
 				});
 			</script>
 			<script>
-				function activarNav() {
-					document.getElementById("inicio").setAttribute("class", "");
-					document.getElementById("bicicletas").setAttribute("class",
-							"");
-					document.getElementById("estaciones").setAttribute("class",
-							"");
-					document.getElementById("usuarios").setAttribute("class",
-							"active");
-				}
-				//	Esto es para que se marque la opcion que se eligio cuando carga la pagina
-				document.onload = activarNav();
+		
+				//$(document).ready(func) es para que se marque la opcion que se eligio cuando carga la pagina
+				$(document).ready(
+						function activarNav() {
+							document.getElementById("inicio").setAttribute(
+									"class", "");
+							document.getElementById("bicicletas").setAttribute(
+									"class", "");
+							document.getElementById("estaciones").setAttribute(
+									"class", "");
+							document.getElementById("usuarios").setAttribute(
+									"class", "active");
+						})
 			</script>
 
 	</ui:define>
@@ -42,80 +44,78 @@
 	</ui:define>
 	
 	<ui:define name="contenido">
-		<div class="box"> 
-						<div class="box-header">
-							<h3 class="box-title">Lista de Usuarios</h3>
-						</div>
-<!-- 						/.box-header -->
-						
-						<div class="box-body table-responsive">
-							<table id="example1" class="table table-bordered table-striped">
-								<thead>
-									<tr>
-										<th>Nombres</th>
-										<th>Apellido</th>
-										<th>DNI</th>
-										<th>Opciones</th>
-									</tr>
-								</thead>
-								<tbody>
-									<tr>
-										<td>Ernersto</td>
-										<td>Larralde</td>
-										<td>54265456</td>
-										<td>
-											<button class="btn btn-info">
-												<i class="fa fa-eraser"></i> Inhabilitacion Temporal
-											</button>
-											<button class="btn btn-danger">
-												<i class="fa fa-eraser"></i> Inhabilitacion definitiva
-											</button>
-										</td>
-											
-									</tr>
-									<tr>
-										<td>Sergio David</td>
-										<td>Laserna</td>
-										<td>38638535</td>
-										<td>
-										<button class="btn btn-info">
-												<i class="fa fa-eraser"></i> Inhabilitacion Temporal
-											</button>
-											<button class="btn btn-danger">
-												<i class="fa fa-eraser"></i> Inhabilitacion definitiva
-											</button>
-										</td>
-									</tr>
-									<tr>
-										<td>Candela Suyay</td>
-										<td>Goncebat</td>
-										<td>90000000</td>
-										<td>
-										<button class="btn btn-info">
-												<i class="fa fa-eraser"></i> Inhabilitacion Temporal
-											</button>
-											<button class="btn btn-danger">
-												<i class="fa fa-eraser"></i> Inhabilitacion definitiva
-											</button>
-										</td>
-									</tr>
-								</tbody>
-								<tfoot>
-									<tr>
-										<th>Nombres</th>
-										<th>Apellido</th>
-										<th>DNI</th>
-										<th>Opciones</th>
-									</tr>
-								</tfoot>
-							</table>
-						</div>
-<!-- 						/.box-body -->
-					</div>
-<!-- 					/.box -->
-	
-	</ui:define>
+		<div class="box">
+			<div class="box-header">
+				<h3 class="box-title">Lista de Usuarios</h3>
+			</div>
+			<!-- 						/.box-header -->
 
+			<div class="box-body table-responsive">
+				<table id="example1" class="table table-bordered table-striped">
+					<thead>
+						<tr>
+							<th>Nombres</th>
+							<th>Apellido</th>
+							<th>DNI</th>
+							<th>Opciones</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>Ernersto</td>
+							<td>Larralde</td>
+							<td>54265456</td>
+							<td>
+								<button class="btn btn-info">
+									<i class="fa fa-eraser"></i> Inhabilitacion Temporal
+								</button>
+								<button class="btn btn-danger">
+									<i class="fa fa-eraser"></i> Inhabilitacion definitiva
+								</button>
+							</td>
+
+						</tr>
+						<tr>
+							<td>Sergio David</td>
+							<td>Laserna</td>
+							<td>38638535</td>
+							<td>
+								<button class="btn btn-info">
+									<i class="fa fa-eraser"></i> Inhabilitacion Temporal
+								</button>
+								<button class="btn btn-danger">
+									<i class="fa fa-eraser"></i> Inhabilitacion definitiva
+								</button>
+							</td>
+						</tr>
+						<tr>
+							<td>Candela Suyay</td>
+							<td>Goncebat</td>
+							<td>90000000</td>
+							<td>
+								<button class="btn btn-info">
+									<i class="fa fa-eraser"></i> Inhabilitacion Temporal
+								</button>
+								<button class="btn btn-danger">
+									<i class="fa fa-eraser"></i> Inhabilitacion definitiva
+								</button>
+							</td>
+						</tr>
+					</tbody>
+					<tfoot>
+						<tr>
+							<th>Nombres</th>
+							<th>Apellido</th>
+							<th>DNI</th>
+							<th>Opciones</th>
+						</tr>
+					</tfoot>
+				</table>
+			</div>
+			<!-- 						/.box-body -->
+		</div>
+		<!-- 					/.box -->
+	</ui:define>
 </ui:composition>
 </html>
 

@@ -1,69 +1,59 @@
-<%@ page language="java" contentType="text/html; charset=utf-8"
-	pageEncoding="utf-8"%>
 <!DOCTYPE html>
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>Administrador</title>
-<%@ include file="configHead.jsp"%>
-	
-    <!--LOADING SCRIPTS FOR CHARTS-->
-    <script src="script/highcharts.js"></script>
-    <script src="script/data.js"></script>
-    <script src="script/drilldown.js"></script>
-    <script src="script/exporting.js"></script>
-    <script src="script/highcharts-more.js"></script>
-    <script src="script/charts-highchart-pie.js"></script>
-    <script src="script/charts-highchart-more.js"></script>
-    <script src="script/charts-flotchart.js"></script>
- 
-<script>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
 
-function activarNav() {
-	document.getElementById("inicio").setAttribute("class", "");
-	document.getElementById("bicicletas").setAttribute("class", "");
-	document.getElementById("usuarios").setAttribute("class", "");
-    document.getElementById("estaciones").setAttribute("class", "active");
-}
-</script>
-</head>
-<body onload="activarNav()">
-	<div>
-		<!-- Incluir  Cabecera -->
-		<%@ include file="header.jsp"%>
+<ui:composition template="/WEB-INF/defaultTemplate.xhtml">
+	<ui:define name="titulo">
+		Administrador Estadisticas Estacion
+	</ui:define>
 
-		<div id="wrapper">
+	<ui:define name="headConfig">
+		<!--LOADING SCRIPTS FOR CHARTS-->
+		<script src="script/highcharts.js"></script>
+		<script src="script/data.js"></script>
+		<script src="script/drilldown.js"></script>
+		<script src="script/exporting.js"></script>
+		<script src="script/highcharts-more.js"></script>
+		<script src="script/charts-highchart-pie.js"></script>
+		<script src="script/charts-highchart-more.js"></script>
+		<script src="script/charts-flotchart.js"></script>
 
-			<!-- Incluir Navegador lateral -->
-			<%@ include file="adminNav.jsp"%>
+		<script>
+			//$(document).ready(func) es para que se marque la opcion que se eligio cuando carga la pagina
+			$(document).ready(
+					function activarNav() {
+						document.getElementById("inicio").setAttribute("class",
+								"");
+						document.getElementById("bicicletas").setAttribute(
+								"class", "");
+						document.getElementById("usuarios").setAttribute(
+								"class", "");
+						document.getElementById("estaciones").setAttribute(
+								"class", "active");
+					})
+		</script>
+	</ui:define>
 
-			<div id="page-wrapper"
-				style="margin-top: 8%; border: 6px solid #7B0000;">
-				<div class="page-content">
+	<ui:define name="navegador">
+		<ui:include src="adminNav.xhtml"></ui:include>
+	</ui:define>
 
-					<!--   Contenedor -->
-
-
-					 <div class="portlet box">
-                            <div class="portlet-header">
-                                
-                                <div class="caption">Estadisticas</div>
-                                <div class="tools"><i class="fa fa-chevron-up"></i><i data-toggle="modal" data-target="#modal-config" class="fa fa-cog"></i><i class="fa fa-refresh"></i><i class="fa fa-times"></i></div>
-                            </div>
-                            <div class="portlet-body">
-                                <div id="pie-chart" style="width: 100%; height:300px"></div>
-                            </div>
-                        </div>
-                    </div>
-					
-					
-					
-
-					<!-- Contenedor Fin -->
-
+	<ui:define name="contenido">
+		<div class="portlet box">
+			<div class="portlet-header">
+				<div class="caption">Estadisticas</div>
+				<div class="tools">
+					<i class="fa fa-chevron-up"></i><i data-toggle="modal"
+						data-target="#modal-config" class="fa fa-cog"></i><i
+						class="fa fa-refresh"></i><i class="fa fa-times"></i>
 				</div>
 			</div>
+			<div class="portlet-body">
+				<div id="pie-chart" style="width: 100%; height: 300px"></div>
+			</div>
 		</div>
-
-</body>
+	</ui:define>
+</ui:composition>
 </html>
