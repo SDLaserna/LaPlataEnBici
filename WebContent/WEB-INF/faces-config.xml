@@ -66,12 +66,16 @@
 	</navigation-rule>
 	
 	<navigation-rule>
-		<from-view-id></from-view-id>
+		<from-view-id>*</from-view-id>
 		<navigation-case>
 			<from-action>#{usuarioMb.listarUsuarios}</from-action>
 			<from-outcome>listarUsuarios</from-outcome>
 			<to-view-id>/gestionDeUsuarios</to-view-id>
 		</navigation-case>
+	</navigation-rule>
+	
+	<navigation-rule>
+		<from-view-id>/gestionDeUsuarios.xhtml</from-view-id>
 		<navigation-case>
 			<from-action>#{usuarioMb.borradoLogico}</from-action>
 			<from-outcome>listarUsuarios</from-outcome>
