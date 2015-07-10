@@ -2,6 +2,7 @@ package managedBeans.persona;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.Random;
 
 import javax.faces.application.FacesMessage;
@@ -33,13 +34,16 @@ public class UsuarioMbSess {
 	}
 
 	public String listarUsuarios() {
-		this.setListaUsuarios(this.usuarioService.listarUsuarios());
+		this.setListaUsuarios(this.usuarioService.listarActivos());
 		return "listarUsuarios";
 	}
 
 	public String borradoLogico(){
-		System.out.print("Estoy en el metodo borrar del usuarioMb");
-
+		Map<String,String> params =FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap();
+		String idUser = params.get("idUsuario");
+		Long idLong=Long.parseLong(idUser);	
+		Usuario userPersistente=this.usuarioService.obtenerUsuario(idLong);
+		this.usuarioService.borrarLogicamente(userPersistente);
 		return "listarUsuarios";
 	}
 }

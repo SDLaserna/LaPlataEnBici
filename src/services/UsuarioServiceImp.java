@@ -54,8 +54,10 @@ public class UsuarioServiceImp implements UsuarioService {
 
 	@Override
 	public Usuario obtenerUsuario(Object id) {
-		
 		return this.usuarioDAO.obtener(id);
 	}
-
+	
+	public List<Usuario> listarActivos(){
+		return this.usuarioDAO.listarPersonasActivas("Usuario");
+	}
 }

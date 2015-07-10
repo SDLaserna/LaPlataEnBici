@@ -14,4 +14,5 @@ public interface UsuarioService {
 	public List<Usuario> listarUsuarios();
 	public void borrarLogicamente(Usuario u);
 	public Usuario obtenerUsuario(Object id);
+	public List<Usuario> listarActivos();
 }

@@ -35,6 +35,7 @@
 	<navigation-rule>
 		<from-view-id>*</from-view-id>
 		<navigation-case>
+			<from-action>#{sesionMb.cerrarSession}</from-action>
 			<from-outcome>logout</from-outcome>
 			<to-view-id>/login.xhtml</to-view-id>
 		</navigation-case>
@@ -65,8 +66,14 @@
 	</navigation-rule>
 	
 	<navigation-rule>
-		<from-view-id>*</from-view-id>
+		<from-view-id></from-view-id>
 		<navigation-case>
+			<from-action>#{usuarioMb.listarUsuarios}</from-action>
+			<from-outcome>listarUsuarios</from-outcome>
+			<to-view-id>/gestionDeUsuarios</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-action>#{usuarioMb.borradoLogico}</from-action>
 			<from-outcome>listarUsuarios</from-outcome>
 			<to-view-id>/gestionDeUsuarios</to-view-id>
 		</navigation-case>

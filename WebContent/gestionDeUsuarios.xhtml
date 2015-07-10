@@ -1,14 +1,13 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core">
 
 <ui:composition template="/WEB-INF/defaultTemplate.xhtml">
 	<ui:define name="titulo">
 		Administrador Gestion Usuarios
 	</ui:define>
-
 	<ui:define name="headConfig">
 		<link href="css/dataTables.bootstrap.css" rel="stylesheet"
 			type="text/css" />
@@ -54,7 +53,7 @@
 
 
 				
-					<h:dataTable id="example1" value="#{usuarioMbSess.listaUsuarios}"
+					<h:dataTable id="example1" value="#{usuarioMb.listaUsuarios}"
 						var="usuario" styleClass="table table-bordered table-striped">
 
 						<h:column>
@@ -70,15 +69,15 @@
 					#{usuario.dni}
 				</h:column>
 						<h:column>
-						<h:form>
 							<f:facet name="header">Opciones</f:facet>
-							<h:commandButton action="#{usuarioMbSess.borradoLogico}" value="ultimo"></h:commandButton>
-							<h:commandLink styleClass="btn btn-info" action="#{usuarioMbSess.borradoLogico}">
-<!-- 								<f:param name="idParametro" value="#{usuario.idPersona}" /> -->
-								<i class="fa fa-eraser"></i> Inhabilitacion Temporal
-							</h:commandLink>
-							<h:commandLink styleClass="btn btn-danger">
-								<i class="fa fa-eraser"></i> Inhabilitacion Definitiva</h:commandLink>
+								<h:form id="formOpcTabla" name="formOpcTabla">
+									<h:commandButton action="#{usuarioMb.listarUsuarios}" value="ultimo"></h:commandButton>
+									<h:commandLink styleClass="btn btn-info" action="#{usuarioMb.borradoLogico}">
+										<i class="fa fa-eraser"></i> Inhabilitacion Temporal
+										<f:param name="idUsuario" value="#{usuario.idPersona}" />
+									</h:commandLink>
+									<h:commandLink styleClass="btn btn-danger" action="#{usuarioMb.listarUsuarios}">
+										<i class="fa fa-eraser"></i> Inhabilitacion Definitiva</h:commandLink>
 							</h:form>
 						</h:column>
 
