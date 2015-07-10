@@ -13,6 +13,9 @@ import entidades.Administrador;
 @ManagedBean
 @ViewScoped
 public class AdministradorMbView {
+	private String claveActual="";
+	private String claveNueva1="";
+	private String claveNueva2="";
 	private AdminService adminService=new AdminServiceImp();
 	
 	public AdministradorMbView(){
@@ -36,6 +39,57 @@ public class AdministradorMbView {
 		else{
 			return "sesionCaducada";
 		}
+	}
+	
+	public String modificarClave(){
+		HttpServletRequest httpSR =(HttpServletRequest)FacesContext.getCurrentInstance().getExternalContext().getRequest();
+		if(httpSR.getSession().getAttribute("personaSesion")!=null){
+			Administrador userOn=(Administrador)httpSR.getSession().getAttribute("personaSesion");
+			if(this.getClaveActual().equals(userOn.getClave())){
+				if(this.getClaveNueva1().equals(this.getClaveNueva2())){
+					userOn.setClave(this.getClaveNueva1());
+					this.adminService.modificar(userOn);
+					FacesMessage mensaje = new FacesMessage("La clave se modifico correctamente");
+					FacesContext.getCurrentInstance().addMessage("Modificar", mensaje);
+					return "successModificar";
+				}else{
+					FacesMessage mensaje = new FacesMessage("Las nuevas claves no son iguales");
+					FacesContext.getCurrentInstance().addMessage("Modificar", mensaje);
+					return "errorModificar";
+				}
+			}else{
+				FacesMessage mensaje = new FacesMessage("La clave actual es incorrecta");
+				FacesContext.getCurrentInstance().addMessage("Modificar", mensaje);
+				return "errorModificar";
+			}
+		}
+		else{
+			return "sesionCaducada";
+		}
+	}
+
+	public String getClaveActual() {
+		return claveActual;
+	}
+
+	public void setClaveActual(String claveActual) {
+		this.claveActual = claveActual;
+	}
+
+	public String getClaveNueva1() {
+		return claveNueva1;
+	}
+
+	public void setClaveNueva1(String claveNueva1) {
+		this.claveNueva1 = claveNueva1;
+	}
+
+	public String getClaveNueva2() {
+		return claveNueva2;
+	}
+
+	public void setClaveNueva2(String claveNueva2) {
+		this.claveNueva2 = claveNueva2;
 	}
 	
 	

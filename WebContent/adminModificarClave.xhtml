@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<ui:composition template="/WEB-INF/defaultTemplate.xhtml">
+	<ui:define name="titulo">
+		Administrador Modificar Clave
+	</ui:define>
+
+	<ui:define name="navegador">
+		<ui:include src="adminNav.xhtml"></ui:include>
+	</ui:define>
+
+	<ui:define name="contenido">
+
+		<div class="panel panel-green">
+			<div class="panel-heading">Modificar clave</div>
+			<div class="panel-body pan">
+				<h:form id="Modificar">
+					<div class="form-body pal">
+						<h:message for="Modificar" style="color:red" />
+
+						<div class="form-group">
+							<div class="input-icon right">
+								<h:outputLabel>Clave Actual</h:outputLabel>
+								<h:inputSecret value="#{administradorMbView.claveActual}"
+									styleClass="form-control" id="ClaveActual" required="true" />
+								<h:message for="ClaveActual" style="color:red" />
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="input-icon right">
+								<h:outputLabel>Nueva Clave:</h:outputLabel>
+								<h:inputSecret id="NuevaClave"
+									value="#{administradorMbView.claveNueva1}" styleClass="form-control"
+									required="true" />
+								<h:message for="NuevaClave" style="color:red" />
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="input-icon right">
+								<h:outputLabel>Repetir Nueva Clave:</h:outputLabel>
+								<h:inputSecret id="RepetirNuevaClave"
+									value="#{administradorMbView.claveNueva2}" styleClass="form-control"
+									required="true" />
+								<h:message for="RepetirNuevaClave" style="color:red" />
+							</div>
+						</div>
+					</div>
+
+					<div class="col-md-6" style="margin-bottom: 4%;">
+						<h:commandButton value="Modificar"
+							action="#{administradorMbView.modificarClave}"
+							styleClass="btn btn-primary" style="margin-left:24%;" />
+					</div>
+
+					<div class="col-md-6">
+						<h:link value="Cancelar" outcome="#{sesionMb.rol += 'MiPerfil'}"
+							styleClass="btn btn-danger" />
+					</div>
+				</h:form>
+			</div>
+		</div>
+
+
+	</ui:define>
+
+</ui:composition>
+
+
+
+</html>

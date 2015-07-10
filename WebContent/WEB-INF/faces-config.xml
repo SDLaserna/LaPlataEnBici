@@ -43,7 +43,7 @@
 			<from-action>#{sesionMb.cerrarSession}</from-action>
 			<from-outcome>logout</from-outcome>
 			<to-view-id>/login.xhtml</to-view-id>
-			<redirect/>
+			<redirect />
 		</navigation-case>
 	</navigation-rule>
 
@@ -58,7 +58,23 @@
 			<to-view-id>/login.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>
-	
+
+	<navigation-rule>
+		<from-view-id>/adminModificarClave</from-view-id>
+		<navigation-case>
+			<from-outcome>successModificar</from-outcome>
+			<to-view-id>/adminMiPerfil.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>errorModificar</from-outcome>
+			<to-view-id>/adminModificarClave.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>sesionCaducada</from-outcome>
+			<to-view-id>/login.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+
 	<navigation-rule>
 		<from-view-id>/userMiPerfil</from-view-id>
 		<navigation-case>
@@ -70,7 +86,23 @@
 			<to-view-id>/login.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>
-	
+
+	<navigation-rule>
+		<from-view-id>/userModificarClave</from-view-id>
+		<navigation-case>
+			<from-outcome>successModificar</from-outcome>
+			<to-view-id>/userMiPerfil.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>errorModificar</from-outcome>
+			<to-view-id>/userModificarClave.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>sesionCaducada</from-outcome>
+			<to-view-id>/login.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+
 	<navigation-rule>
 		<from-view-id>*</from-view-id>
 		<navigation-case>
@@ -79,7 +111,7 @@
 			<to-view-id>/gestionDeUsuarios</to-view-id>
 		</navigation-case>
 	</navigation-rule>
-	
+
 	<navigation-rule>
 		<from-view-id>/gestionDeUsuarios.xhtml</from-view-id>
 		<navigation-case>

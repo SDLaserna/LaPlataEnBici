@@ -62,16 +62,25 @@
 								</div>
 							</div>
 						</div>
-						<div class="form-group">
-							<h:outputLabel>Sexo:</h:outputLabel>
-							<h:selectOneRadio value="#{sesionMb.usuario.sexo}"
-								styleClass="form-control" id="Sexo" required="true">
-								<f:selectItem itemValue="Masculino" itemLabel="Masculino" />
-								<f:selectItem itemValue="Femenino" itemLabel="Femenino" />
-								<f:selectItem itemValue="Otro" itemLabel="Otro" />
-							</h:selectOneRadio>
-							<h:message for="Sexo" style="color:red" />
-
+						<div class="row">
+							<div class="col-md-6">
+								<div class="form-group">
+									<h:outputLabel>Sexo:</h:outputLabel>
+									<h:selectOneRadio value="#{sesionMb.usuario.sexo}"
+										styleClass="form-control" id="Sexo" required="true">
+										<f:selectItem itemValue="Masculino" itemLabel="Masculino" />
+										<f:selectItem itemValue="Femenino" itemLabel="Femenino" />
+										<f:selectItem itemValue="Otro" itemLabel="Otro" />
+									</h:selectOneRadio>
+									<h:message for="Sexo" style="color:red" />
+									<div class="col-md-6">
+										<div class="form-group">
+											<h:link value="Modificar Clave" outcome="userModificarClave"
+												styleClass="btn btn-info" />
+										</div>
+									</div>
+								</div>
+							</div>
 						</div>
 						<hr />
 						<div class="form-group">
@@ -105,19 +114,17 @@
 								<h:message for="Localidad" style="color:red" />
 							</div>
 						</div>
-					<hr />
+						<hr />
 
 
 					</div>
 
 					<div class="col-md-6" style="margin-bottom: 4%;">
-						<h:commandButton value="Modificar" action="#{usuarioMbView.modificar}"
-							styleClass="btn btn-primary" style="margin-left:24%;" />
+						<h:commandButton value="Modificar"
+							action="#{usuarioMbView.modificar}" styleClass="btn btn-primary"
+							style="margin-left:24%;" />
 					</div>
 
-					<div class="col-md-6">
-						<h:link value="Volver" outcome="login" styleClass="btn btn-danger" />
-					</div>
 				</h:form>
 			</div>
 		</div>

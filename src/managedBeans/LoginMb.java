@@ -45,7 +45,7 @@ public class LoginMb {
 						resultado = "successUsuario";
 					} else {
 						FacesMessage mensaje = new FacesMessage(
-								"Contrase�a incorrecta");
+								"Contrasenia incorrecta");
 						FacesContext.getCurrentInstance().addMessage("loginForm",
 								mensaje);
 						resultado = "login";
