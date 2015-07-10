@@ -7,10 +7,12 @@
 	<navigation-rule>
 		<from-view-id>/registrarse.xhtml</from-view-id>
 		<navigation-case>
+			<from-action>#{usuarioMbReq.registrar}</from-action>
 			<from-outcome>success</from-outcome>
 			<to-view-id>/registrarse.xhtml</to-view-id>
 		</navigation-case>
 		<navigation-case>
+			<from-action>#{usuarioMbReq.registrar}</from-action>
 			<from-outcome>error</from-outcome>
 			<to-view-id>/registrarse.xhtml</to-view-id>
 		</navigation-case>
@@ -19,14 +21,17 @@
 	<navigation-rule>
 		<from-view-id>/login.xhtml</from-view-id>
 		<navigation-case>
+			<from-action>#{loginMb.logueo}</from-action>
 			<from-outcome>successUsuario</from-outcome>
 			<to-view-id>/userBase.xhtml</to-view-id>
 		</navigation-case>
 		<navigation-case>
+			<from-action>#{loginMb.logueo}</from-action>
 			<from-outcome>successAdministrador</from-outcome>
 			<to-view-id>/adminBase.xhtml</to-view-id>
 		</navigation-case>
 		<navigation-case>
+			<from-action>#{loginMb.logueo}</from-action>
 			<from-outcome>login</from-outcome>
 			<to-view-id>/login.xhtml</to-view-id>
 		</navigation-case>
@@ -38,6 +43,7 @@
 			<from-action>#{sesionMb.cerrarSession}</from-action>
 			<from-outcome>logout</from-outcome>
 			<to-view-id>/login.xhtml</to-view-id>
+			<redirect/>
 		</navigation-case>
 	</navigation-rule>
 
@@ -68,7 +74,7 @@
 	<navigation-rule>
 		<from-view-id>*</from-view-id>
 		<navigation-case>
-			<from-action>#{usuarioMb.listarUsuarios}</from-action>
+			<from-action>#{usuarioMbSess.listarUsuarios}</from-action>
 			<from-outcome>listarUsuarios</from-outcome>
 			<to-view-id>/gestionDeUsuarios</to-view-id>
 		</navigation-case>
@@ -77,7 +83,7 @@
 	<navigation-rule>
 		<from-view-id>/gestionDeUsuarios.xhtml</from-view-id>
 		<navigation-case>
-			<from-action>#{usuarioMb.borradoLogico}</from-action>
+			<from-action>#{usuarioMbSess.borradoLogico}</from-action>
 			<from-outcome>listarUsuarios</from-outcome>
 			<to-view-id>/gestionDeUsuarios</to-view-id>
 		</navigation-case>
