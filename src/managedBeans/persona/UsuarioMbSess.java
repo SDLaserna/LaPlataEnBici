@@ -22,7 +22,6 @@ public class UsuarioMbSess {
 	private List<Usuario> listaUsuarios=new ArrayList<Usuario>();
 	
 	public UsuarioMbSess(){
-		
 	}
 	
 	public List<Usuario> getListaUsuarios() {
@@ -44,6 +43,7 @@ public class UsuarioMbSess {
 		Long idLong=Long.parseLong(idUser);	
 		Usuario userPersistente=this.usuarioService.obtenerUsuario(idLong);
 		this.usuarioService.borrarLogicamente(userPersistente);
+		this.setListaUsuarios(this.usuarioService.listarActivos());
 		return "listarUsuarios";
 	}
 }
