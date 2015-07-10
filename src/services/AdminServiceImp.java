@@ -23,4 +23,9 @@ public class AdminServiceImp implements AdminService {
 		return this.administradorDAO.obtenerAdministrador(email);
 	}
 
+	@Override
+	public void modificar(Administrador a) {
+		this.administradorDAO.actualizar(a);
+	}
+
 }

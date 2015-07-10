@@ -8,11 +8,11 @@
 	<ui:define name="titulo">
 		Mi perfil
 	</ui:define>
-	
+
 	<ui:define name="navegador">
 		<ui:include src="userNav.xhtml"></ui:include>
 	</ui:define>
-		
+
 	<ui:define name="contenido">
 
 		<div class="panel panel-green">
@@ -105,24 +105,13 @@
 								<h:message for="Localidad" style="color:red" />
 							</div>
 						</div>
-						
-						<div class="form-group">
-							<div class="input-icon right">
-								<h:outputLabel>Clave validación:</h:outputLabel>
-								<i class="fa fa-home"></i>
-								<h:inputText value="#{sesionMb.usuario.domicilio.localidad}"
-									styleClass="form-control" id="Localidad" required="true" />
-								<h:message for="Localidad" style="color:red" />
-							</div>
-						</div>
-						
-						<hr />
+					<hr />
 
 
 					</div>
 
 					<div class="col-md-6" style="margin-bottom: 4%;">
-						<h:commandButton value="Modificar" action="#{usuarioMb.modificar}"
+						<h:commandButton value="Modificar" action="#{usuarioMbView.modificar}"
 							styleClass="btn btn-primary" style="margin-left:24%;" />
 					</div>
 

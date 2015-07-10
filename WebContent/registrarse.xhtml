@@ -33,7 +33,7 @@
 									<i class="fa fa-envelope"></i>
 									<h:inputText id="Email"
 										validatorMessage="Formato de email incorrecto, identificador@ejemplo.com"
-										value="#{usuarioMb.usuario.email}" styleClass="form-control"
+										value="#{usuarioMbReq.usuario.email}" styleClass="form-control"
 										required="true" >
 										<f:validateRegex
 											pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$"
@@ -45,7 +45,7 @@
 							<div class="form-group">
 								<div class="input-icon right">
 									<h:outputLabel>Tu clave será</h:outputLabel>
-									<h:inputText value="#{usuarioMb.usuario.clave}" readonly="true"
+									<h:inputText value="#{usuarioMbReq.usuario.clave}" readonly="true"
 										styleClass="form-control"  id="Clave"/>
 									
 								</div>
@@ -57,7 +57,7 @@
 									<div class="form-group">
 										<h:outputLabel>Nombre:</h:outputLabel>
 										<h:inputText id="Nombre"
-											value="#{usuarioMb.usuario.nombre}" styleClass="form-control"
+											value="#{usuarioMbReq.usuario.nombre}" styleClass="form-control"
 											required="true" />
 										<h:message for="Nombre" style="color:red" />
 
@@ -66,7 +66,7 @@
 								<div class="col-md-6">
 									<div class="form-group">
 										<h:outputLabel>Apellido:</h:outputLabel>
-										<h:inputText value="#{usuarioMb.usuario.apellido}"
+										<h:inputText value="#{usuarioMbReq.usuario.apellido}"
 											styleClass="form-control" id="Apellido"
 											required="true" />
 										<h:message for="Apellido" style="color:red" />
@@ -78,7 +78,7 @@
 									<div class="form-group">
 										<h:outputLabel>DNI:</h:outputLabel>
 										<h:inputText id="DNI"
-											value="#{usuarioMb.usuario.dni}" styleClass="form-control"
+											value="#{usuarioMbReq.usuario.dni}" styleClass="form-control"
 											required="true" />
 										<h:message for="DNI" style="color:red" />
 
@@ -87,7 +87,7 @@
 								<div class="col-md-6">
 									<div class="form-group">
 										<h:outputLabel>Fecha Nacimiento:</h:outputLabel>
-										<h:inputText value="#{usuarioMb.usuario.fechaNacimiento}"
+										<h:inputText value="#{usuarioMbReq.usuario.fechaNacimiento}"
 											styleClass="form-control" id="FechaNacimiento"
 											required="true" >
 											 <f:convertDateTime pattern="dd/mm/yyyy" />
@@ -98,7 +98,7 @@
 							</div>
 							<div class="form-group">
 								<h:outputLabel>Sexo:</h:outputLabel>
-								<h:selectOneRadio value="#{usuarioMb.usuario.sexo}"
+								<h:selectOneRadio value="#{usuarioMbReq.usuario.sexo}"
 									styleClass="form-control" id="Sexo"
 											required="true" >
 									<f:selectItem itemValue="Masculino" itemLabel="Masculino" />
@@ -106,14 +106,6 @@
 									<f:selectItem itemValue="Otro" itemLabel="Otro" />
 								</h:selectOneRadio>
 								<h:message for="Sexo" style="color:red" />
-
-
-								<!-- 							<select class="form-control"> -->
-								<!-- 								<option>Genero</option> -->
-								<!-- 								<option value="0">Masculino</option> -->
-								<!-- 								<option value="1">Femenino</option> -->
-								<!-- 								<option value="2">Otro</option> -->
-								<!-- 							</select> -->
 							</div>
 							<hr />
 							<div class="form-group">
@@ -121,7 +113,7 @@
 									<h:outputLabel>Calle:</h:outputLabel>
 									<i class="fa fa-home"></i>
 									<!-- 	<input id="inputConfirmPassword"	type="text" placeholder="Domicilio"	class="form-control">  -->
-									<h:inputText value="#{usuarioMb.domicilio.calle}"
+									<h:inputText value="#{usuarioMbReq.domicilio.calle}"
 										styleClass="form-control" id="Calle"
 											required="true" />
 										<h:message for="Calle" style="color:red" />
@@ -132,7 +124,7 @@
 								<div class="input-icon right">
 									<h:outputLabel>Numero:</h:outputLabel>
 									<i class="fa fa-home"></i>
-									<h:inputText value="#{usuarioMb.domicilio.numero}"
+									<h:inputText value="#{usuarioMbReq.domicilio.numero}"
 										styleClass="form-control" type="long" id="Numero"
 											required="true" />
 										<h:message for="Numero" style="color:red" />
@@ -143,46 +135,19 @@
 								<div class="input-icon right">
 									<h:outputLabel>Localidad:</h:outputLabel>
 									<i class="fa fa-home"></i>
-									<h:inputText value="#{usuarioMb.domicilio.localidad}"
+									<h:inputText value="#{usuarioMbReq.domicilio.localidad}"
 										styleClass="form-control" id="Localidad"
 											required="true" />
 										<h:message for="Localidad" style="color:red" />
 								</div>
 							</div>
 							<hr/>
-							
-
-							<!-- 						<div class="form-group"> -->
-							<!-- 							<div class="checkbox"> -->
-							<!-- 								<label> -->
-							<!-- 									<div class="icheckbox_minimal-grey" style="position: relative;"> -->
-							<!-- 										<input tabindex="5" type="checkbox" -->
-							<!-- 											style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; border: 0px; opacity: 0; background: rgb(255, 255, 255);"> -->
-							<!-- 										<ins class="iCheck-helper" -->
-							<!-- 											style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; border: 0px; opacity: 0; background: rgb(255, 255, 255);"></ins> -->
-							<!-- 									</div>&nbsp; Quiero recibir actualizaciones por mail -->
-							<!-- 								</label> -->
-							<!-- 							</div> -->
-							<!-- 						</div> -->
-							<!-- 						<div class="form-group mbn"> -->
-							<!-- 							<div class="checkbox"> -->
-							<!-- 								<label> -->
-							<!-- 									<div class="icheckbox_minimal-grey" style="position: relative;"> -->
-							<!-- 										<input tabindex="5" type="checkbox" -->
-							<!-- 											style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; border: 0px; opacity: 0; background: rgb(255, 255, 255);"> -->
-							<!-- 										<ins class="iCheck-helper" -->
-							<!-- 											style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; border: 0px; opacity: 0; background: rgb(255, 255, 255);"></ins> -->
-							<!-- 									</div>&nbsp; Acepto los t&eacute;rminos y condiciones -->
-							<!-- 								</label> -->
-							<!-- 							</div> -->
-							<!-- 						</div> -->
-
-					
+											
 						</div>
 
 						<div class="col-md-6" style="margin-bottom: 4%;">
 							<h:commandButton value="Registrarse"
-								action="#{usuarioMb.registrar}" styleClass="btn btn-primary"
+								action="#{usuarioMbReq.registrar}" styleClass="btn btn-primary"
 								style="margin-left:24%;" />
 						</div>
 

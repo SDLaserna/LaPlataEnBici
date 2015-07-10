@@ -54,7 +54,7 @@
 
 
 				
-					<h:dataTable id="example1" value="#{usuarioMb.listaUsuarios}"
+					<h:dataTable id="example1" value="#{usuarioMbSess.listaUsuarios}"
 						var="usuario" styleClass="table table-bordered table-striped">
 
 						<h:column>
@@ -72,9 +72,9 @@
 						<h:column>
 						<h:form>
 							<f:facet name="header">Opciones</f:facet>
-							<h:commandButton action="#{usuarioMb.borradoLogico}" value="ultimo"></h:commandButton>
-							<h:commandLink styleClass="btn btn-info" action="#{usuarioMb.borradoLogico}">
-								<f:param name="idParametro" value="#{usuario.idPersona}" />
+							<h:commandButton action="#{usuarioMbSess.borradoLogico}" value="ultimo"></h:commandButton>
+							<h:commandLink styleClass="btn btn-info" action="#{usuarioMbSess.borradoLogico}">
+<!-- 								<f:param name="idParametro" value="#{usuario.idPersona}" /> -->
 								<i class="fa fa-eraser"></i> Inhabilitacion Temporal
 							</h:commandLink>
 							<h:commandLink styleClass="btn btn-danger">

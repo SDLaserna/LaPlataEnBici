@@ -1,4 +1,4 @@
-package actions;
+package managedBeans;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
@@ -68,7 +68,7 @@ public class LoginMb {
 							resultado = "login";
 						}
 					} else {
-						FacesMessage mensaje = new FacesMessage("Email inexistente, ");
+						FacesMessage mensaje = new FacesMessage("Email inexistente ");
 						FacesContext.getCurrentInstance().addMessage("loginForm", mensaje);
 						resultado = "login";
 					}
