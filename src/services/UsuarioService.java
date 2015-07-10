@@ -1,5 +1,7 @@
 package services;
 
+import java.util.List;
+
 import entidades.Usuario;
 
 public interface UsuarioService {
@@ -9,4 +11,7 @@ public interface UsuarioService {
 	public boolean existePersona(String email);
 	public Usuario obtenerUsuario(String email);
 	public void modificar(Usuario u);
+	public List<Usuario> listarUsuarios();
+	public void borrarLogicamente(Usuario u);
+	public Usuario obtenerUsuario(Object id);
 }

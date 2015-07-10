@@ -1,9 +1,12 @@
 package actions;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpServletRequest;
@@ -19,10 +22,12 @@ import entidades.Usuario;
  *Si por ejemplo pongo applicationScoped, me pisa al mismo usuario */
 public class UsuarioMb {
 
-	
+	@ManagedProperty(value="#{param.idParametro}")
+	private Long idParametro;
 	private Usuario usuario;
 	private Domicilio domicilio;
 	private UsuarioService usuarioService=new UsuarioServiceImp();
+	private List<Usuario> listaUsuarios=new ArrayList<Usuario>();
 	
 	public UsuarioMb(){
 		this.setUsuario(new Usuario());
@@ -95,6 +100,43 @@ public class UsuarioMb {
 			return "sesionCaducada";
 		}
 	}
+	
+	
+	public String listarUsuarios(){
+		this.setListaUsuarios(this.usuarioService.listarUsuarios());
+		return "listarUsuarios";
+	}
+	
+	public String borradoLogico(){
+		
+	    FacesContext context = FacesContext.getCurrentInstance();
+	    Usuario user = (Usuario) context.getApplication().evaluateExpressionGet(context, "#{usuario}", Usuario.class);
+	    Long id = user.getIdPersona();
+		
+		
+/*		Long id=Long.parseLong(idUser);	
+		Usuario userPersistente=this.usuarioService.obtenerUsuario(this.getIdParametro());
+		this.usuarioService.borrarLogicamente(userPersistente);*/
+		return "listarUsuarios";
+	}
+	
+
+	public List<Usuario> getListaUsuarios() {
+		return listaUsuarios;
+	}
+
+	public void setListaUsuarios(List<Usuario> listaUsuarios) {
+		this.listaUsuarios = listaUsuarios;
+	}
+
+
+	public Long getIdParametro() {
+		return idParametro;
+	}
+
+	public void setIdParametro(Long idParametro) {
+		this.idParametro = idParametro;
+	} 
 	
 	
 }

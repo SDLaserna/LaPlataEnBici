@@ -1,8 +1,9 @@
 package services;
 
+import java.util.List;
+
 import daos.UsuarioDAO;
 import daos.UsuarioDAOImp;
-import entidades.Persona;
 import entidades.Usuario;
 
 public class UsuarioServiceImp implements UsuarioService {
@@ -37,6 +38,24 @@ public class UsuarioServiceImp implements UsuarioService {
 	@Override
 	public void modificar(Usuario u) {
 		this.usuarioDAO.actualizar(u);
+	}
+
+	@Override
+	public List<Usuario> listarUsuarios() {
+		return this.usuarioDAO.listar("Usuario");
+	}
+
+	@Override
+	public void borrarLogicamente(Usuario u) {
+		u.setActiva(true);
+		this.usuarioDAO.actualizar(u);
+		
+	}
+
+	@Override
+	public Usuario obtenerUsuario(Object id) {
+		
+		return this.usuarioDAO.obtener(id);
 	}
 
 }

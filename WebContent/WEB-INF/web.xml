@@ -17,6 +17,7 @@
   </servlet>
   <servlet-mapping>
     <servlet-name>Faces Servlet</servlet-name>
+<!--     todas las paginas xhtml van a ser procesadas por jsf antes de ser devueltas al cliente -->
     <url-pattern>*.xhtml</url-pattern>
   </servlet-mapping>
   <context-param>
