@@ -82,6 +82,18 @@ public abstract class GenericDAOImp<T> implements GenericDAO<T> {
 		return this.entityManager.createQuery("select e from"+" "+entidad+" "+"e").getResultList();//se usa el nombre del objeto, no de la tabla
 	}
 	
+	
+	public T crearLog(T t) {
+		/*Este metodo es aplicable solo para los log, el log escucha los ABM por lo que
+		 * no debería crearse con el metodo "crear" porque registraria un log de si mismo.
+		 * No es algo totalmente generico pero asi me evito realizar otro entityManager */
+		EntityTransaction tx = this.entityManager.getTransaction();
+		tx.begin();
+		this.entityManager.persist(t);
+		tx.commit();
+		return null;
+	}
+	
 }
 
 

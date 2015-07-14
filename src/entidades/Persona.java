@@ -30,7 +30,7 @@ public abstract class Persona {
 	private String sexo;
 	private String email;
 	private String clave;
-	private boolean activa ;
+	private boolean activa;
 	/* uno a uno domicilio*/
 	
 	@ManyToOne
