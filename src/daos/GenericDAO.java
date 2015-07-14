@@ -18,5 +18,6 @@ public interface GenericDAO<T> {
 	    T actualizar(T t);
 	    
 	    public List<T> listar(String entidad);
+	    
 	
 }
