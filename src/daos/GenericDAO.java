@@ -19,5 +19,4 @@ public interface GenericDAO<T> {
 	    
 	    public List<T> listar(String entidad);
 	    
-	
 }

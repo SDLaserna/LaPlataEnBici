@@ -5,6 +5,7 @@ import java.util.Date;
 import javax.persistence.EntityManagerFactory;
 
 import org.aspectj.lang.JoinPoint;
+import org.aspectj.lang.annotation.After;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 
@@ -22,7 +23,7 @@ public aspect Auditor {
 
 	pointcut puntoA: execution(* * * daos.GenericDAOImp.crear(..));
 */
-	@Before("execution(* daos.GenericDAOImp.crear(..)) && args(elem)")
+	@After("execution(* daos.GenericDAOImp.crear(..)) && args(elem)")
 	public void loggingAlta(JoinPoint joinpoint, Object elem){
 		this.prepararLog("Alta", joinpoint);
 	}
