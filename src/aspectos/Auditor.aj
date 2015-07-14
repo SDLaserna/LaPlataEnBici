@@ -43,7 +43,7 @@ public aspect Auditor {
 		Object id = e.getPersistenceUnitUtil().getIdentifier(elem);
 		log.setIdEntidad((Long)id);
 		log.setOperacion("Operacion: "+tipo);
-		log.setTipoEntidad(elem.getClass().getTypeName());	
+		log.setTipoEntidad(elem.getClass().getSimpleName());	
 		this.logService.persistirLog(log);
 	}
 	
