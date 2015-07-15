@@ -16,11 +16,14 @@ public class LogServiceImp implements LogService {
 		this.logDAO.generarLog(l);
 	}
 
+//	@Override
+//	public List<Log> listarLogs(Object entidad) {
+//		return this.logDAO.listarLogs(entidad);
+//	}
+	
 	@Override
-	public List<Log> listarLogs(Object entidad) {
+	public List<Log> listarLogs(String entidad) {
 		return this.logDAO.listarLogs(entidad);
 	}
-	
-	
 
 }
