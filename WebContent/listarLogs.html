@@ -5,11 +5,15 @@
 </head>
 <body>
 	<div style="padding-left:100px;font-family: monospace;">
-		<h2>Create Animal</h2>
-		<form action="/rest/estadisticas" method="GET">
+		<h2>Listar Logs</h2>
+		<form action="rest/log" method="get">
 			<div style="width: 200px; text-align: left;">
 				<div style="padding:10px;">
-					Tipo de Entidad: <select></select>
+<!-- 					Tipo de Entidad: <select name="tipoEntidad"> -->
+<!-- 										 <option value="Usuario" selected>Usuario</option> -->
+<!--   										<option value="Administrador">Administrador</option> -->
+<!-- 									</select> -->
+						Tipo de Entidad: <input name="tipoEntidad"/> 
 				</div>
 				<div style="padding:10px;text-align:center">
 					<input type="submit" value="Submit" />
