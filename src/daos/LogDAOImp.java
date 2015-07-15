@@ -18,7 +18,8 @@ public class LogDAOImp extends GenericDAOImp<Log> implements LogDAO {
 
 	@Override
 	public List<Log> listarLogs(String tipoEntidad) {
-		return this.entityManager.createQuery("select l.operacion, count(l.operacion) as cantidad from Log l where l.tipoEntidad= '" + tipoEntidad + "' group by l.operacion").getResultList();
+		//return this.entityManager.createQuery("select l.operacion, count(l.operacion) as cantidad from Log l where l.tipoEntidad= '" + tipoEntidad + "' group by l.operacion").getResultList();
+		return this.entityManager.createQuery("select l from Log l where l.tipoEntidad= '" + tipoEntidad + "' group by l.operacion").getResultList();
 	}
 	
 }

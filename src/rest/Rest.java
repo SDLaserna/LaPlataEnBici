@@ -1,5 +1,6 @@
 package rest;
 
+import java.io.IOException;
 import java.util.List;
 
 import javax.ws.rs.Consumes;
@@ -7,6 +8,7 @@ import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Request;
@@ -23,7 +25,6 @@ public class Rest {
 	UriInfo uriInfo;
 	@Context
 	Request request;
-	
 	
 	private LogService logService;
 	
@@ -43,17 +44,8 @@ public class Rest {
 	@GET
 	@Produces({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })
 	@Consumes(MediaType.APPLICATION_FORM_URLENCODED)
-	public List<Log> getLogs(@PathParam("tipoEntidad") String entidad){
-		
+	public List<Log> getLogs(@QueryParam("tipoEntidad") String entidad)throws IOException{
 		return this.getLogService().listarLogs(entidad);
 	}
-	
-	@GET
-	@Produces(MediaType.TEXT_XML)
-	@Consumes(MediaType.APPLICATION_FORM_URLENCODED)
-	public List<Log> getLogsAsHtml(@PathParam("tipoEntidad") String entidad) {
-		return this.getLogService().listarLogs(entidad);
-	}
-
 	
 }
