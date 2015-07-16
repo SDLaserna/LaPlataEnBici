@@ -16,16 +16,16 @@
 
 		function drawChart() {
 			var tipoEntidad = document.getElementById("tipoEntidad").value;
-			var url = "rest/log?tipoEntidad=" + tipoEntidad; // Completar con URL del servicio REST
+			var url = "rest/log?tipoEntidad=" + tipoEntidad; 
 			$.getJSON(url, function(data) {
 				var googleData = new google.visualization.DataTable();
 				googleData.addColumn('string', 'Operacion');
 				googleData.addColumn('number', 'Cantidad');
 				var total = data.length;
 
-				for (i = 0; i < total; i++) {
-					// 				googleData.addRow([data[i].operacion, data[i].cantidad]);
-					googleData.addRow([ data[i].operacion, 50 ]);
+				for (var i in data) {
+					//alert("la operacion es: " + i + ". Lacantidad es:  " + data[i]);
+					googleData.addRow([ i, data[i]]);
 
 				}
 
@@ -34,7 +34,7 @@
 				chart.draw(googleData, {
 					width : 450,
 					height : 300,
-					title : 'Operaciones sobre Entidad ' + data[0].tipoEntidad,
+					title : 'Operaciones sobre Entidad ' + tipoEntidad,
 					is3D : true
 				});
 			});

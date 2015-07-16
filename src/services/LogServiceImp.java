@@ -1,6 +1,6 @@
 package services;
 
-import java.util.List;
+import java.util.Map;
 
 import daos.LogDAO;
 import daos.LogDAOImp;
@@ -22,7 +22,7 @@ public class LogServiceImp implements LogService {
 //	}
 	
 	@Override
-	public List<Log> listarLogs(String entidad) {
+	public Map<String,Integer> listarLogs(String entidad) {
 		return this.logDAO.listarLogs(entidad);
 	}
 
