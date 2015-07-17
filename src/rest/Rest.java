@@ -1,7 +1,7 @@
 package rest;
 
 import java.io.IOException;
-import java.util.List;
+import java.util.Map;
 
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
@@ -41,9 +41,9 @@ public class Rest {
 	}
 	
 	@GET
-	@Produces({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })
+	@Produces({MediaType.APPLICATION_JSON })
 	@Consumes(MediaType.APPLICATION_FORM_URLENCODED)
-	public List<Log> getLogs(@QueryParam("tipoEntidad") String entidad)throws IOException{
+	public Map<String,Integer> getLogs(@QueryParam("tipoEntidad") String entidad)throws IOException{
 		return this.getLogService().listarLogs(entidad);
 	}
 	
