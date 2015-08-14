@@ -19,12 +19,12 @@
 				</li>
 				<div class="clearfix"></div>
 				<li id="estaciones">
-					<!-- 				<a href="abmEstaciones"> --> <h:link
-						outcome="abmEstaciones">
-						<i class="fa fa-flag fa-fw"></i>
+					<h:commandLink
+						action="#{estacionMbSess.listarEstaciones}">
+						<i class="fa fa-group fa-fw">
+						</i>
 						<span class="menu-title">Estaciones</span>
-						<!-- 				</a> -->
-					</h:link>
+					</h:commandLink>
 				</li>
 				<li id="bicicletas">
 					<!-- 				<a href="abmBicicletas">  --> <h:link

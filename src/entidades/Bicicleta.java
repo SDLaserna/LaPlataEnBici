@@ -18,7 +18,43 @@ public class Bicicleta {
 	private String estado;
 	private boolean activa;
 	private boolean prestada;
-	
+	private String rodado;
+	private String color;
+	private String marca;
+	private String descrip;
+
+	public String getRodado() {
+		return rodado;
+	}
+
+	public void setRodado(String rodado) {
+		this.rodado = rodado;
+	}
+
+	public String getColor() {
+		return color;
+	}
+
+	public void setColor(String color) {
+		this.color = color;
+	}
+
+	public String getMarca() {
+		return marca;
+	}
+
+	public void setMarca(String marca) {
+		this.marca = marca;
+	}
+
+	public String getDescrip() {
+		return descrip;
+	}
+
+	public void setDescrip(String descrip) {
+		this.descrip = descrip;
+	}
+
 	@ManyToOne
 	@JoinColumn(name="estacion")
 	private Estacion estacion;

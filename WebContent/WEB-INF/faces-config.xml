@@ -17,7 +17,49 @@
 			<to-view-id>/registrarse.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>
+	<!-- modificacion 12/08 -->
+	<navigation-rule>
+		<from-view-id>/altaBici.xhtml</from-view-id>
+		<navigation-case>
+			<from-action>#{bicicletaMbSess.agregarBicicleta}</from-action>
+			<from-outcome>success</from-outcome>
+			<to-view-id>/abmBicicletas.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
 
+	<navigation-rule>
+		<from-view-id>/abmEstaciones.xhtml</from-view-id>
+		<navigation-case>
+			<from-action>#{estacionMbSess.visualizarModificarEstacion}</from-action>
+			<from-outcome>success</from-outcome>
+			<to-view-id>/modificarEstacion.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+		<navigation-rule>
+		<from-view-id>*</from-view-id>
+		<navigation-case>
+			<from-action>#{estacionMbSess.listarEstaciones}</from-action>
+			<from-outcome>listarEstaciones</from-outcome>
+			<to-view-id>/abmEstaciones</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<from-view-id>/altaEstacion.xhtml</from-view-id>
+		<navigation-case>
+			<from-action>#{estacionMbReq.registrar}</from-action>
+			<from-outcome>successRegistro</from-outcome>
+			<to-view-id>/abmEstaciones.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<from-view-id>/modificarEstacion.xhtml</from-view-id>
+		<navigation-case>
+			<from-action>#{estacionMbSess.modificarEstacion}</from-action>
+			<from-outcome>successModificar</from-outcome>
+			<to-view-id>/modificarEstacion.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	<!-- fin modificiacion -->
 	<navigation-rule>
 		<from-view-id>/login.xhtml</from-view-id>
 		<navigation-case>

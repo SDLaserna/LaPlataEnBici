@@ -64,38 +64,43 @@
 			<div class="panel panel-green">
 				<div class="panel-heading">Alta Estacion</div>
 				<div class="panel-body pan">
-					<form action="#">
+					<h:form id="Registro">
+						<h:message for="Registro" style="color:red" />
 						<div class="form-body pal">
 							<div class="form-group">
-								<label for="inputSubject" class="control-label"> Nombre</label>
+								<h:outputLabel styleClass="control-label">Nombre:</h:outputLabel>
 								<div class="input-icon right">
-									<i class="fa fa-tag"></i> <input id="inputSubject" type="text"
-										placeholder="" class="form-control"/>
+									<i class="fa fa-tag"></i>
+									<h:inputText id="Nombre"
+										value="#{estacionMbReq.estacion.nombre}"
+										styleClass="form-control" required="true">
+									</h:inputText>
+									<h:message for="Nombre" style="color:red;" />
 								</div>
 							</div>
 							<div class="form-group">
-								<label for="inputSubject" class="control-label">
-									Cantidad de estacionamientos</label>
+								<h:outputLabel styleClass="control-label">
+									Total de estacionamientos</h:outputLabel>
 								<div class="input-icon right">
-									<i class="fa fa-tag"></i> <input id="inputSubject" type="text"
-										placeholder="" class="form-control"/>
+									<i class="fa fa-tag"></i>
+									<h:inputText id="TotalEstacionamientos" type="long"
+										value="#{estacionMbReq.estacion.totalEstacionamientos}"
+										styleClass="form-control" required="true">
+									</h:inputText>
+									<h:message for="TotalEstacionamientos" style="color:red;" />
 								</div>
 							</div>
 							<div class="form-group">
-								<label for="inputSubject" class="control-label"> Estado</label>
-								<select class="form-control">
-									<option>Operativo</option>
-									<option>Cerrado</option>
-									<option>En construccion</option>
-								</select>
-							</div>
-							<div class="form-group">
-								<label for="inputSubject" class="control-label">
-									Ubicacion</label>
-								<div class="input-icon right">
-									<i class="fa fa-tag"></i> <input id="inputSubject" type="text"
-										placeholder="" class="form-control"/>
-								</div>
+								<h:outputLabel styleClass="control-label">
+									Estado</h:outputLabel>
+								<h:selectOneMenu value="#{estacionMbReq.estacion.estado}"
+									styleClass="form-control" id="Estado" required="true">
+									<f:selectItem itemValue="Operativa" itemLabel="Operativa" />
+									<f:selectItem itemValue="Cerrada" itemLabel="Cerrada" />
+									<f:selectItem itemValue="EnConstruccion"
+										itemLabel="En Construccion" />
+								</h:selectOneMenu>
+								<h:message for="Estado" style="color:red;" />
 							</div>
 							<button type="button" data-container="body" data-toggle="popover"
 								data-placement="right"
@@ -105,9 +110,10 @@
 
 						</div>
 						<div class="form-actions text-right pal">
-							<button type="submit" class="btn btn-success">Agregar</button>
+							<h:commandButton styleClass="btn btn-success" value="Agregar"
+								action="#{estacionMbReq.registrar}"></h:commandButton>
 						</div>
-					</form>
+					</h:form>
 				</div>
 			</div>
 		</div>

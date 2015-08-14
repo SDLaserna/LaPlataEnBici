@@ -6,9 +6,11 @@ import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
 
 
 @Entity
@@ -17,30 +19,32 @@ public class Estacion {
 	@GeneratedValue
 	private Long idEstacion;
 	private String nombre;
-	private Long cantBicicleta;
+	private Long totalEstacionamientos;
 	private Long cantEstacionamientosLibres;
 	private String estado;
 	
 	@OneToOne
+	@Cascade(value = { CascadeType.ALL })
 	private Domicilio ubicacion;
+	
 	private boolean activa;
 	/* cero a muchas bicicletas*/
 	@OneToMany(mappedBy="estacion")
 	private List<Bicicleta> bicicletas;
 	
-	protected Estacion() {
+	public Estacion() {
 	}
 
-	public Estacion(String nombre, Long cantBicicleta,
+	public Estacion(String nombre, Long total,
 			Long cantEstacionamientosLibres, String estado,
-			Domicilio ubicacion, ArrayList<Bicicleta> bicicletas) {
+			Domicilio ubicacion) {
 		super();
+		this.setBicicletas(new ArrayList<Bicicleta>());
 		this.setNombre(nombre);
-		this.setCantBicicleta(cantBicicleta);
+		this.setTotalEstacionamientos(total);
 		this.setCantEstacionamientosLibres(cantEstacionamientosLibres);
 		this.setEstado(estado);
 		this.setUbicacion(ubicacion);
-		this.setBicicletas(bicicletas);
 		this.setActiva(true);
 	}
 
@@ -60,13 +64,6 @@ public class Estacion {
 		this.nombre = nombre;
 	}
 
-	public Long getCantBicicleta() {
-		return cantBicicleta;
-	}
-
-	public void setCantBicicleta(Long cantBicicleta) {
-		this.cantBicicleta = cantBicicleta;
-	}
 
 	public Long getCantEstacionamientosLibres() {
 		return cantEstacionamientosLibres;
@@ -110,6 +107,14 @@ public class Estacion {
 
 	public void agregarBicicleta(Bicicleta bicicleta) {
 		this.getBicicletas().add(bicicleta);
+	}
+
+	public Long getTotalEstacionamientos() {
+		return totalEstacionamientos;
+	}
+
+	public void setTotalEstacionamientos(Long totalEstacionamientos) {
+		this.totalEstacionamientos = totalEstacionamientos;
 	}
 
 }

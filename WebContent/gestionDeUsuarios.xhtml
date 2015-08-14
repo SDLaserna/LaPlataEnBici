@@ -52,40 +52,42 @@
 			<div class="box-body table-responsive">
 
 
-				
-					<h:dataTable id="example1" value="#{usuarioMbSess.listaUsuarios}"
-						var="usuario" styleClass="table table-bordered table-striped">
 
-						<h:column>
-							<f:facet name="header">Nombre</f:facet>
+				<h:dataTable id="example1" value="#{usuarioMbSess.listaUsuarios}"
+					var="usuario" styleClass="table table-bordered table-striped">
+
+					<h:column>
+						<f:facet name="header">Nombre</f:facet>
 					#{usuario.nombre}
 				</h:column>
-						<h:column>
-							<f:facet name="header">Apellido</f:facet>
+					<h:column>
+						<f:facet name="header">Apellido</f:facet>
 					#{usuario.apellido}
 				</h:column>
-						<h:column>
-							<f:facet name="header">DNI</f:facet>
+					<h:column>
+						<f:facet name="header">DNI</f:facet>
 					#{usuario.dni}
 				</h:column>
 					<h:column>
-							<f:facet name="header">Email</f:facet>
+						<f:facet name="header">Email</f:facet>
 					#{usuario.email}
 				</h:column>
-				<h:column>
-					<f:facet name="header">Opciones</f:facet>
-					<h:form id="formOpcTabla" name="formOpcTabla">
-				 		<h:commandLink styleClass="btn btn-info" action="#{usuarioMbSess.borradoLogico}">
-							<i class="fa fa-eraser"></i> Inhabilitacion Temporal
+					<h:column>
+						<f:facet name="header">Opciones</f:facet>
+						<h:form id="formOpcTabla" name="formOpcTabla">
+							<h:commandLink styleClass="btn btn-info"
+								action="#{usuarioMbSess.borradoLogico}">
+								<i class="fa fa-eraser"></i> Inhabilitacion Temporal
 							<f:param name="idUsuario" value="#{usuario.idPersona}" />
-						</h:commandLink>
-						<h:commandLink styleClass="btn btn-danger" action="#{usuarioMbSess.listarUsuarios}">
-							<i class="fa fa-eraser"></i> Inhabilitacion Definitiva</h:commandLink>
-					</h:form>
-				</h:column>
+							</h:commandLink>
+							<h:commandLink styleClass="btn btn-danger"
+								action="#{usuarioMbSess.listarUsuarios}">
+								<i class="fa fa-eraser"></i> Inhabilitacion Definitiva</h:commandLink>
+						</h:form>
+					</h:column>
 
-			</h:dataTable>
-				
+				</h:dataTable>
+
 
 			</div>
 			<!-- 						/.box-body -->

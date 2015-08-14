@@ -41,8 +41,8 @@
 								<div class="form-group">
 									<label for="inputName" class="control-label"> Color</label>
 									<div class="input-icon right">
-										<i class="fa fa-tint"></i> <input id="inputName" type="text"
-											placeholder="" class="form-control"/>
+										<i class="fa fa-tint"></i>
+									<h:inputText id="color" value="#{bicicletaMbSess.color}" placeholder="" class="form-control" />
 									</div>
 								</div>
 							</div>
@@ -50,8 +50,8 @@
 								<div class="form-group">
 									<label for="inputEmail" class="control-label"> Rodado</label>
 									<div class="input-icon right">
-										<i class="fa fa-bicycle"></i> <input type="text"
-											placeholder="" class="form-control"/>
+										<i class="fa fa-bicycle"></i> 
+										<h:inputText id="rodado" value="#{bicicletaMbSess.rodado}" placeholder="" class="form-control" />
 									</div>
 								</div>
 							</div>
@@ -59,18 +59,17 @@
 								<div class="form-group">
 									<label for="inputName" class="control-label"> Marca</label>
 									<div class="input-icon right">
-										<i class="fa fa-tag"></i> <input id="inputName" type="text"
-											placeholder="" class="form-control"/>
+										<i class="fa fa-tag"></i> 
+										<h:inputText id="marca" value="#{bicicletaMbSess.marca}" placeholder="" class="form-control" />
 									</div>
 								</div>
 							</div>
 							<div class="col-md-6">
 								<div class="form-group">
-									<label for="inputEmail" class="control-label">
-										Estacion</label>
+									<label for="inputEmail" class="control-label"> Estacion</label>
 									<div class="input-icon right">
-										<i class="fa fa-flag fa-fw"></i> <input type="text"
-											placeholder="" class="form-control"/>
+										<i class="fa fa-flag fa-fw"></i>
+										 <h:inputText id="inputName" value="#{bicicletaMbSess.estacion}" placeholder="" class="form-control" />
 									</div>
 								</div>
 							</div>
@@ -78,11 +77,12 @@
 						<div class="form-group">
 							<label for="inputMessage" class="control-label">
 								Descripcion</label>
-							<textarea rows="5" class="form-control"></textarea>
+							<h:inputTextarea rows="5" class="form-control" value="#{bicicletaMbSess.descrip}"></h:inputTextarea>
 						</div>
 					</div>
 					<div class="form-actions text-right pal">
 						<button type="submit" class="btn btn-success">Agregar</button>
+						<h:commandButton value="Agregar" action="#{bicicletaMbSess.agregarBicicleta}"></h:commandButton>
 					</div>
 				</h:form>
 			</div>
