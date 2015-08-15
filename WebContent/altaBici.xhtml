@@ -34,7 +34,7 @@
 		<div class="panel panel-green">
 			<div class="panel-heading">Alta Bicicleta</div>
 			<div class="panel-body pan">
-				<h:form>
+				<h:form id="AltaBicicleta">
 					<div class="form-body pal">
 						<div class="row">
 							<div class="col-md-6">
@@ -42,7 +42,8 @@
 									<label for="inputName" class="control-label"> Color</label>
 									<div class="input-icon right">
 										<i class="fa fa-tint"></i>
-									<h:inputText id="color" value="#{bicicletaMbSess.color}" placeholder="" class="form-control" />
+									<h:inputText id="Color" value="#{bicicletaMbSess.bicicleta.color}" styleClass="form-control" required="true"/>
+									<h:message for="Color" style="color:red;" />
 									</div>
 								</div>
 							</div>
@@ -51,7 +52,8 @@
 									<label for="inputEmail" class="control-label"> Rodado</label>
 									<div class="input-icon right">
 										<i class="fa fa-bicycle"></i> 
-										<h:inputText id="rodado" value="#{bicicletaMbSess.rodado}" placeholder="" class="form-control" />
+										<h:inputText id="Rodado" value="#{bicicletaMbSess.bicicleta.rodado}" styleClass="form-control" required="true"/>
+										<h:message for="Rodado" style="color:red;" />
 									</div>
 								</div>
 							</div>
@@ -60,7 +62,8 @@
 									<label for="inputName" class="control-label"> Marca</label>
 									<div class="input-icon right">
 										<i class="fa fa-tag"></i> 
-										<h:inputText id="marca" value="#{bicicletaMbSess.marca}" placeholder="" class="form-control" />
+										<h:inputText id="Marca" value="#{bicicletaMbSess.bicicleta.marca}" styleClass="form-control" required="true" />
+										<h:message for="Marca" style="color:red;" />
 									</div>
 								</div>
 							</div>
@@ -69,7 +72,10 @@
 									<label for="inputEmail" class="control-label"> Estacion</label>
 									<div class="input-icon right">
 										<i class="fa fa-flag fa-fw"></i>
-										 <h:inputText id="inputName" value="#{bicicletaMbSess.estacion}" placeholder="" class="form-control" />
+										<h:selectOneMenu id="Estacion" styleClass="form-control" value="#{bicicletaMbSess.idEstacion}" required="true"> 
+											<f:selectItems value="#{bicicletaMbSess.listaEstaciones}" var="estacion" itemValue="#{estacion.idEstacion}" itemLabel="#{estacion.nombre}" ></f:selectItems>
+										</h:selectOneMenu>
+										<h:message for="Estacion" style="color:red;" />
 									</div>
 								</div>
 							</div>
@@ -77,12 +83,12 @@
 						<div class="form-group">
 							<label for="inputMessage" class="control-label">
 								Descripcion</label>
-							<h:inputTextarea rows="5" class="form-control" value="#{bicicletaMbSess.descrip}"></h:inputTextarea>
+							<h:inputTextarea id="Descripcion" rows="5" styleClass="form-control" value="#{bicicletaMbSess.bicicleta.descrip}"></h:inputTextarea>
+							<h:message for="Descripcion" style="color:red;" />
 						</div>
 					</div>
 					<div class="form-actions text-right pal">
-						<button type="submit" class="btn btn-success">Agregar</button>
-						<h:commandButton value="Agregar" action="#{bicicletaMbSess.agregarBicicleta}"></h:commandButton>
+						<h:commandButton value="Agregar" styleClass="btn btn-success" action="#{bicicletaMbSess.agregarBicicleta}"></h:commandButton>
 					</div>
 				</h:form>
 			</div>

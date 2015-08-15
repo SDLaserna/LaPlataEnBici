@@ -26,16 +26,15 @@
 						<span class="menu-title">Estaciones</span>
 					</h:commandLink>
 				</li>
+				
 				<li id="bicicletas">
-					<!-- 				<a href="abmBicicletas">  --> <h:link
-						outcome="abmBicicletas">
-						<i class="fa fa-bicycle fa-fw">
-							<div class="icon-bg bg-pink"></div>
-						</i>
+					<h:commandLink
+						action="#{bicicletaMbSess.visualizarListarBicicletas}">
+						<i class="fa fa-bicycle fa-fw"></i>
 						<span class="menu-title">Bicicletas</span>
-						<!-- 				</a> -->
-					</h:link>
+					</h:commandLink>
 				</li>
+				
 				<li id="usuarios"><h:commandLink
 						action="#{usuarioMbSess.listarUsuarios}">
 						<i class="fa fa-group fa-fw">

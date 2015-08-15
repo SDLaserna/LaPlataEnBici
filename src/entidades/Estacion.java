@@ -22,12 +22,11 @@ public class Estacion {
 	private Long totalEstacionamientos;
 	private Long cantEstacionamientosLibres;
 	private String estado;
-	
+	private boolean activa;
 	@OneToOne
 	@Cascade(value = { CascadeType.ALL })
 	private Domicilio ubicacion;
 	
-	private boolean activa;
 	/* cero a muchas bicicletas*/
 	@OneToMany(mappedBy="estacion")
 	private List<Bicicleta> bicicletas;

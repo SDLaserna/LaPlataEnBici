@@ -4,6 +4,7 @@
 	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd"
 	version="2.2">
 
+	<!-- Reglas para ABM/listado de Usuario -->
 	<navigation-rule>
 		<from-view-id>/registrarse.xhtml</from-view-id>
 		<navigation-case>
@@ -15,105 +16,6 @@
 			<from-action>#{usuarioMbReq.registrar}</from-action>
 			<from-outcome>error</from-outcome>
 			<to-view-id>/registrarse.xhtml</to-view-id>
-		</navigation-case>
-	</navigation-rule>
-	<!-- modificacion 12/08 -->
-	<navigation-rule>
-		<from-view-id>/altaBici.xhtml</from-view-id>
-		<navigation-case>
-			<from-action>#{bicicletaMbSess.agregarBicicleta}</from-action>
-			<from-outcome>success</from-outcome>
-			<to-view-id>/abmBicicletas.xhtml</to-view-id>
-		</navigation-case>
-	</navigation-rule>
-
-	<navigation-rule>
-		<from-view-id>/abmEstaciones.xhtml</from-view-id>
-		<navigation-case>
-			<from-action>#{estacionMbSess.visualizarModificarEstacion}</from-action>
-			<from-outcome>success</from-outcome>
-			<to-view-id>/modificarEstacion.xhtml</to-view-id>
-		</navigation-case>
-	</navigation-rule>
-		<navigation-rule>
-		<from-view-id>*</from-view-id>
-		<navigation-case>
-			<from-action>#{estacionMbSess.listarEstaciones}</from-action>
-			<from-outcome>listarEstaciones</from-outcome>
-			<to-view-id>/abmEstaciones</to-view-id>
-		</navigation-case>
-	</navigation-rule>
-	<navigation-rule>
-		<from-view-id>/altaEstacion.xhtml</from-view-id>
-		<navigation-case>
-			<from-action>#{estacionMbReq.registrar}</from-action>
-			<from-outcome>successRegistro</from-outcome>
-			<to-view-id>/abmEstaciones.xhtml</to-view-id>
-		</navigation-case>
-	</navigation-rule>
-	<navigation-rule>
-		<from-view-id>/modificarEstacion.xhtml</from-view-id>
-		<navigation-case>
-			<from-action>#{estacionMbSess.modificarEstacion}</from-action>
-			<from-outcome>successModificar</from-outcome>
-			<to-view-id>/modificarEstacion.xhtml</to-view-id>
-		</navigation-case>
-	</navigation-rule>
-	<!-- fin modificiacion -->
-	<navigation-rule>
-		<from-view-id>/login.xhtml</from-view-id>
-		<navigation-case>
-			<from-action>#{loginMb.logueo}</from-action>
-			<from-outcome>successUsuario</from-outcome>
-			<to-view-id>/userBase.xhtml</to-view-id>
-		</navigation-case>
-		<navigation-case>
-			<from-action>#{loginMb.logueo}</from-action>
-			<from-outcome>successAdministrador</from-outcome>
-			<to-view-id>/adminBase.xhtml</to-view-id>
-		</navigation-case>
-		<navigation-case>
-			<from-action>#{loginMb.logueo}</from-action>
-			<from-outcome>login</from-outcome>
-			<to-view-id>/login.xhtml</to-view-id>
-		</navigation-case>
-	</navigation-rule>
-
-	<navigation-rule>
-		<from-view-id>*</from-view-id>
-		<navigation-case>
-			<from-action>#{sesionMb.cerrarSession}</from-action>
-			<from-outcome>logout</from-outcome>
-			<to-view-id>/login.xhtml</to-view-id>
-			<redirect />
-		</navigation-case>
-	</navigation-rule>
-
-	<navigation-rule>
-		<from-view-id>/adminMiPerfil</from-view-id>
-		<navigation-case>
-			<from-outcome>successModificar</from-outcome>
-			<to-view-id>/adminMiPerfil.xhtml</to-view-id>
-		</navigation-case>
-		<navigation-case>
-			<from-outcome>sesionCaducada</from-outcome>
-			<to-view-id>/login.xhtml</to-view-id>
-		</navigation-case>
-	</navigation-rule>
-
-	<navigation-rule>
-		<from-view-id>/adminModificarClave</from-view-id>
-		<navigation-case>
-			<from-outcome>successModificar</from-outcome>
-			<to-view-id>/adminMiPerfil.xhtml</to-view-id>
-		</navigation-case>
-		<navigation-case>
-			<from-outcome>errorModificar</from-outcome>
-			<to-view-id>/adminModificarClave.xhtml</to-view-id>
-		</navigation-case>
-		<navigation-case>
-			<from-outcome>sesionCaducada</from-outcome>
-			<to-view-id>/login.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>
 
@@ -162,4 +64,198 @@
 			<to-view-id>/gestionDeUsuarios</to-view-id>
 		</navigation-case>
 	</navigation-rule>
+	<!-- Fin Reglas para ABM/listado de Usuario -->
+
+	<!-- Reglas para Modificacion de Administrador -->
+	<navigation-rule>
+		<from-view-id>/adminMiPerfil</from-view-id>
+		<navigation-case>
+			<from-outcome>successModificar</from-outcome>
+			<to-view-id>/adminMiPerfil.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>sesionCaducada</from-outcome>
+			<to-view-id>/login.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+
+	<navigation-rule>
+		<from-view-id>/adminModificarClave</from-view-id>
+		<navigation-case>
+			<from-outcome>successModificar</from-outcome>
+			<to-view-id>/adminMiPerfil.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>errorModificar</from-outcome>
+			<to-view-id>/adminModificarClave.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>sesionCaducada</from-outcome>
+			<to-view-id>/login.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	<!-- Fin Reglas para ABM/listado de Administrador -->
+
+	<!-- Reglas para ABM/listado de Bicicleta -->
+	<navigation-rule>
+		<from-view-id>/abmBicicletas.xhtml</from-view-id>
+		<navigation-case>
+			<from-action>#{bicicletaMbSess.visualizarAltaBici}</from-action>
+			<from-outcome>successVisualizarAltaBici</from-outcome>
+			<to-view-id>/altaBici.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+
+	<navigation-rule>
+		<from-view-id>/altaBici.xhtml</from-view-id>
+		<navigation-case>
+			<from-action>#{bicicletaMbSess.agregarBicicleta}</from-action>
+			<from-outcome>success</from-outcome>
+			<to-view-id>/abmBicicletas.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+
+	<navigation-rule>
+		<from-view-id>/abmBicicletas.xhtml</from-view-id>
+		<navigation-case>
+			<from-action>#{bicicletaMbSess.visualizarModificarBici}</from-action>
+			<from-outcome>successVisualizarModificarBici</from-outcome>
+			<to-view-id>/modificarBici.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+
+	<navigation-rule>
+		<from-view-id>/modificarBici.xhtml</from-view-id>
+		<navigation-case>
+			<from-action>#{bicicletaMbSess.modificarBicicleta}</from-action>
+			<from-outcome>successModificarBicicleta</from-outcome>
+			<to-view-id>/abmBicicletas.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+
+	<navigation-rule>
+		<from-view-id>/abmBicicletas.xhtml</from-view-id>
+		<navigation-case>
+			<from-action>#{bicicletaMbSess.visualizarDisponibilidad}</from-action>
+			<from-outcome>successVisualizarDisponibilidad</from-outcome>
+			<to-view-id>/disponibilidadBici.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+
+	<navigation-rule>
+		<from-view-id>*</from-view-id>
+		<navigation-case>
+			<from-action>#{bicicletaMbSess.visualizarListarBicicletas}</from-action>
+			<from-outcome>successVisualizarListarBicicletas</from-outcome>
+			<to-view-id>/abmBicicletas.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	<!-- Fin Reglas para ABM/listado de Bicicleta -->
+
+	<!-- Reglas para ABM/listado de Estacion -->
+	<navigation-rule>
+		<from-view-id>/abmEstaciones.xhtml</from-view-id>
+		<navigation-case>
+			<from-action>#{estacionMbSess.visualizarAltaEstacion}</from-action>
+			<from-outcome>successVisualizarAltaEstacion</from-outcome>
+			<to-view-id>/altaEstacion.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	
+	<navigation-rule>
+		<from-view-id>/altaEstacion.xhtml</from-view-id>
+		<navigation-case>
+			<from-action>#{estacionMbSess.agregarEstacion}</from-action>
+			<from-outcome>successAltaEstacion</from-outcome>
+			<to-view-id>/abmEstaciones.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-action>#{estacionMbSess.agregarEstacion}</from-action>
+			<from-outcome>errorAltaEstacion</from-outcome>
+			<to-view-id>/altaEstacion.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+
+	<navigation-rule>
+		<from-view-id>/abmEstaciones.xhtml</from-view-id>
+		<navigation-case>
+			<from-action>#{estacionMbSess.visualizarModificarEstacion}</from-action>
+			<from-outcome>successVisualizarModificarEstacion</from-outcome>
+			<to-view-id>/modificarEstacion.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+
+	<navigation-rule>
+		<from-view-id>/modificarEstacion.xhtml</from-view-id>
+		<navigation-case>
+			<from-action>#{estacionMbSess.modificarEstacion}</from-action>
+			<from-outcome>successModificarEstacion</from-outcome>
+			<to-view-id>/abmEstaciones.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-action>#{estacionMbSess.modificarEstacion}</from-action>
+			<from-outcome>errorModificarEstacion</from-outcome>
+			<to-view-id>/modificarEstacion.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+
+	<navigation-rule>
+		<from-view-id>*</from-view-id>
+		<navigation-case>
+			<from-action>#{estacionMbSess.listarEstaciones}</from-action>
+			<from-outcome>listarEstaciones</from-outcome>
+			<to-view-id>/abmEstaciones</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	
+	<navigation-rule>
+		<from-view-id>/abmEstaciones.xhtml</from-view-id>
+		<navigation-case>
+			<from-action>#{estacionMbSess.borradoLogico}</from-action>
+			<from-outcome>listarEstaciones</from-outcome>
+			<to-view-id>/abmEstaciones.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	
+	<navigation-rule>
+		<from-view-id>/abmEstaciones.xhtml</from-view-id>
+		<navigation-case>
+			<from-action>#{estacionMbSess.visualizarEstadisticasEstacion}</from-action>
+			<from-outcome>successVisualizarEstadisticasEstacion</from-outcome>
+			<to-view-id>/estadisticasEstacion.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	<!-- Fin ABM/listado de Estacion -->
+
+	<!-- Reglas para Login y Logout -->
+	<navigation-rule>
+		<from-view-id>/login.xhtml</from-view-id>
+		<navigation-case>
+			<from-action>#{loginMb.logueo}</from-action>
+			<from-outcome>successUsuario</from-outcome>
+			<to-view-id>/userBase.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-action>#{loginMb.logueo}</from-action>
+			<from-outcome>successAdministrador</from-outcome>
+			<to-view-id>/adminBase.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-action>#{loginMb.logueo}</from-action>
+			<from-outcome>login</from-outcome>
+			<to-view-id>/login.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+
+	<navigation-rule>
+		<from-view-id>*</from-view-id>
+		<navigation-case>
+			<from-action>#{sesionMb.cerrarSession}</from-action>
+			<from-outcome>logout</from-outcome>
+			<to-view-id>/login.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
+	<!-- Fin Reglas para Login y Logout -->
+
 </faces-config>

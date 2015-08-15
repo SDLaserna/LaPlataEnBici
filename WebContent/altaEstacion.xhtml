@@ -64,15 +64,15 @@
 			<div class="panel panel-green">
 				<div class="panel-heading">Alta Estacion</div>
 				<div class="panel-body pan">
-					<h:form id="Registro">
-						<h:message for="Registro" style="color:red" />
+					<h:form id="Alta">
+						<h:message for="Alta" style="color:red" />
 						<div class="form-body pal">
 							<div class="form-group">
 								<h:outputLabel styleClass="control-label">Nombre:</h:outputLabel>
 								<div class="input-icon right">
 									<i class="fa fa-tag"></i>
 									<h:inputText id="Nombre"
-										value="#{estacionMbReq.estacion.nombre}"
+										value="#{estacionMbSess.estacion.nombre}"
 										styleClass="form-control" required="true">
 									</h:inputText>
 									<h:message for="Nombre" style="color:red;" />
@@ -84,7 +84,7 @@
 								<div class="input-icon right">
 									<i class="fa fa-tag"></i>
 									<h:inputText id="TotalEstacionamientos" type="long"
-										value="#{estacionMbReq.estacion.totalEstacionamientos}"
+										value="#{estacionMbSess.estacion.totalEstacionamientos}"
 										styleClass="form-control" required="true">
 									</h:inputText>
 									<h:message for="TotalEstacionamientos" style="color:red;" />
@@ -93,7 +93,7 @@
 							<div class="form-group">
 								<h:outputLabel styleClass="control-label">
 									Estado</h:outputLabel>
-								<h:selectOneMenu value="#{estacionMbReq.estacion.estado}"
+								<h:selectOneMenu value="#{estacionMbSess.estacion.estado}"
 									styleClass="form-control" id="Estado" required="true">
 									<f:selectItem itemValue="Operativa" itemLabel="Operativa" />
 									<f:selectItem itemValue="Cerrada" itemLabel="Cerrada" />
@@ -111,7 +111,7 @@
 						</div>
 						<div class="form-actions text-right pal">
 							<h:commandButton styleClass="btn btn-success" value="Agregar"
-								action="#{estacionMbReq.registrar}"></h:commandButton>
+								action="#{estacionMbSess.agregarEstacion}"></h:commandButton>
 						</div>
 					</h:form>
 				</div>

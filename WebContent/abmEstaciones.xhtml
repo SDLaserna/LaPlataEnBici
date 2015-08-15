@@ -46,15 +46,18 @@
 	<ui:define name="contenido">
 		<div class="box">
 			<div class="box-header">
-				<h3 class="box-title">Lista de estaciones</h3>
+				<h3 class="box-title">Lista de Estaciones</h3>
 			</div>
 			<!-- /.box-header -->
 			<div style="margin-top: 3%; margin-bottom: 2%;">
-				<h:link outcome="altaEstacion">
-					<button class="btn btn-success">
-						<i class="fa fa-plus-circle"></i> <span class="menu-title">Agregar</span>
-					</button>
-				</h:link>
+				<h:message for="Alta" style="color:green" />
+				<h:form id="Alta">
+					<h:commandLink styleClass="btn btn-success"
+						action="#{estacionMbSess.visualizarAltaEstacion}">
+						<i class="fa fa-plus-circle"></i>
+						<span class="menu-title">Agregar</span>
+					</h:commandLink>
+				</h:form>
 			</div>
 			<div class="box-body table-responsive">
 
@@ -98,7 +101,7 @@
 								styleClass="btn btn-info"
 								style="background-color: purple; 
 								border-color: aliceblue;">
-								<i class="fa fa-eye"></i> Estadisticas
+								<i class="fa fa-eye"></i> Ver Estadisticas
 									<f:param name="idEstacion" value="#{estacion.idEstacion}" />
 							</h:commandLink>
 						</h:form>

@@ -48,144 +48,63 @@
 			</div>
 			<!-- /.box-header -->
 			<div style="margin-top: 3%; margin-bottom: 2%;">
-				<h:link outcome="altaBici">
-					<button class="btn btn-success">
-						<i class="fa fa-plus-circle"></i> <span class="menu-title">Agregar</span>
-					</button>
-				</h:link>
+			<h:form>
+				<h:commandLink styleClass="btn btn-success" action="#{bicicletaMbSess.visualizarAltaBici}" >
+					<i class="fa fa-plus-circle"></i>
+					<span class="menu-title">Agregar</span>
+				</h:commandLink>
+			</h:form>				
+	
 			</div>
 			<div class="box-body table-responsive">
-				<table id="example1" class="table table-bordered table-striped">
-					<thead>
-						<tr>
-							<th>Identificador</th>
-							<th>Fecha de ingreso</th>
-							<th>Estado</th>
-							<th>Ubicacion actual</th>
-							<th>Opciones</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td>123</td>
-							<td>01/02/2014</td>
-							<td>Apta Para el uso</td>
-							<td>Estacion 1</td>
-							<td><h:link outcome="disponibilidadBici">
-									<button class="btn btn-info">
-										<i class="fa fa-eye"></i> Ver disponibilidad
-									</button>
-								</h:link> <h:link outcome="modificarBici">
-									<button class="btn btn-primary">
-										<i class="fa fa-edit"></i> Modificar
-									</button>
-								</h:link>
-								<button class="btn btn-danger">
+			
+			<h:outputText value="No hay bicicletas" style="color:red; font-weight: bold;" rendered="#{empty bicicletaMbSess.listaBicicletas}" />
+			
+				<h:dataTable id="example1" rendered="#{not empty bicicletaMbSess.listaBicicletas}" value="#{bicicletaMbSess.listaBicicletas}"
+						var="bicicleta" styleClass="table table-bordered table-striped">
+	
+						<h:column>
+							<f:facet name="header">Identificador</f:facet>
+						#{bicicleta.idBicicleta}
+					</h:column>
+						<h:column>
+							<f:facet name="header">Fecha de ingreso</f:facet>
+						#{bicicleta.fechaIngreso}
+					</h:column>
+						<h:column>
+							<f:facet name="header">Estado</f:facet>
+						#{bicicleta.estado}
+					</h:column>
+						<h:column>
+							<f:facet name="header">Estacion Actual</f:facet>
+						#{bicicleta.estacion.nombre}
+					</h:column>
+	
+						<h:column>
+							<f:facet name="header">Opciones</f:facet>
+							<h:form id="formOpcTabla" name="formOpcTabla">
+								<h:commandLink
+									action="#{bicicletaMbSess.visualizarModificarBici}"
+									styleClass="btn btn-primary">
+									<i class="fa fa-edit"></i> Editar
+									<f:param name="idBicicleta" value="#{bicicleta.idBicicleta}" />
+								</h:commandLink>
+								<h:commandLink styleClass="btn btn-danger"
+									action="#{bicicletaMbSess.borradoLogico}">
 									<i class="fa fa-eraser"></i> Eliminar
-								</button></td>
-						</tr>
-						<tr>
-							<td>134</td>
-							<td>01/02/2014</td>
-							<td>Apta Para el uso</td>
-							<td>Estacion 1</td>
-							<td><h:link outcome="disponibilidadBici">
-									<button class="btn btn-info">
-										<i class="fa fa-eye"></i> Ver disponibilidad
-									</button>
-								</h:link> <h:link outcome="modificarBici">
-									<button class="btn btn-primary">
-										<i class="fa fa-edit"></i> Modificar
-									</button>
-								</h:link>
-								<button class="btn btn-danger">
-									<i class="fa fa-eraser"></i> Eliminar
-								</button></td>
-						</tr>
-						<tr>
-							<td>576</td>
-							<td>01/02/2014</td>
-							<td>Apta Para el uso</td>
-							<td>Estacion 1</td>
-							<td><h:link outcome="disponibilidadBici">
-									<button class="btn btn-info">
-										<i class="fa fa-eye"></i> Ver disponibilidad
-									</button>
-								</h:link> <h:link outcome="modificarBici">
-									<button class="btn btn-primary">
-										<i class="fa fa-edit"></i> Modificar
-									</button>
-								</h:link>
-								<button class="btn btn-danger">
-									<i class="fa fa-eraser"></i> Eliminar
-								</button></td>
-						</tr>
-						<tr>
-							<td>456</td>
-							<td>01/02/2014</td>
-							<td>En desuso</td>
-							<td>Estacion 3</td>
-							<td><h:link outcome="disponibilidadBici">
-									<button class="btn btn-info">
-										<i class="fa fa-eye"></i> Ver disponibilidad
-									</button>
-								</h:link> <h:link outcome="modificarBici">
-									<button class="btn btn-primary">
-										<i class="fa fa-edit"></i> Modificar
-									</button>
-								</h:link>
-								<button class="btn btn-danger">
-									<i class="fa fa-eraser"></i> Eliminar
-								</button></td>
-						</tr>
-						<tr>
-							<td>094</td>
-							<td>01/02/2014</td>
-							<td>Denunciada</td>
-							<td>Estacion 1</td>
-							<td><h:link outcome="disponibilidadBici">
-									<button class="btn btn-info">
-										<i class="fa fa-eye"></i> Ver disponibilidad
-									</button>
-								</h:link> <h:link outcome="modificarBici">
-									<button class="btn btn-primary">
-										<i class="fa fa-edit"></i> Modificar
-									</button>
-								</h:link>
-								<button class="btn btn-danger">
-									<i class="fa fa-eraser"></i> Eliminar
-								</button></td>
-						</tr>
-						<tr>
-							<td>234</td>
-							<td>01/02/2014</td>
-							<td>En reparacion</td>
-							<td>Estacion 1</td>
-							<td><h:link outcome="disponibilidadBici">
-									<button class="btn btn-info">
-										<i class="fa fa-eye"></i> Ver disponibilidad
-									</button>
-								</h:link> <h:link outcome="modificarBici">
-									<button class="btn btn-primary">
-										<i class="fa fa-edit"></i> Modificar
-									</button>
-								</h:link>
-								<button class="btn btn-danger">
-									<i class="fa fa-eraser"></i> Eliminar
-								</button></td>
-						</tr>
-
-					</tbody>
-					<tfoot>
-						<tr>
-							<th>Identificador</th>
-							<th>Fecha de ingreso</th>
-							<th>Estado</th>
-							<th>Ubicacion actual</th>
-							<th>Opciones</th>
-						</tr>
-					</tfoot>
-				</table>
+								<f:param name="idBicicleta" value="#{bicicleta.idBicicleta}" />
+								</h:commandLink>
+								<h:commandLink
+									action="#{bicicletaMbSess.visualizarDisponibilidad}"
+									styleClass="btn btn-info"
+									style="background-color: purple; 
+									border-color: aliceblue;">
+									<i class="fa fa-eye"></i> Ver Disponibilidad
+										<f:param name="idBicicleta" value="#{bicicleta.idBicicleta}" />
+								</h:commandLink>
+							</h:form>
+						</h:column>
+					</h:dataTable>
 			</div>
 			<!-- /.box-body -->
 		</div>

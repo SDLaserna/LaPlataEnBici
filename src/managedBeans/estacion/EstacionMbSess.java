@@ -9,6 +9,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 
+import entidades.Domicilio;
 import entidades.Estacion;
 import services.EstacionService;
 import services.EstacionServiceImp;
@@ -16,13 +17,17 @@ import services.EstacionServiceImp;
 @ManagedBean
 @SessionScoped
 public class EstacionMbSess {
-	private EstacionService estacionService=new EstacionServiceImp();
-	private List<Estacion> listaEstaciones=new ArrayList<Estacion>();
+	private EstacionService estacionService = new EstacionServiceImp();
+	private List<Estacion> listaEstaciones = new ArrayList<Estacion>();
 	private Estacion estacion;
-	
-	public EstacionMbSess(){
+	private Domicilio ubicacion;
+	private String nombreActual;
+
+	public EstacionMbSess() {
+		this.setEstacion(new Estacion());
+		this.ubicacion = new Domicilio();
 	}
-	
+
 	public List<Estacion> getListaEstaciones() {
 		return listaEstaciones;
 	}
@@ -35,41 +40,81 @@ public class EstacionMbSess {
 		this.setListaEstaciones(this.estacionService.listarActivas());
 		return "listarEstaciones";
 	}
+	
+	public String visualizarAltaEstacion(){
+		this.setEstacion(new Estacion());
+		this.ubicacion = new Domicilio();
+		return "successVisualizarAltaEstacion";
+	}
+	
+	public String agregarEstacion(){
+		if (this.estacionService.existeEstacion(this.getEstacion().getNombre())){
+			FacesMessage mensaje = new FacesMessage("El nombre ya se ha registrado, ingrese otro");
+			FacesContext.getCurrentInstance().addMessage("Alta", mensaje);
+			return "errorAltaEstacion";
+		}
+		else{
+			this.getEstacion().setUbicacion(this.ubicacion);
+			this.getEstacion().setCantEstacionamientosLibres(this.getEstacion().getTotalEstacionamientos());
+			this.estacionService.persistir(this.getEstacion());
+			FacesMessage mensaje = new FacesMessage("La estacion se ha agregado correctamente");
+			FacesContext.getCurrentInstance().addMessage("Alta", mensaje);
+			this.listarEstaciones();
+			return "successAltaEstacion";
+			}
+	}
+	
 
-	public String borradoLogico(){
-		Map<String,String> params =FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap();
+	public String borradoLogico() {
+		Map<String, String> params = FacesContext.getCurrentInstance()
+				.getExternalContext().getRequestParameterMap();
 		String idEstacion = params.get("idEstacion");
-		Long idLong=Long.parseLong(idEstacion);	
-		Estacion estacionPersistente=this.estacionService.obtenerEstacion(idLong);
+		Long idLong = Long.parseLong(idEstacion);
+		Estacion estacionPersistente = this.estacionService
+				.obtenerEstacion(idLong);
 		this.estacionService.borrarLogicamente(estacionPersistente);
 		this.setListaEstaciones(this.estacionService.listarActivas());
 		return "listarEstaciones";
 	}
-	
-	public String visualizarModificarEstacion(){
-		Map<String,String> params =FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap();
+
+	public String visualizarModificarEstacion() {
+		Map<String, String> params = FacesContext.getCurrentInstance()
+				.getExternalContext().getRequestParameterMap();
 		String idEstacion = params.get("idEstacion");
-		Long idLong=Long.parseLong(idEstacion);
+		Long idLong = Long.parseLong(idEstacion);
 		this.setEstacion(this.estacionService.obtenerEstacion(idLong));
-		return "success";
+		this.nombreActual = this.getEstacion().getNombre();
+		return "successVisualizarModificarEstacion";
 	}
-	
-	public String modificarEstacion(){
+
+	public String modificarEstacion() {
+		if (!this.nombreActual.equals(this.getEstacion().getNombre())) {
+			if (this.estacionService.existeEstacion(this.getEstacion()
+					.getNombre())) {
+				FacesMessage mensaje = new FacesMessage(
+						"El nombre ya se ha registrado, ingrese otro");
+				FacesContext.getCurrentInstance().addMessage("Modificar",
+						mensaje);
+				return "errorModificarEstacion";
+			}
+		}
 		this.estacionService.modificar(this.getEstacion());
-		FacesMessage mensaje = new FacesMessage("Se modificaron los datos correctamente");
-		FacesContext.getCurrentInstance().addMessage("Modificar", mensaje);
+		FacesMessage mensaje = new FacesMessage(
+				"Se modificaron los datos correctamente");
+		FacesContext.getCurrentInstance().addMessage("Alta", mensaje);
 		this.setListaEstaciones(this.estacionService.listarActivas());
-		return "successModificar";
+		return "successModificarEstacion";
 	}
-	
-	public String visualizarEstadisticasEstacion(){
-		Map<String,String> params =FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap();
+
+	public String visualizarEstadisticasEstacion() {
+		Map<String, String> params = FacesContext.getCurrentInstance()
+				.getExternalContext().getRequestParameterMap();
 		String idEstacion = params.get("idEstacion");
-		Long idLong=Long.parseLong(idEstacion);
+		Long idLong = Long.parseLong(idEstacion);
 		this.setEstacion(this.estacionService.obtenerEstacion(idLong));
-		return "verEstadisticas";
+		return "successVisualizarEstadisticasEstacion";
 	}
-	
+
 	public Estacion getEstacion() {
 		return estacion;
 	}
