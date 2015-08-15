@@ -73,6 +73,8 @@ public class EstacionMbSess {
 		Estacion estacionPersistente = this.estacionService
 				.obtenerEstacion(idLong);
 		this.estacionService.borrarLogicamente(estacionPersistente);
+		FacesMessage mensaje = new FacesMessage("La estacion se ha eliminado correctamente");
+		FacesContext.getCurrentInstance().addMessage("Alta", mensaje);
 		this.setListaEstaciones(this.estacionService.listarActivas());
 		return "listarEstaciones";
 	}

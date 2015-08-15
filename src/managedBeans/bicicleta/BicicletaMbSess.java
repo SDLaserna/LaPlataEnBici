@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
@@ -49,6 +50,8 @@ public class BicicletaMbSess {
 		Estacion est = this.estacionService.obtenerEstacion(this.getIdEstacion());
 		bici.setEstacion(est);
 		this.bicicletaService.persistir(bici);
+		FacesMessage mensaje = new FacesMessage("La bicicleta se ha agregado correctamente");
+		FacesContext.getCurrentInstance().addMessage("Alta", mensaje);
 		this.visualizarListarBicicletas();
 		return "success";
 	}
@@ -73,6 +76,9 @@ public class BicicletaMbSess {
 		Estacion est = this.estacionService.obtenerEstacion(this.getIdEstacion());
 		this.getBicicleta().setEstacion(est);
 		this.bicicletaService.modificar(this.getBicicleta());
+		FacesMessage mensaje = new FacesMessage(
+				"Se modificaron los datos correctamente");
+		FacesContext.getCurrentInstance().addMessage("Alta", mensaje);
 		this.visualizarListarBicicletas();
 		return "successModificarBicicleta";
 	}
@@ -94,6 +100,8 @@ public class BicicletaMbSess {
 		Bicicleta bicicletaPersistente = this.bicicletaService
 				.obtenerBicicleta(idLong);
 		this.bicicletaService.borrarLogicamente(bicicletaPersistente);
+		FacesMessage mensaje = new FacesMessage("La bicicleta se ha eliminado correctamente");
+		FacesContext.getCurrentInstance().addMessage("Alta", mensaje);
 		this.setListaBicicletas(this.bicicletaService.listarBicicletasActivas());
 		return "listarBicicletas";
 	}

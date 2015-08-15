@@ -52,8 +52,8 @@
 			<div class="box-body table-responsive">
 
 
-
-				<h:dataTable id="example1" value="#{usuarioMbSess.listaUsuarios}"
+				<h:outputText value="No hay usuarios" style="color:red; font-weight: bold;" rendered="#{empty usuarioMbSess.listaUsuarios}" />
+				<h:dataTable id="example1" rendered="#{not empty usuarioMbSess.listaUsuarios}" value="#{usuarioMbSess.listaUsuarios}"
 					var="usuario" styleClass="table table-bordered table-striped">
 
 					<h:column>
