@@ -203,13 +203,22 @@
 			<to-view-id>/modificarEstacion.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>
+	
+	<navigation-rule>
+		<from-view-id>*</from-view-id>
+		<navigation-case>
+			<from-action>#{estacionMbSess.visualizarListaEstaciones}</from-action>
+			<from-outcome>visualizarListaEstaciones</from-outcome>
+			<to-view-id>/listaEstaciones.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
 
 	<navigation-rule>
 		<from-view-id>*</from-view-id>
 		<navigation-case>
-			<from-action>#{estacionMbSess.listarEstaciones}</from-action>
+			<from-action>#{estacionMbReq.listarEstaciones}</from-action>
 			<from-outcome>listarEstaciones</from-outcome>
-			<to-view-id>/abmEstaciones</to-view-id>
+			<to-view-id>/abmEstaciones.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>
 	
