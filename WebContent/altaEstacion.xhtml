@@ -21,6 +21,7 @@
 		<script src="script/jquery.slimscroll.js"></script>
 		<script src="script/icheck.min.js"></script>
 		<script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
+
 		<script>
 			// 	var map;
 			var geocoder;
@@ -35,14 +36,49 @@
 				};
 				map = new google.maps.Map(
 						document.getElementById('map-canvas'), mapOptions);
+				activarNav();
 			}
 
 			google.maps.event.addDomListener(window, 'load', initialize);
+			
+			function alertador(){
+				
+				alert("esto es alertador");
+			}
+			
+			
+			function posicionar() {
+				var address = document.getElementById('Alta:calle').value + ' '
+						+ document.getElementById('Alta:numero').value + ', '
+						+ document.getElementById('Alta:localidad').value;
+				geocoder
+						.geocode(
+								{
+									'address' : address
+								},
+								function(results, status) {
+									if ((status == google.maps.GeocoderStatus.OK)
+											&amp;&amp;(status != google.maps.GeocoderStatus.ZERO_RESULTS)) {
+										var coor = results[0].geometry.location;
+										document.getElementById('Alta:coor').value = coor; //seteo el hidden con las coordenadas
+										map
+												.setCenter(results[0].geometry.location);
+										marker.setMap(map);
+										marker
+												.setPosition(results[0].geometry.location);
+										marker.setTitle("Dirección del Evento");
+									} else {
+										alert('No se pudo cargar la dirección debido al siguiente problema:'
+												+ status);
+									}
+								});
+			}
 		</script>
 		<script>
 			//$(document).ready(func) es para que se marque la opcion que se eligio cuando carga la pagina
-			$(document).ready(
+// 			$(document).ready(
 					function activarNav() {
+						
 						document.getElementById("inicio").setAttribute("class",
 								"");
 						document.getElementById("bicicletas").setAttribute(
@@ -51,8 +87,11 @@
 								"class", "");
 						document.getElementById("estaciones").setAttribute(
 								"class", "active");
-					})
+						
+					}
+// 					)
 		</script>
+
 	</ui:define>
 
 	<ui:define name="navegador">
@@ -66,13 +105,14 @@
 				<div class="panel-body pan">
 					<h:form id="Alta">
 						<h:message for="Alta" style="color:red" />
+						<h:inputHidden id="coor"></h:inputHidden>
 						<div class="form-body pal">
 							<div class="form-group">
 								<h:outputLabel styleClass="control-label">Nombre:</h:outputLabel>
 								<div class="input-icon right">
 									<i class="fa fa-tag"></i>
 									<h:inputText id="Nombre"
-										value="#{estacionMbSess.estacion.nombre}"
+										value="#{estacionMbReq.estacion.nombre}"
 										styleClass="form-control" required="true">
 									</h:inputText>
 									<h:message for="Nombre" style="color:red;" />
@@ -84,7 +124,7 @@
 								<div class="input-icon right">
 									<i class="fa fa-tag"></i>
 									<h:inputText id="TotalEstacionamientos" type="long"
-										value="#{estacionMbSess.estacion.totalEstacionamientos}"
+										value="#{estacionMbReq.estacion.totalEstacionamientos}"
 										styleClass="form-control" required="true">
 									</h:inputText>
 									<h:message for="TotalEstacionamientos" style="color:red;" />
@@ -93,7 +133,7 @@
 							<div class="form-group">
 								<h:outputLabel styleClass="control-label">
 									Estado</h:outputLabel>
-								<h:selectOneMenu value="#{estacionMbSess.estacion.estado}"
+								<h:selectOneMenu value="#{estacionMbReq.estacion.estado}"
 									styleClass="form-control" id="Estado" required="true">
 									<f:selectItem itemValue="Operativa" itemLabel="Operativa" />
 									<f:selectItem itemValue="Cerrada" itemLabel="Cerrada" />
@@ -102,6 +142,46 @@
 								</h:selectOneMenu>
 								<h:message for="Estado" style="color:red;" />
 							</div>
+							<div class="form-group">
+								<h:outputLabel styleClass="control-label">Calle:</h:outputLabel>
+								<div class="input-icon right">
+									<i class="fa fa-tag"></i>
+									<h:inputText id="calle"
+										onchange="posicionar()"
+										value="#{estacionMbReq.estacion.ubicacion.calle}"
+										styleClass="form-control" required="true">
+									</h:inputText>
+									<h:message for="calle" style="color:red;" />
+								</div>
+							</div>
+							<div class="form-group">
+								<h:outputLabel styleClass="control-label">Numero/Altura:</h:outputLabel>
+								<div class="input-icon right">
+									<i class="fa fa-tag"></i>
+									<h:inputText id="numero"
+										value="#{estacionMbReq.estacion.ubicacion.numero}"
+										styleClass="form-control" required="true"
+										onchange="posicionar()">
+									</h:inputText>
+									<h:message for="numero" style="color:red;" />
+								</div>
+							</div>
+							<div class="form-group">
+								<h:outputLabel styleClass="control-label">Localidad:</h:outputLabel>
+								<div class="input-icon right">
+									<i class="fa fa-tag"></i>
+									<h:inputText id="localidad"
+										value="#{estacionMbReq.estacion.ubicacion.localidad}"
+										styleClass="form-control" required="true"
+										onchange="posicionar()">
+										
+									</h:inputText>
+									<h:message for="localidad" style="color:red;" />
+								</div>
+							</div>
+
+
+
 							<button type="button" data-container="body" data-toggle="popover"
 								data-placement="right"
 								data-content="Se busca en el mapa la direccion contenida en el campo 'Ubicacion' y se habilita el boton agregar si existe el punto "
@@ -111,7 +191,7 @@
 						</div>
 						<div class="form-actions text-right pal">
 							<h:commandButton styleClass="btn btn-success" value="Agregar"
-								action="#{estacionMbSess.agregarEstacion}"></h:commandButton>
+								action="#{estacionMbReq.agregarEstacion}"></h:commandButton>
 						</div>
 					</h:form>
 				</div>

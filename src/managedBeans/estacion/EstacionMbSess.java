@@ -23,9 +23,11 @@ public class EstacionMbSess {
 	private Domicilio ubicacion;
 	private String nombreActual;
 
+
 	public EstacionMbSess() {
 		this.setEstacion(new Estacion());
 		this.ubicacion = new Domicilio();
+		this.getEstacion().setUbicacion(this.getUbicacion());
 	}
 
 	public List<Estacion> getListaEstaciones() {
@@ -47,23 +49,13 @@ public class EstacionMbSess {
 		return "successVisualizarAltaEstacion";
 	}
 	
-	public String agregarEstacion(){
-		if (this.estacionService.existeEstacion(this.getEstacion().getNombre())){
-			FacesMessage mensaje = new FacesMessage("El nombre ya se ha registrado, ingrese otro");
-			FacesContext.getCurrentInstance().addMessage("Alta", mensaje);
-			return "errorAltaEstacion";
-		}
-		else{
-			this.getEstacion().setUbicacion(this.ubicacion);
-			this.getEstacion().setCantEstacionamientosLibres(this.getEstacion().getTotalEstacionamientos());
-			this.estacionService.persistir(this.getEstacion());
-			FacesMessage mensaje = new FacesMessage("La estacion se ha agregado correctamente");
-			FacesContext.getCurrentInstance().addMessage("Alta", mensaje);
-			this.listarEstaciones();
-			return "successAltaEstacion";
-			}
+	public Domicilio getUbicacion() {
+		return ubicacion;
 	}
-	
+
+	public void setUbicacion(Domicilio ubicacion) {
+		this.ubicacion = ubicacion;
+	}
 
 	public String borradoLogico() {
 		Map<String, String> params = FacesContext.getCurrentInstance()
