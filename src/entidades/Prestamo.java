@@ -28,7 +28,7 @@ public class Prestamo {
 	private Date fechaDevolucion;
 	private String estado;
 	
-	protected Prestamo() {
+	public Prestamo() {
 	}
 
 	public Prestamo(Usuario usuario, Bicicleta bicicleta,

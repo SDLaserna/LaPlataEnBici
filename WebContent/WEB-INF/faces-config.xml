@@ -150,6 +150,16 @@
 			<to-view-id>/abmBicicletas.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>
+	
+	<navigation-rule>
+		<from-view-id>/listaEstaciones.xhtml</from-view-id>
+		<navigation-case>
+			<from-action>#{bicicletaMbSess.visualizarBicicletasParaPrestar}</from-action>
+			<from-outcome>successVisualizarBicicletasParaPrestar</from-outcome>
+			<to-view-id>/seleccionBici.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	
 	<!-- Fin Reglas para ABM/listado de Bicicleta -->
 
 	<!-- Reglas para ABM/listado de Estacion -->

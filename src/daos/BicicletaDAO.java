@@ -7,4 +7,5 @@ import entidades.Bicicleta;
 public interface BicicletaDAO extends GenericDAO<Bicicleta> {
 
 	public List<Bicicleta> listarBicicletasActivas();
+	public List<Bicicleta> bicicletasParaPrestar(Long idEstacion);
 }

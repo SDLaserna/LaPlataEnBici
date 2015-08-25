@@ -10,6 +10,7 @@ import javax.persistence.Entity;
 public class Administrador extends Persona {
 	
 	public Administrador() {
+		this.setActiva(true);
 	}
 	
 	public Administrador(String dni, String apellido, String nombre,

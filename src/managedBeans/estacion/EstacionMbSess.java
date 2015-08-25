@@ -38,6 +38,11 @@ public class EstacionMbSess {
 		this.listaEstaciones = listaEstaciones;
 	}
 
+	public String visualizarListaEstaciones() {
+		this.setListaEstaciones(this.estacionService.listarActivas());
+		return "visualizarListaEstaciones";
+	}
+	
 	public String listarEstaciones() {
 		this.setListaEstaciones(this.estacionService.listarActivas());
 		return "listarEstaciones";

@@ -60,7 +60,7 @@ public class UsuarioMbReq {
 	public String registrar(){
 		/* cambiamos existeUsuario por existePersona */
 		if (this.usuarioService.existePersona(this.getUsuario().getEmail())){
-			FacesMessage mensaje = new FacesMessage("El Email ya se ha registrado, ingrese otro");
+			FacesMessage mensaje = new FacesMessage(FacesMessage.SEVERITY_ERROR, "El Email ya se ha registrado, ingrese otro", "El Email ya se ha registrado, ingrese otro");
 			FacesContext.getCurrentInstance().addMessage("Registro", mensaje);
 			return "error";
 		}
@@ -69,7 +69,7 @@ public class UsuarioMbReq {
 			String claveGenerada=this.randomizer();
 			this.getUsuario().setClave(claveGenerada);
 			this.usuarioService.persistir(this.getUsuario());
-			FacesMessage mensaje = new FacesMessage("Te registrate correctamente, se te ha generado una contrasenia");
+			FacesMessage mensaje = new FacesMessage(FacesMessage.SEVERITY_INFO, "Te registrate correctamente, se te ha generado una contrasenia", "Te registrate correctamente, se te ha generado una contrasenia");
 			FacesContext.getCurrentInstance().addMessage("Registro", mensaje);
 			return "success";
 			}

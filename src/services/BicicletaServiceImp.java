@@ -38,4 +38,9 @@ public class BicicletaServiceImp implements BicicletaService {
 		
 	}
 
+	@Override
+	public List<Bicicleta> listarBicicletasParaPrestar(Long idEstacion) {
+		return this.bicicletaDAO.bicicletasParaPrestar(idEstacion);
+	}
+
 }

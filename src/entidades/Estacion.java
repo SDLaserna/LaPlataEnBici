@@ -32,6 +32,7 @@ public class Estacion {
 	private List<Bicicleta> bicicletas;
 	
 	public Estacion() {
+		this.setActiva(true);
 	}
 
 	public Estacion(String nombre, Long total,

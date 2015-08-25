@@ -48,41 +48,47 @@
 	<ui:define name="contenido">
 		<div class="box">
 			<div class="box-header">
-				<h3 class="box-title">Lista de estaciones</h3>
+				<h3 class="box-title">Biciletas para retirar</h3>
 			</div>
 			<!-- /.box-header -->
-
+			<div style="margin-top: 3%; margin-bottom: 2%;">
+				<h:message for="Seleccion" errorStyle="color: red; font-weight: bold;" 
+				infoStyle="color: green; font-weight: bold;"/>
+				<h:form id="Seleccion">
+				</h:form>
+			</div>
+			
 			<div class="box-body table-responsive">
 			
-			<h:outputText value="No hay estaciones" style="color:red; font-weight: bold;" rendered="#{empty estacionMbSess.listaEstaciones}" />
-				<h:dataTable id="example1" rendered="#{not empty estacionMbSess.listaEstaciones}" value="#{estacionMbSess.listaEstaciones}"
-					var="estacion" styleClass="table table-bordered table-striped">
+			<h:outputText value="No hay bicicletas para retirar" style="color:red; font-weight: bold;" rendered="#{empty bicicletaMbSess.listaBicicletas}" />
+				<h:dataTable id="example1" rendered="#{not empty bicicletaMbSess.listaBicicletas}" value="#{bicicletaMbSess.listaBicicletas}"
+					var="bicicleta" styleClass="table table-bordered table-striped">
 
 					<h:column>
-						<f:facet name="header">Nombre</f:facet>
-					#{estacion.nombre}
+						<f:facet name="header">Marca</f:facet>
+					#{bicicleta.marca}
 				</h:column>
 					<h:column>
-						<f:facet name="header">Total Estacionamientos</f:facet>
-					#{estacion.totalEstacionamientos}
+						<f:facet name="header">Color</f:facet>
+					#{bicicleta.color}
 				</h:column>
 					<h:column>
-						<f:facet name="header">Cant. Estacionamientos libres</f:facet>
-					#{estacion.cantEstacionamientosLibres}
+						<f:facet name="header">Rodado</f:facet>
+					#{bicicleta.rodado}
 				</h:column>
 					<h:column>
-						<f:facet name="header">Estado</f:facet>
-					#{estacion.estado}
+						<f:facet name="header">Descripcion</f:facet>
+					#{bicicleta.descrip}
 				</h:column>
 
 					<h:column>
 						<f:facet name="header">Retirar Bicicleta</f:facet>
 						<h:form id="formOpcTabla" name="formOpcTabla" >
 							<h:commandLink 
-								action="#{bicicletaMbSess.visualizarBicicletasParaPrestar}"
-								styleClass="btn btn-success" disabled="#{estacion.estado != 'Operativa'}">
-								<i class="fa fa-bicycle"></i> Ver Bicicletas
-								<f:param name="idEstacion" value="#{estacion.idEstacion}" />
+								action="#{bicicletaMbSess.prestarBicicleta}"
+								styleClass="btn btn-success" >
+								<i class="fa fa-bicycle"></i> Retirar
+								<f:param name="idBicicleta" value="#{bicicleta.idBicicleta}" />
 							</h:commandLink>
 						</h:form>
 					</h:column>
