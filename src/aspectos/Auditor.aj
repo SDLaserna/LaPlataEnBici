@@ -11,6 +11,8 @@ import org.aspectj.lang.annotation.Before;
 
 import daos.EMF;
 import entidades.Log;
+import services.HistorialEstacionService;
+import services.HistorialEstacionServiceImp;
 import services.LogService;
 import services.LogServiceImp;
 

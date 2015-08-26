@@ -151,6 +151,8 @@
 		</navigation-case>
 	</navigation-rule>
 	
+<!-- 	nuevo -->
+	
 	<navigation-rule>
 		<from-view-id>/listaEstaciones.xhtml</from-view-id>
 		<navigation-case>
@@ -159,21 +161,32 @@
 			<to-view-id>/seleccionBici.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>
-	
+<!-- nuevo fin -->
+
 	<!-- Fin Reglas para ABM/listado de Bicicleta -->
 
 	<!-- Reglas para ABM/listado de Estacion -->
 	<navigation-rule>
 		<from-view-id>/abmEstaciones.xhtml</from-view-id>
-		<navigation-case>
-			<from-action>#{estacionMbSess.visualizarAltaEstacion}</from-action>
-			<from-outcome>successVisualizarAltaEstacion</from-outcome>
-			<to-view-id>/altaEstacion.xhtml</to-view-id>
-		</navigation-case>
+<!-- 		<navigation-case> -->
+<!-- 			<from-action>#{estacionMbSess.visualizarAltaEstacion}</from-action> -->
+<!-- 			<from-outcome>successVisualizarAltaEstacion</from-outcome> -->
+<!-- 			<to-view-id>/altaEstacion.xhtml</to-view-id> -->
+<!-- 		</navigation-case> -->
 		<navigation-case>
 			<from-action>#{estacionMbReq.visualizarAltaEstacion}</from-action>
 			<from-outcome>successVisualizarAltaEstacion</from-outcome>
 			<to-view-id>/altaEstacion.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-action>#{estacionMbSess.visualizarModificarEstacion}</from-action>
+			<from-outcome>successVisualizarModificarEstacion</from-outcome>
+			<to-view-id>/modificarEstacion.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-action>#{estacionMbSess.borradoLogico}</from-action>
+			<from-outcome>listarEstaciones</from-outcome>
+			<to-view-id>/abmEstaciones.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>
 	
@@ -188,15 +201,6 @@
 			<from-action>#{estacionMbReq.agregarEstacion}</from-action>
 			<from-outcome>errorAltaEstacion</from-outcome>
 			<to-view-id>/altaEstacion.xhtml</to-view-id>
-		</navigation-case>
-	</navigation-rule>
-
-	<navigation-rule>
-		<from-view-id>/abmEstaciones.xhtml</from-view-id>
-		<navigation-case>
-			<from-action>#{estacionMbReq.visualizarModificarEstacion}</from-action>
-			<from-outcome>successVisualizarModificarEstacion</from-outcome>
-			<to-view-id>/modificarEstacion.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>
 
@@ -226,16 +230,7 @@
 	<navigation-rule>
 		<from-view-id>*</from-view-id>
 		<navigation-case>
-			<from-action>#{estacionMbReq.listarEstaciones}</from-action>
-			<from-outcome>listarEstaciones</from-outcome>
-			<to-view-id>/abmEstaciones.xhtml</to-view-id>
-		</navigation-case>
-	</navigation-rule>
-	
-	<navigation-rule>
-		<from-view-id>/abmEstaciones.xhtml</from-view-id>
-		<navigation-case>
-			<from-action>#{estacionMbSess.borradoLogico}</from-action>
+			<from-action>#{estacionMbSess.listarEstaciones}</from-action>
 			<from-outcome>listarEstaciones</from-outcome>
 			<to-view-id>/abmEstaciones.xhtml</to-view-id>
 		</navigation-case>

@@ -44,6 +44,7 @@
 	</ui:define>
 
 	<ui:define name="contenido">
+		<f:event listener="#{estacionMbSess.cargarListaDeEstaciones}" type="preRenderView"></f:event>
 		<div class="box">
 			<div class="box-header">
 				<h3 class="box-title">Lista de Estaciones</h3>
@@ -54,6 +55,7 @@
 				<h:form id="Alta">
 					<h:commandLink styleClass="btn btn-success"
 						action="#{estacionMbReq.visualizarAltaEstacion}">
+
 						<i class="fa fa-plus-circle"></i>
 						<span class="menu-title">Agregar</span>
 					</h:commandLink>
@@ -61,8 +63,8 @@
 			</div>
 			<div class="box-body table-responsive">
 
-				<h:outputText value="No hay estaciones" style="color:red; font-weight: bold;" rendered="#{empty estacionMbReq.listaEstaciones}" />
-				<h:dataTable id="example1" rendered="#{not empty estacionMbReq.listaEstaciones}" value="#{estacionMbReq.listaEstaciones}"
+				<h:outputText value="No hay estaciones" style="color:red; font-weight: bold;" rendered="#{empty estacionMbSess.listaEstaciones}" />
+				<h:dataTable id="example1" rendered="#{not empty estacionMbSess.listaEstaciones}" value="#{estacionMbSess.listaEstaciones}"
 					var="estacion" styleClass="table table-bordered table-striped">
 
 					<h:column>

@@ -2,6 +2,7 @@ package managedBeans.estacion;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
@@ -16,7 +17,7 @@ import entidades.Estacion;
 @ManagedBean
 @RequestScoped
 public class EstacionMbReq {
-	
+	private String coor;
 	private Estacion estacion;
 	private Domicilio ubicacion;
 	private EstacionService estacionService=new EstacionServiceImp();
@@ -33,6 +34,21 @@ public class EstacionMbReq {
 	}
 	
 	
+	public String borradoLogico() {
+		Map<String, String> params = FacesContext.getCurrentInstance()
+				.getExternalContext().getRequestParameterMap();
+		String idEstacion = params.get("idEstacion");
+		Long idLong = Long.parseLong(idEstacion);
+		Estacion estacionPersistente = this.estacionService
+				.obtenerEstacion(idLong);
+		this.estacionService.borrarLogicamente(estacionPersistente);
+		FacesMessage mensaje = new FacesMessage("La estacion se ha eliminado correctamente");
+		FacesContext.getCurrentInstance().addMessage("Alta", mensaje);
+		this.setListaEstaciones(this.estacionService.listarActivas());
+		return "listarEstaciones";
+	}
+	
+	
 	public String agregarEstacion(){
 		if (this.estacionService.existeEstacion(this.getEstacion().getNombre())){
 			FacesMessage mensaje = new FacesMessage("El nombre ya se ha registrado, ingrese otro");
@@ -42,6 +58,11 @@ public class EstacionMbReq {
 		else{
 			this.getEstacion().setUbicacion(this.ubicacion);
 			this.getEstacion().setCantEstacionamientosLibres(this.getEstacion().getTotalEstacionamientos());
+			int index= this.getCoor().indexOf(",");
+			String latitud=this.getCoor().substring(1, index);
+			String longitud=this.getCoor().substring(index+1, this.getCoor().length()-1);
+			this.getEstacion().getUbicacion().setLatitud(latitud);
+			this.getEstacion().getUbicacion().setLongitud(longitud);
 			this.estacionService.persistir(this.getEstacion());
 			FacesMessage mensaje = new FacesMessage("La estacion se ha agregado correctamente");
 			FacesContext.getCurrentInstance().addMessage("Alta", mensaje);
@@ -80,5 +101,15 @@ public class EstacionMbReq {
 
 	public void setListaEstaciones(List<Estacion> listaEstaciones) {
 		this.listaEstaciones = listaEstaciones;
+	}
+
+
+	public String getCoor() {
+		return coor;
+	}
+
+
+	public void setCoor(String coor) {
+		this.coor = coor;
 	}
 }

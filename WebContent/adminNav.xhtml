@@ -11,7 +11,7 @@
 
 				<div class="clearfix"></div>
 				<li class="active" id="inicio">
-					<!-- 				<a href="adminBase"> --> <h:link outcome="adminBase">
+					<h:link outcome="adminBase">
 						<i class="fa fa-home fa-fw"></i>
 						<span class="menu-title">Inicio</span>
 						<!-- 				</a> -->
@@ -20,7 +20,7 @@
 				<div class="clearfix"></div>
 				<li id="estaciones">
 					<h:commandLink
-						action="#{estacionMbReq.listarEstaciones}">
+						action="#{estacionMbSess.listarEstaciones}">
 						<i class="fa fa-group fa-fw">
 						</i>
 						<span class="menu-title">Estaciones</span>

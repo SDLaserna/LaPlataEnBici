@@ -37,9 +37,10 @@ public class EstacionServiceImp implements EstacionService {
 	}
 	
 	public void borrarLogicamente(Estacion e) {
-		e.setActiva(true);
-		this.estacionDAO.actualizar(e);
-		
+		/* esto estaba en true, lo pongo en false para que al sincronizar ande */
+		e.setActiva(false);
+		e.setEstado("eliminado");
+		this.estacionDAO.actualizar(e);		
 	}
 
 	@Override

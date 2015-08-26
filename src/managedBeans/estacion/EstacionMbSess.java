@@ -16,7 +16,7 @@ import services.EstacionServiceImp;
 
 @ManagedBean
 @SessionScoped
-public class EstacionMbSess {
+public class EstacionMbSess{
 	private EstacionService estacionService = new EstacionServiceImp();
 	private List<Estacion> listaEstaciones = new ArrayList<Estacion>();
 	private Estacion estacion;
@@ -29,7 +29,13 @@ public class EstacionMbSess {
 		this.ubicacion = new Domicilio();
 		this.getEstacion().setUbicacion(this.getUbicacion());
 	}
-
+	
+	/* Prueba para cargar la lista de estaciones en un preRender del menu navegador*/
+	public void cargarListaDeEstaciones(){
+		this.listarEstaciones();
+	}
+	
+	
 	public List<Estacion> getListaEstaciones() {
 		return listaEstaciones;
 	}
@@ -38,11 +44,6 @@ public class EstacionMbSess {
 		this.listaEstaciones = listaEstaciones;
 	}
 
-	public String visualizarListaEstaciones() {
-		this.setListaEstaciones(this.estacionService.listarActivas());
-		return "visualizarListaEstaciones";
-	}
-	
 	public String listarEstaciones() {
 		this.setListaEstaciones(this.estacionService.listarActivas());
 		return "listarEstaciones";
@@ -114,6 +115,11 @@ public class EstacionMbSess {
 		return "successVisualizarEstadisticasEstacion";
 	}
 
+	public String visualizarListaEstaciones(){
+		this.setListaEstaciones(this.estacionService.listarActivas());
+		return "visualizarListaEstaciones";
+	}
+	
 	public Estacion getEstacion() {
 		return estacion;
 	}
