@@ -22,6 +22,7 @@ public class EstacionMbSess{
 	private Estacion estacion;
 	private Domicilio ubicacion;
 	private String nombreActual;
+	private String coor;
 
 
 	public EstacionMbSess() {
@@ -126,5 +127,13 @@ public class EstacionMbSess{
 
 	public void setEstacion(Estacion estacion) {
 		this.estacion = estacion;
+	}
+
+	public String getCoor() {
+		return coor;
+	}
+
+	public void setCoor(String coor) {
+		this.coor = coor;
 	}
 }

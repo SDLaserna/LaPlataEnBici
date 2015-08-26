@@ -33,14 +33,41 @@
 				};
 				map = new google.maps.Map(
 						document.getElementById('map-canvas'), mapOptions);
+				activarNav();
+				posicionar();
 			}
 
 			google.maps.event.addDomListener(window, 'load', initialize);
-		</script>
-		<script>
-			//$(document).ready(func) es para que se marque la opcion que se eligio cuando carga la pagina
-			$(document).ready(
-					function activarNav() {
+
+
+			function posicionar() {
+				var address = document.getElementById('Modificar:calle').value + ' '
+						+ document.getElementById('Modificar:numero').value + ', '
+						+ document.getElementById('Modificar:localidad').value;
+				geocoder
+						.geocode(
+								{
+									'address' : address
+								},
+								function(results, status) {
+									if ((status == google.maps.GeocoderStatus.OK)
+											&amp;&amp;(status != google.maps.GeocoderStatus.ZERO_RESULTS)) {
+										var coor = results[0].geometry.location;
+										document.getElementById('Modificar:coor').value = coor; //seteo el hidden con las coordenadas
+										map
+												.setCenter(results[0].geometry.location);
+										marker.setMap(map);
+										marker
+												.setPosition(results[0].geometry.location);
+										marker.setTitle("Dirección del Evento");
+									} else {
+										alert('No se pudo cargar la dirección debido al siguiente problema:'
+												+ status);
+									}
+								});
+			}
+			
+			function activarNav() {
 						document.getElementById("inicio").setAttribute("class",
 								"");
 						document.getElementById("bicicletas").setAttribute(
@@ -49,7 +76,7 @@
 								"class", "");
 						document.getElementById("estaciones").setAttribute(
 								"class", "active");
-					})
+					}
 		</script>
 	</ui:define>
 
@@ -64,6 +91,7 @@
 				<div class="panel-body pan">
 					<h:form id="Modificar">
 						<h:message for="Modificar" style="color:red" />
+						<h:inputHidden id="coor" value="#{estacionMbSess.coor}"></h:inputHidden>
 						<div class="form-body pal">
 							<div class="form-group">
 								<h:outputLabel styleClass="control-label">Nombre:</h:outputLabel>
@@ -76,6 +104,44 @@
 									<h:message for="Nombre" style="color:red;" />
 								</div>
 							</div>
+
+
+							<div class="form-group">
+								<h:outputLabel styleClass="control-label">Calle:</h:outputLabel>
+								<div class="input-icon right">
+									<i class="fa fa-tag"></i>
+									<h:inputText id="calle"
+										value="#{estacionMbSess.estacion.ubicacion.calle}"
+										styleClass="form-control" required="true" onchange="posicionar()">
+									</h:inputText>
+									<h:message for="calle" style="color:red;" />
+								</div>
+							</div>
+							<div class="form-group">
+								<h:outputLabel styleClass="control-label">Numero:</h:outputLabel>
+								<div class="input-icon right">
+									<i class="fa fa-tag"></i>
+									<h:inputText id="numero"
+										value="#{estacionMbSess.estacion.ubicacion.numero}"
+										styleClass="form-control" required="true" onchange="posicionar()">
+									</h:inputText>
+									<h:message for="numero" style="color:red;" />
+								</div>
+							</div>
+							<div class="form-group">
+								<h:outputLabel styleClass="control-label">Localidad:</h:outputLabel>
+								<div class="input-icon right">
+									<i class="fa fa-tag"></i>
+									<h:inputText id="localidad"
+										value="#{estacionMbSess.estacion.ubicacion.localidad}"
+										styleClass="form-control" required="true" onchange="posicionar()">
+									</h:inputText>
+									<h:message for="localidad" style="color:red;" />
+								</div>
+							</div>
+
+
+
 							<div class="form-group">
 								<h:outputLabel styleClass="control-label">
 									Total de estacionamientos</h:outputLabel>
