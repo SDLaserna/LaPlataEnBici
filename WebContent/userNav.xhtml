@@ -33,14 +33,12 @@
 
 			</li>
 			<li id="misBicicletas">
-				<!-- 				<a href="userBicicletas"> --> <h:link
-					outcome="misBicicletas">
-					<i class="fa fa-bicycle fa-fw">
-						<div class="icon-bg bg-green"></div>
-					</i>
-					<span class="menu-title">Mis Bicicletas</span>
-					<!-- 				</a> -->
-				</h:link>
+					<h:commandLink
+						action="#{prestamoMbSess.visualizarBicicletasPrestadas}">
+						<i class="fa fa-bicycle fa-fw"><div class="icon-bg bg-green"></div>
+						</i>
+						<span class="menu-title">Bicicletas Prestadas</span>
+					</h:commandLink>
 			</li>
 		</ul>
 		</h:form>

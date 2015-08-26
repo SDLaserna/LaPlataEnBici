@@ -149,9 +149,18 @@
 			<from-outcome>successVisualizarListarBicicletas</from-outcome>
 			<to-view-id>/abmBicicletas.xhtml</to-view-id>
 		</navigation-case>
+		
+		<!-- 	nuevo Prestamo-->	
+		
+		<navigation-case>
+			<from-action>#{prestamoMbSess.visualizarBicicletasPrestadas}</from-action>
+			<from-outcome>successVisualizarBicicletasPrestadas</from-outcome>
+			<to-view-id>/bicicletasPrestadas.xhtml</to-view-id>
+		</navigation-case>
+		
+		<!-- nuevo Prestamo fin -->
+		
 	</navigation-rule>
-	
-<!-- 	nuevo -->
 	
 	<navigation-rule>
 		<from-view-id>/listaEstaciones.xhtml</from-view-id>
@@ -161,7 +170,6 @@
 			<to-view-id>/seleccionBici.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>
-<!-- nuevo fin -->
 
 	<!-- Fin Reglas para ABM/listado de Bicicleta -->
 
@@ -225,17 +233,13 @@
 			<from-outcome>visualizarListaEstaciones</from-outcome>
 			<to-view-id>/listaEstaciones.xhtml</to-view-id>
 		</navigation-case>
-	</navigation-rule>
-
-	<navigation-rule>
-		<from-view-id>*</from-view-id>
 		<navigation-case>
 			<from-action>#{estacionMbSess.listarEstaciones}</from-action>
 			<from-outcome>listarEstaciones</from-outcome>
 			<to-view-id>/abmEstaciones.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>
-	
+
 	<navigation-rule>
 		<from-view-id>/abmEstaciones.xhtml</from-view-id>
 		<navigation-case>

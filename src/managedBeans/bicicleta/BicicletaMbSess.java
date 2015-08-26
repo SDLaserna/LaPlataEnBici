@@ -67,48 +67,6 @@ public class BicicletaMbSess {
 		return "successVisualizarListarBicicletas";
 	}
 	
-	public String visualizarBicicletasParaPrestar() {
-		Map<String, String> params = FacesContext.getCurrentInstance()
-				.getExternalContext().getRequestParameterMap();
-		String idEstacion = params.get("idEstacion");
-		this.setIdEstacion(Long.parseLong(idEstacion));
-		this.setListaBicicletas(this.bicicletaService.listarBicicletasParaPrestar(this.getIdEstacion()));
-		return "successVisualizarBicicletasParaPrestar";
-	}
-	
-	public String prestarBicicleta() {
-		FacesContext facesContext = FacesContext.getCurrentInstance();
-		
-		Date fechaActual = new Date();
-	    
-		HttpServletRequest httpServletRequest = (HttpServletRequest)facesContext.getExternalContext().getRequest();
-	    Usuario usuario = (Usuario) httpServletRequest.getSession().getAttribute("personaSesion");
-		
-	    if ((this.prestamoService.prestamosActualesDelUsuario(usuario.getIdPersona(), fechaActual).size()) < 3){
-	    	 Estacion est = this.estacionService.obtenerEstacion(this.getIdEstacion());
-	 		
-	 		Map<String, String> params = facesContext.getExternalContext().getRequestParameterMap();
-	 		String idBicicleta = params.get("idBicicleta");
-	 		Long idLong=Long.parseLong(idBicicleta);
-	 		Bicicleta bici =this.bicicletaService.obtenerBicicleta(idLong);
-	 		bici.setPrestada(true);
-	 		       
-	 		Prestamo prestamo = new Prestamo(usuario,bici,est,fechaActual);
-	 		this.prestamoService.persistir(prestamo);
-	 		this.bicicletaService.modificar(bici);
-	 		
-	 		FacesMessage mensaje = new FacesMessage(FacesMessage.SEVERITY_INFO, "Se retiro la bicicleta correctamente", "Se retiro la bicicleta correctamente");
-	 		facesContext.addMessage("Seleccion", mensaje);
-	 		this.setListaBicicletas(this.bicicletaService.listarBicicletasParaPrestar(this.getIdEstacion()));
-	 		return "successPrestarBicicleta";
-	    }else{
-	    	FacesMessage mensaje = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Llego al limite de retiros en el dia", "Llego al limite de retiros en el dia");
-	 		facesContext.addMessage("Seleccion", mensaje);
-	    	return "errorPrestarBicicleta";
-	    }
-	   
-	}
-
 	public String visualizarModificarBici(){
 		Map<String,String> params =FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap();
 		String idBicicleta = params.get("idBicicleta");
@@ -152,6 +110,52 @@ public class BicicletaMbSess {
 		FacesContext.getCurrentInstance().addMessage("Alta", mensaje);
 		this.setListaBicicletas(this.bicicletaService.listarBicicletasActivas());
 		return "listarBicicletas";
+	}
+	
+	public String visualizarBicicletasParaPrestar() {
+		Map<String, String> params = FacesContext.getCurrentInstance()
+				.getExternalContext().getRequestParameterMap();
+		String idEstacion = params.get("idEstacion");
+		this.setIdEstacion(Long.parseLong(idEstacion));
+		this.setListaBicicletas(this.bicicletaService.listarBicicletasParaPrestar(this.getIdEstacion()));
+		return "successVisualizarBicicletasParaPrestar";
+	}
+	
+	public String prestarBicicleta() {
+		FacesContext facesContext = FacesContext.getCurrentInstance();
+		
+		Date fechaActual = new Date();
+	    
+		HttpServletRequest httpServletRequest = (HttpServletRequest)facesContext.getExternalContext().getRequest();
+	    Usuario usuario = (Usuario) httpServletRequest.getSession().getAttribute("personaSesion");
+		
+	    if ((this.prestamoService.prestamosActualesDelUsuario(usuario.getIdPersona(), fechaActual).size()) < 3){
+	    	 Estacion est = this.estacionService.obtenerEstacion(this.getIdEstacion());
+	 		
+	 		Map<String, String> params = facesContext.getExternalContext().getRequestParameterMap();
+	 		String idBicicleta = params.get("idBicicleta");
+	 		Long idLong=Long.parseLong(idBicicleta);
+	 		Bicicleta bici =this.bicicletaService.obtenerBicicleta(idLong);
+	 		bici.setPrestada(true);
+	 		       
+	 		Prestamo prestamo = new Prestamo(usuario,bici,est,fechaActual);
+	 		this.prestamoService.persistir(prestamo);
+	 		this.bicicletaService.modificar(bici);
+	 		
+	 		FacesMessage mensaje = new FacesMessage(FacesMessage.SEVERITY_INFO, "Se retiro la bicicleta correctamente", "Se retiro la bicicleta correctamente");
+	 		facesContext.addMessage("Seleccion", mensaje);
+	 		this.setListaBicicletas(this.bicicletaService.listarBicicletasParaPrestar(this.getIdEstacion()));
+	 		return "successPrestarBicicleta";
+	    }else{
+	    	FacesMessage mensaje = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Llego al limite de retiros en el dia", "Llego al limite de retiros en el dia");
+	 		facesContext.addMessage("Seleccion", mensaje);
+	    	return "errorPrestarBicicleta";
+	    }
+	}
+	
+	public String visualizarBicicletasPrestadas() {
+		this.setListaBicicletas(this.bicicletaService.listarBicicletasParaPrestar(this.getIdEstacion()));
+		return "successVisualizarBicicletasPrestadas";
 	}
 
 	public List<Estacion> getListaEstaciones() {
