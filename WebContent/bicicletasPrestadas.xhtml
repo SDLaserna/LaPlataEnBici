@@ -52,7 +52,7 @@
 
 			<div class="box-body table-responsive">
 
-				<h:outputText value="No hay bicicletas para devolver"
+				<h:outputText value="No hay bicicletas prestadas"
 					style="color:red; font-weight: bold;"
 					rendered="#{empty prestamoMbSess.listaPrestamos}" />
 				<h:dataTable id="example1"
@@ -77,11 +77,11 @@
 					#{prestamo.bicicleta.descrip}
 				</h:column>
 					<h:column>
-						<f:facet name="header">Estado</f:facet>
+						<f:facet name="header">Estado de la bicicleta</f:facet>
 					#{prestamo.bicicleta.estado}
 				</h:column>
 					<h:column>
-						<f:facet name="header">Estacion</f:facet>
+						<f:facet name="header">Estacion de Prestamo</f:facet>
 					#{prestamo.estacionPrestamo.nombre}
 				</h:column>
 					<h:column>
@@ -95,9 +95,9 @@
 					<h:column>
 						<f:facet name="header">Opciones</f:facet>
 						<h:form id="formOpcTabla" name="formOpcTabla">
-							<h:commandLink action="#{prestamoMbSess.devolverBicicleta}"
+							<h:commandLink action="#{prestamoMbSess.visualizarEstacionarBicicleta}"
 								styleClass="btn btn-success">
-								<i class="fa fa-bicycle"></i> Estacionar
+								<i class="fa fa-eye"></i> Ver Estaciones
 								<f:param name="idPrestamo" value="#{prestamo.idPrestamo}" />
 							</h:commandLink>
 							<h:commandLink action="#{prestamoMbSess.denunciarBicicleta}"

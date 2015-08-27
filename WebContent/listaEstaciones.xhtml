@@ -63,8 +63,8 @@
 					#{estacion.nombre}
 				</h:column>
 					<h:column>
-						<f:facet name="header">Total Estacionamientos</f:facet>
-					#{estacion.totalEstacionamientos}
+						<f:facet name="header">Cant. Bicicletas</f:facet>
+					#{estacion.totalEstacionamientos - estacion.cantEstacionamientosLibres}
 				</h:column>
 					<h:column>
 						<f:facet name="header">Cant. Estacionamientos libres</f:facet>
@@ -76,12 +76,12 @@
 				</h:column>
 
 					<h:column>
-						<f:facet name="header">Retirar Bicicleta</f:facet>
+						<f:facet name="header">Opciones</f:facet>
 						<h:form id="formOpcTabla" name="formOpcTabla" >
 							<h:commandLink 
-								action="#{bicicletaMbSess.visualizarBicicletasParaPrestar}"
+								action="#{prestamoMbSess.visualizarBicicletasParaPrestar}"
 								styleClass="btn btn-success" disabled="#{estacion.estado != 'Operativa'}">
-								<i class="fa fa-bicycle"></i> Ver Bicicletas
+								<i class="fa fa-eye"></i> Ver Bicicletas
 								<f:param name="idEstacion" value="#{estacion.idEstacion}" />
 							</h:commandLink>
 						</h:form>

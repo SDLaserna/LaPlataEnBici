@@ -8,5 +8,8 @@ import entidades.Prestamo;
 public interface PrestamoService {
 	public void persistir(Prestamo p);
 	public List<Prestamo> prestamosActualesDelUsuario(Long idUsuario, Date fecha);
+	public List<Prestamo> prestamosIniciadosDelUsuario(Long idUsuario);
+	public Prestamo obtenerPrestamo(Object id);
+	public void modificar(Prestamo p);
 
 }

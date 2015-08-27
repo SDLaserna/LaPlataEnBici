@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html">
 
 <ui:composition template="/WEB-INF/defaultTemplate.xhtml">
@@ -43,140 +44,62 @@
 	</ui:define>
 
 	<ui:define name="contenido">
-		<div class="panel panel-grey">
-			<div class="panel-heading">Seleccion de estacion para
-				estacionar</div>
-			<div class="panel-body pan">
-				<form action="" method="post">
-					<div class="form-body pal">
-						<!-- Comienzo de la lista en el cuerpo del formulario -->
-						<div class="box">
-							<div class="box-header">
-								<h3 class="box-title"></h3>
-							</div>
-							<!-- /.box-header -->
-
-							<div class="box-body table-responsive">
-								<table id="example1" class="table table-bordered table-striped">
-									<thead>
-										<tr>
-											<th>Nombre</th>
-											<th>Ubicacion</th>
-											<th>Cant.Bicicletas</th>
-											<th>Cant. Estacionamientos libres</th>
-											<th>Estado</th>
-											<th>Seleccionar</th>
-										</tr>
-									</thead>
-									<tbody>
-										<tr>
-											<td>Estacion 1</td>
-											<td>Berisso</td>
-											<td>50</td>
-											<td>4</td>
-											<td>Operativa</td>
-											<td><input type="radio" name="estacion"
-												value="estacion1" /></td>
-										</tr>
-										<tr>
-											<td>Estacion 2</td>
-											<td>Berisso</td>
-											<td>50</td>
-											<td>5</td>
-											<td>Operativa</td>
-											<td><input type="radio" name="estacion"
-												value="estacion2" /></td>
-										</tr>
-										<tr>
-											<td>Estacion 3</td>
-											<td>Tolosa</td>
-											<td>50</td>
-											<td>25</td>
-											<td>Operativa</td>
-											<td><input type="radio" name="estacion"
-												value="estacion3" /></td>
-										</tr>
-										<tr>
-											<td>Estacion 4</td>
-											<td>Tolosa</td>
-											<td>50</td>
-											<td>25</td>
-											<td>Operativa</td>
-											<td><input type="radio" name="estacion"
-												value="estacion4" /></td>
-										</tr>
-										<tr>
-											<td>Estacion 5</td>
-											<td>Tolosa</td>
-											<td>50</td>
-											<td>30</td>
-											<td>Operativa</td>
-											<td><input type="radio" name="estacion"
-												value="estacion5" /></td>
-										</tr>
-										<tr>
-											<td>Estacion 6</td>
-											<td>La Plata</td>
-											<td>50</td>
-											<td>30</td>
-											<td>Operativa</td>
-											<td><input type="radio" name="estacion"
-												value="estacion6" /></td>
-										</tr>
-										<tr>
-											<td>Estacion 7</td>
-											<td>La Plata</td>
-											<td>50</td>
-											<td>30</td>
-											<td>Operativa</td>
-											<td><input type="radio" name="estacion"
-												value="estacion7" /></td>
-										</tr>
-										<tr>
-											<td>Estacion 8</td>
-											<td>La Plata</td>
-											<td>70</td>
-											<td>30</td>
-											<td>Operativa</td>
-											<td><input type="radio" name="estacion"
-												value="estacion8" /></td>
-										</tr>
-										<tr>
-											<td>Estacion 9</td>
-											<td>La Plata</td>
-											<td>70</td>
-											<td>30</td>
-											<td>Operativa</td>
-											<td><input type="radio" name="estacion"
-												value="estacion9" /></td>
-										</tr>
-									</tbody>
-									<tfoot>
-										<tr>
-											<th>Nombre</th>
-											<th>Ubicacion</th>
-											<th>Cant.Bicicletas</th>
-											<th>Cant. Estacionamientos libres</th>
-											<th>Estado</th>
-											<th>Seleccionar</th>
-										</tr>
-									</tfoot>
-								</table>
-							</div>
-							<!-- /.box-body -->
-						</div>
-						<!-- /.box -->
-
-						<!-- Fin lista en el cuerpo del formulario -->
-
-					</div>
-					<div class="form-actions text-right pal">
-						<button type="submit" class="btn btn-primary">Estacionar</button>
-						<a href="userBicicletas" class="btn btn-primary"> Cancelar </a>
-					</div>
-				</form>
+		<div class="box">
+			<div class="box-header">
+				<h3 class="box-title">Seleccion de estacion para estacionar</h3>
 			</div>
+			<!-- /.box-header -->
+			<div style="margin-top: 3%; margin-bottom: 2%;">
+				<h:message for="Seleccion"
+					errorStyle="color: red; font-weight: bold;"
+					infoStyle="color: green; font-weight: bold;" />
+				<h:form id="Seleccion">
+				</h:form>
+			</div>
+
+			<div class="box-body table-responsive">
+
+				<h:outputText value="No hay bicicletas para retirar"
+					style="color:red; font-weight: bold;"
+					rendered="#{empty prestamoMbSess.listaEstaciones}" />
+				<h:dataTable id="example1"
+					rendered="#{not empty prestamoMbSess.listaEstaciones}"
+					value="#{prestamoMbSess.listaEstaciones}" var="estacion"
+					styleClass="table table-bordered table-striped">
+
+					<h:column>
+						<f:facet name="header">Nombre</f:facet>
+					#{estacion.nombre}
+				</h:column>
+					<h:column>
+						<f:facet name="header">Cant. Estacionamientos libres</f:facet>
+					#{estacion.cantEstacionamientosLibres}
+				</h:column>
+					<h:column>
+						<f:facet name="header">Cant. Bicicletas</f:facet>
+					#{estacion.totalEstacionamientos - estacion.cantEstacionamientosLibres}
+				</h:column>
+					<h:column>
+						<f:facet name="header">Estado</f:facet>
+					#{estacion.estado}
+				</h:column>
+
+					<h:column>
+						<f:facet name="header">Estacionar Bicicleta</f:facet>
+						<h:form id="formOpcTabla" name="formOpcTabla">
+							<h:commandLink action="#{prestamoMbSess.devolverBicicleta}"
+								styleClass="btn btn-success">
+								<i class="fa fa-flag-checkered"></i> Estacionar
+								<f:param name="idEstacion" value="#{estacion.idEstacion}" />
+							</h:commandLink>
+						</h:form>
+					</h:column>
+				</h:dataTable>
+
+			</div>
+			<!-- /.box-body -->
 		</div>
+		<!-- /.box -->
 
 	</ui:define>
 </ui:composition>

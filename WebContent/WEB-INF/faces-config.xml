@@ -149,38 +149,19 @@
 			<from-outcome>successVisualizarListarBicicletas</from-outcome>
 			<to-view-id>/abmBicicletas.xhtml</to-view-id>
 		</navigation-case>
-		
-		<!-- 	nuevo Prestamo-->	
-		
-		<navigation-case>
-			<from-action>#{prestamoMbSess.visualizarBicicletasPrestadas}</from-action>
-			<from-outcome>successVisualizarBicicletasPrestadas</from-outcome>
-			<to-view-id>/bicicletasPrestadas.xhtml</to-view-id>
-		</navigation-case>
-		
-		<!-- nuevo Prestamo fin -->
-		
 	</navigation-rule>
-	
-	<navigation-rule>
-		<from-view-id>/listaEstaciones.xhtml</from-view-id>
-		<navigation-case>
-			<from-action>#{bicicletaMbSess.visualizarBicicletasParaPrestar}</from-action>
-			<from-outcome>successVisualizarBicicletasParaPrestar</from-outcome>
-			<to-view-id>/seleccionBici.xhtml</to-view-id>
-		</navigation-case>
-	</navigation-rule>
+
 
 	<!-- Fin Reglas para ABM/listado de Bicicleta -->
 
 	<!-- Reglas para ABM/listado de Estacion -->
 	<navigation-rule>
 		<from-view-id>/abmEstaciones.xhtml</from-view-id>
-<!-- 		<navigation-case> -->
-<!-- 			<from-action>#{estacionMbSess.visualizarAltaEstacion}</from-action> -->
-<!-- 			<from-outcome>successVisualizarAltaEstacion</from-outcome> -->
-<!-- 			<to-view-id>/altaEstacion.xhtml</to-view-id> -->
-<!-- 		</navigation-case> -->
+		<!-- <navigation-case> -->
+		<!-- <from-action>#{estacionMbSess.visualizarAltaEstacion}</from-action> -->
+		<!-- <from-outcome>successVisualizarAltaEstacion</from-outcome> -->
+		<!-- <to-view-id>/altaEstacion.xhtml</to-view-id> -->
+		<!-- </navigation-case> -->
 		<navigation-case>
 			<from-action>#{estacionMbReq.visualizarAltaEstacion}</from-action>
 			<from-outcome>successVisualizarAltaEstacion</from-outcome>
@@ -197,7 +178,7 @@
 			<to-view-id>/abmEstaciones.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>
-	
+
 	<navigation-rule>
 		<from-view-id>/altaEstacion.xhtml</from-view-id>
 		<navigation-case>
@@ -225,7 +206,7 @@
 			<to-view-id>/modificarEstacion.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>
-	
+
 	<navigation-rule>
 		<from-view-id>*</from-view-id>
 		<navigation-case>
@@ -280,5 +261,44 @@
 		</navigation-case>
 	</navigation-rule>
 	<!-- Fin Reglas para Login y Logout -->
+
+	<!-- nuevo Prestamo -->
+	<navigation-rule>
+		<from-view-id>*</from-view-id>
+		<navigation-case>
+			<from-action>#{prestamoMbSess.visualizarBicicletasPrestadas}</from-action>
+			<from-outcome>successVisualizarBicicletasPrestadas</from-outcome>
+			<to-view-id>/bicicletasPrestadas.xhtml</to-view-id>
+		</navigation-case>
+
+	</navigation-rule>
+
+	<navigation-rule>
+		<from-view-id>/listaEstaciones.xhtml</from-view-id>
+		<navigation-case>
+			<from-action>#{prestamoMbSess.visualizarBicicletasParaPrestar}</from-action>
+			<from-outcome>successVisualizarBicicletasParaPrestar</from-outcome>
+			<to-view-id>/seleccionBici.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+
+	<navigation-rule>
+		<from-view-id>/bicicletasPrestadas.xhtml</from-view-id>
+		<navigation-case>
+			<from-action>#{prestamoMbSess.visualizarEstacionarBicicleta}</from-action>
+			<from-outcome>successVisualizarEstacionarBicicleta</from-outcome>
+			<to-view-id>/estacionarBicicleta.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	
+	<navigation-rule>
+		<from-view-id>/estacionarBicicleta.xhtml</from-view-id>
+		<navigation-case>
+			<from-action>#{prestamoMbSess.devolverBicicleta}</from-action>
+			<from-outcome>successDevolverBicicleta</from-outcome>
+			<to-view-id>/bicicletasPrestadas.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	<!-- nuevo Prestamo fin -->
 
 </faces-config>

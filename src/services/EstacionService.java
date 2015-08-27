@@ -14,5 +14,6 @@ public interface EstacionService {
 	public List<Estacion> listarActivas();
 	public void borrarLogicamente(Estacion e);
 	public Estacion obtenerEstacionNombre(String nombreEstacion);
+	public List<Estacion> listarEstacionesOperativas();
 
 }

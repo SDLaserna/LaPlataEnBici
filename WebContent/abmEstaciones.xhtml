@@ -79,6 +79,10 @@
 						<f:facet name="header">Cant. Estacionamientos libres</f:facet>
 					#{estacion.cantEstacionamientosLibres}
 				</h:column>
+				<h:column>
+						<f:facet name="header">Cant. Bicicletas</f:facet>
+					#{estacion.totalEstacionamientos - estacion.cantEstacionamientosLibres}
+				</h:column>
 					<h:column>
 						<f:facet name="header">Estado</f:facet>
 					#{estacion.estado}

@@ -60,8 +60,8 @@
 			
 			<div class="box-body table-responsive">
 			
-			<h:outputText value="No hay bicicletas para retirar" style="color:red; font-weight: bold;" rendered="#{empty bicicletaMbSess.listaBicicletas}" />
-				<h:dataTable id="example1" rendered="#{not empty bicicletaMbSess.listaBicicletas}" value="#{bicicletaMbSess.listaBicicletas}"
+			<h:outputText value="No hay bicicletas para retirar" style="color:red; font-weight: bold;" rendered="#{empty prestamoMbSess.listaBicicletas}" />
+				<h:dataTable id="example1" rendered="#{not empty prestamoMbSess.listaBicicletas}" value="#{prestamoMbSess.listaBicicletas}"
 					var="bicicleta" styleClass="table table-bordered table-striped">
 
 					<h:column>
@@ -85,7 +85,7 @@
 						<f:facet name="header">Retirar Bicicleta</f:facet>
 						<h:form id="formOpcTabla" name="formOpcTabla" >
 							<h:commandLink 
-								action="#{bicicletaMbSess.prestarBicicleta}"
+								action="#{prestamoMbSess.prestarBicicleta}"
 								styleClass="btn btn-success" >
 								<i class="fa fa-bicycle"></i> Retirar
 								<f:param name="idBicicleta" value="#{bicicleta.idBicicleta}" />

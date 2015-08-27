@@ -21,4 +21,9 @@ public class EstacionDAOImp extends GenericDAOImp<Estacion> implements EstacionD
 		return (Estacion) this.entityManager.createQuery("select e from Estacion e where e.nombre = "+nombreEstacion).getResultList().get(0);
 	}
 
+	@Override
+	public List<Estacion> listarEstacionesOperativas() {
+		return this.entityManager.createQuery("select e from Estacion e where e.activa=1 and e.estado = 'Operativa'").getResultList();
+	}
+
 }

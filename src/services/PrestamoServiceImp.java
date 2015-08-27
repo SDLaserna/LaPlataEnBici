@@ -19,6 +19,21 @@ public class PrestamoServiceImp implements PrestamoService {
 	public List<Prestamo> prestamosActualesDelUsuario(Long idUsuario, Date fecha) {
 		return this.prestamoDAO.prestamosActualesDelUsuario(idUsuario, fecha);
 	}
+
+	@Override
+	public List<Prestamo> prestamosIniciadosDelUsuario(Long idUsuario) {
+		return this.prestamoDAO.prestamosIniciadosDelUsuario(idUsuario);
+	}
+
+	@Override
+	public Prestamo obtenerPrestamo(Object id) {
+		return this.prestamoDAO.obtener(id);
+	}
+
+	@Override
+	public void modificar(Prestamo p) {
+		this.prestamoDAO.actualizar(p);
+	}
 	
 
 }

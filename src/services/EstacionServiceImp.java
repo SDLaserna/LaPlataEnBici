@@ -48,4 +48,9 @@ public class EstacionServiceImp implements EstacionService {
 		return this.estacionDAO.obtenerEstacionDeNombre(nombreEstacion);
 	}
 
+	@Override
+	public List<Estacion> listarEstacionesOperativas() {
+		return this.estacionDAO.listarEstacionesOperativas();
+	}
+
 }
