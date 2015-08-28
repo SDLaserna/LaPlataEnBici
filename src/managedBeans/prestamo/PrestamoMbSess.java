@@ -14,11 +14,14 @@ import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpServletRequest;
 
 import entidades.Bicicleta;
+import entidades.Denuncia;
 import entidades.Estacion;
 import entidades.Prestamo;
 import entidades.Usuario;
 import services.BicicletaService;
 import services.BicicletaServiceImp;
+import services.DenunciaService;
+import services.DenunciaServiceImp;
 import services.EstacionService;
 import services.EstacionServiceImp;
 import services.PrestamoService;
@@ -31,6 +34,7 @@ public class PrestamoMbSess {
 	private PrestamoService prestamoService = new PrestamoServiceImp();
 	private BicicletaService bicicletaService = new BicicletaServiceImp();
 	private EstacionService estacionService = new EstacionServiceImp();
+	private DenunciaService denunciaService = new DenunciaServiceImp();
 	private List<Prestamo> listaPrestamos = new ArrayList<Prestamo>();
 	private List<Bicicleta> listaBicicletas = new ArrayList<Bicicleta>();
 	private List<Estacion> listaEstaciones = new ArrayList<Estacion>();
@@ -180,7 +184,36 @@ public class PrestamoMbSess {
 	}
 	
 	public String denunciarBicicleta(){
-		return "";
+		FacesContext facesContext = FacesContext.getCurrentInstance();
+
+		HttpServletRequest httpServletRequest = (HttpServletRequest) facesContext
+				.getExternalContext().getRequest();
+		Usuario usuario = (Usuario) httpServletRequest.getSession()
+				.getAttribute("personaSesion");
+		
+		Map<String, String> params = facesContext
+				.getExternalContext().getRequestParameterMap();
+		String idPrestamo = params.get("idPrestamo");
+		this.setIdPrestamo(Long.parseLong(idPrestamo));
+		
+		Prestamo prestamo = this.prestamoService.obtenerPrestamo(this.getIdPrestamo());
+		
+		Bicicleta bici = prestamo.getBicicleta();
+		
+		Date fechaActual = new Date();
+		
+		Denuncia denuncia = new Denuncia(usuario,bici,fechaActual,"");
+		this.denunciaService.persistir(denuncia);
+		
+		bici.setEstado("Denunciada");
+		this.bicicletaService.modificar(bici);
+		
+		FacesMessage mensaje = new FacesMessage(
+				FacesMessage.SEVERITY_INFO,
+				"La denuncia a la bicicleta por mal estado se realizo correctamente",
+				"La denuncia a la bicicleta por mal estado se realizo correctamente");
+		facesContext.addMessage("Seleccion", mensaje);
+		return "successDenunciarBicicleta";
 	}
 
 	public List<Prestamo> getListaPrestamos() {

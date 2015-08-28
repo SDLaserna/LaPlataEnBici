@@ -21,7 +21,7 @@ public class Denuncia {
 	private Date fechaHora;
 	private String comentario;
 	
-	protected Denuncia() {
+	public Denuncia() {
 	}
 
 	public Denuncia(Usuario usuario, Bicicleta bicicleta, Date fechaHora,

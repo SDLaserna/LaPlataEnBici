@@ -101,8 +101,8 @@
 								<f:param name="idPrestamo" value="#{prestamo.idPrestamo}" />
 							</h:commandLink>
 							<h:commandLink action="#{prestamoMbSess.denunciarBicicleta}"
-								styleClass="btn btn-danger">
-								<i class="fa fa-thumbs-o-down"></i> Denunciar en mal estado
+								styleClass="btn btn-danger" disabled="#{prestamo.bicicleta.estado != 'Apta para el uso'}">
+								<i class="fa fa-thumbs-o-down"></i> Denunciar
 								<f:param name="idPrestamo" value="#{prestamo.idPrestamo}" />
 							</h:commandLink>
 						</h:form>
