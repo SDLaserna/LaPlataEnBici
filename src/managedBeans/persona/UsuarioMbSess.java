@@ -19,6 +19,7 @@ import entidades.Usuario;
 public class UsuarioMbSess {
 	private UsuarioService usuarioService=new UsuarioServiceImp();
 	private List<Usuario> listaUsuarios=new ArrayList<Usuario>();
+	private List<Usuario> listaUsuariosInhabilitados=new ArrayList<Usuario>();
 	
 	public UsuarioMbSess(){
 	}
@@ -35,6 +36,21 @@ public class UsuarioMbSess {
 		this.setListaUsuarios(this.usuarioService.listarActivos());
 		return "listarUsuarios";
 	}
+	
+	public String listarUsuariosInhabilitados() {
+		this.setListaUsuariosInhabilitados(this.usuarioService.listarInActivos());
+		return "listarUsuariosInhabilitados";
+	}
+	
+	public String habilitacion(){
+		Map<String,String> params =FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap();
+		String idUser = params.get("idUsuario");
+		Long idLong=Long.parseLong(idUser);	
+		Usuario userPersistente=this.usuarioService.obtenerUsuario(idLong);
+		this.usuarioService.habilitar(userPersistente);
+		this.setListaUsuariosInhabilitados(this.usuarioService.listarInActivos());
+		return "listarUsuariosInhabilitados";
+	}
 
 	public String borradoLogico(){
 		Map<String,String> params =FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap();
@@ -44,5 +60,14 @@ public class UsuarioMbSess {
 		this.usuarioService.borrarLogicamente(userPersistente);
 		this.setListaUsuarios(this.usuarioService.listarActivos());
 		return "listarUsuarios";
+	}
+
+	public List<Usuario> getListaUsuariosInhabilitados() {
+		return listaUsuariosInhabilitados;
+	}
+
+	public void setListaUsuariosInhabilitados(
+			List<Usuario> listaUsuariosInhabilitados) {
+		this.listaUsuariosInhabilitados = listaUsuariosInhabilitados;
 	}
 }

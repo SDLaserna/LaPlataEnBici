@@ -47,7 +47,7 @@ public class UsuarioServiceImp implements UsuarioService {
 
 	@Override
 	public void borrarLogicamente(Usuario u) {
-		u.setActiva(true);
+		u.setActiva(false);
 		this.usuarioDAO.actualizar(u);
 		
 	}
@@ -59,5 +59,16 @@ public class UsuarioServiceImp implements UsuarioService {
 	
 	public List<Usuario> listarActivos(){
 		return this.usuarioDAO.listarPersonasActivas("Usuario");
+	}
+
+	@Override
+	public List<Usuario> listarInActivos() {
+		return this.usuarioDAO.listarPersonasInActivas("Usuario");
+	}
+
+	@Override
+	public void habilitar(Usuario u) {
+		u.setActiva(true);
+		this.usuarioDAO.actualizar(u);
 	}
 }

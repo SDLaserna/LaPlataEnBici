@@ -20,4 +20,10 @@ public abstract class PersonaDAOImp<T> extends GenericDAOImp<T> implements Perso
 		return this.entityManager.createQuery("select e from "+ entidad +" e where e.activa=1").getResultList();
 		
 	}
+	
+	public List<T> listarPersonasInActivas(String entidad){
+		return this.entityManager.createQuery("select e from "+ entidad +" e where e.activa=0").getResultList();
+		
+	}
+	
 }

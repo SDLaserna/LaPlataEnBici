@@ -28,6 +28,8 @@
 								"class", "");
 						document.getElementById("estaciones").setAttribute(
 								"class", "active");
+						document.getElementById("usuariosInhabilitados").setAttribute(
+								"class", "");
 					})
 		</script>
 		<script src="script/dataTables.bootstrap.js" type="text/javascript"></script>
@@ -78,10 +80,6 @@
 					<h:column>
 						<f:facet name="header">Cant. Estacionamientos libres</f:facet>
 					#{estacion.cantEstacionamientosLibres}
-				</h:column>
-				<h:column>
-						<f:facet name="header">Cant. Bicicletas</f:facet>
-					#{estacion.totalEstacionamientos - estacion.cantEstacionamientosLibres}
 				</h:column>
 					<h:column>
 						<f:facet name="header">Estado</f:facet>

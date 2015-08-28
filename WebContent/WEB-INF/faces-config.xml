@@ -54,6 +54,11 @@
 			<from-outcome>listarUsuarios</from-outcome>
 			<to-view-id>/gestionDeUsuarios</to-view-id>
 		</navigation-case>
+		<navigation-case>
+			<from-action>#{usuarioMbSess.listarUsuariosInhabilitados}</from-action>
+			<from-outcome>listarUsuariosInhabilitados</from-outcome>
+			<to-view-id>/gestionDeUsuariosInhabilitados.xhtml</to-view-id>
+		</navigation-case>		
 	</navigation-rule>
 
 	<navigation-rule>

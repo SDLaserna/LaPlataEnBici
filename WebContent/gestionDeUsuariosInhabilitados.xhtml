@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+<ui:composition template="/WEB-INF/defaultTemplate.xhtml">
+	<ui:define name="titulo">
+		Administrador Gestion Usuarios
+	</ui:define>
+	<ui:define name="headConfig">
+		<link href="css/dataTables.bootstrap.css" rel="stylesheet"
+			type="text/css" />
+
+		<script src="script/bootstrap.min.js" type="text/javascript"></script>
+		<script src="script/jquery.dataTables.js" type="text/javascript"></script>
+		<script src="script/dataTables.bootstrap.js" type="text/javascript"></script>
+		<!--  paginado script -->
+		<script type="text/javascript">
+			$(function() {
+				$("#example1").dataTable();
+			});
+		</script>
+		<script>
+			//$(document).ready(func) es para que se marque la opcion que se eligio cuando carga la pagina
+			$(document).ready(
+					function activarNav() {
+						document.getElementById("inicio").setAttribute("class",
+								"");
+						document.getElementById("bicicletas").setAttribute(
+								"class", "");
+						document.getElementById("estaciones").setAttribute(
+								"class", "");
+						document.getElementById("usuarios").setAttribute(
+								"class", "");
+						document.getElementById("usuariosInhabilitados").setAttribute(
+								"class", "active");						
+					})
+		</script>
+
+	</ui:define>
+
+	<ui:define name="navegador">
+		<ui:include src="adminNav.xhtml"></ui:include>
+	</ui:define>
+
+	<ui:define name="contenido">
+		<div class="box">
+			<div class="box-header">
+				<h3 class="box-title">Lista de Usuarios</h3>
+			</div>
+			<!-- 						/.box-header -->
+
+			<div class="box-body table-responsive">
+
+
+				<h:outputText value="No hay usuarios inhabilitados" style="color:red; font-weight: bold;" rendered="#{empty usuarioMbSess.listaUsuariosInhabilitados}" />
+				<h:dataTable id="example1" rendered="#{not empty usuarioMbSess.listaUsuariosInhabilitados}" value="#{usuarioMbSess.listaUsuariosInhabilitados}"
+					var="usuario" styleClass="table table-bordered table-striped">
+
+					<h:column>
+						<f:facet name="header">Nombre</f:facet>
+					#{usuario.nombre}
+				</h:column>
+					<h:column>
+						<f:facet name="header">Apellido</f:facet>
+					#{usuario.apellido}
+				</h:column>
+					<h:column>
+						<f:facet name="header">DNI</f:facet>
+					#{usuario.dni}
+				</h:column>
+					<h:column>
+						<f:facet name="header">Email</f:facet>
+					#{usuario.email}
+				</h:column>
+					<h:column>
+						<f:facet name="header">Opciones</f:facet>
+						<h:form id="formOpcTabla" name="formOpcTabla">
+							<h:commandLink styleClass="btn btn-success"
+								action="#{usuarioMbSess.habilitacion}">
+								<i class="fa fa-user-plus"></i> Habilitacion
+							<f:param name="idUsuario" value="#{usuario.idPersona}" />
+							</h:commandLink>
+						</h:form>
+					</h:column>
+
+				</h:dataTable>
+
+
+			</div>
+			<!-- 						/.box-body -->
+		</div>
+		<!-- 					/.box -->
+	</ui:define>
+</ui:composition>
+</html>
