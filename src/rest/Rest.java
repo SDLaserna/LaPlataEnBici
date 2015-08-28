@@ -1,6 +1,7 @@
 package rest;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.Map;
 
 import javax.ws.rs.Consumes;
@@ -13,7 +14,10 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Request;
 import javax.ws.rs.core.UriInfo;
 
+import entidades.Estacion;
 import entidades.Log;
+import services.EstacionService;
+import services.EstacionServiceImp;
 import services.LogService;
 import services.LogServiceImp;
 
@@ -26,9 +30,11 @@ public class Rest {
 	Request request;
 	
 	private LogService logService;
+	private EstacionService estacionService;
 	
 	public Rest(){
 		this.logService=new LogServiceImp();
+		this.setEstacionService(new EstacionServiceImp());
 	}
 	
 
@@ -45,6 +51,22 @@ public class Rest {
 	@Consumes(MediaType.APPLICATION_FORM_URLENCODED)
 	public Map<String,Integer> getLogs(@QueryParam("tipoEntidad") String entidad)throws IOException{
 		return this.getLogService().listarLogs(entidad);
+	}
+	
+	@GET
+	@Path("estaciones")
+	@Produces({MediaType.APPLICATION_JSON })
+	public List<Estacion> getEstaciones()throws IOException{
+		return this.getEstacionService().listarEstaciones();
+	}
+
+	public EstacionService getEstacionService() {
+		return estacionService;
+	}
+
+
+	public void setEstacionService(EstacionService estacionService) {
+		this.estacionService = estacionService;
 	}
 	
 }

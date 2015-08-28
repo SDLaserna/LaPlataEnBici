@@ -23,43 +23,49 @@
 				};
 				map = new google.maps.Map(
 						document.getElementById('map-canvas'), mapOptions);
+				
+				activarNav();
 
-				var marker = new google.maps.Marker({
-					position : map.getCenter(),
-					map : map,
-					title : 'Estación 6',
-					icon : '/LaPlataEnBici/images/icons/estacion.png'
-				});
-
-				var popup = new google.maps.InfoWindow({
-					content : '<b>Datos de la estación: </b><br/>'
-							+ 'Estado: Operativa. <br/>'
-							+ 'Cant. Bicicletas: 50. <br/>'
-							+ 'Cant. Estacionamientos libres: 30.'
-				});
-
-				google.maps.event.addListener(marker, 'click', function() {
-					popup.open(map, marker);
+				$.getJSON("rest/log/estaciones", function(data) {
+					for(var i in data)
+					{	alert(data[i]['ubicacion']['calle']);
+						var marker = new google.maps.Marker({
+							position:new google.maps.LatLng(data[i]['ubicacion']['latitud'], data[i]['ubicacion']['longitud']),
+							map:map,
+							title: data[i]['nombre'],
+							icon : '/LaPlataEnBici/images/icons/estacion.png'
+						});
+			 
+						var infowindow = new google.maps.InfoWindow({
+							content: '<b>Datos de la estación: ' + data[i]['nombre'] + '</b><br/>'
+									+ 'Estado: ' + data[i]['estado'] + '. <br/>'
+									+ 'Cant. Bicicletas: ' + (data[i]['totalEstacionamientos'] - data[i]['cantEstacionamientosLibres']) + '. <br/>'
+									+ 'Cant. Estacionamientos libres: ' + data[i]['cantEstacionamientosLibres'] + '.'
+						});
+			 
+						Marcadores[i] = marker;
+						Informacion[i] = infowindow;
+			 
+						google.maps.event.addListener(Marcadores[i] , "click", function(){
+							Informacion[i].open(map,Marcadores[i] );
+						});
+					}
 				});
 
 			}
 
 			google.maps.event.addDomListener(window, 'load', initialize);
-		</script>
-
-		<script>
-			//$(document).ready(func) es para que se marque la opcion que se eligio cuando carga la pagina
-			$(document).ready(
-					function activarNav() {
-						document.getElementById("inicio").setAttribute("class",
-								"");
-						document.getElementById("mapaEstaciones").setAttribute(
-								"class", "active");
-						document.getElementById("listaEstaciones")
-								.setAttribute("class", "");
-						document.getElementById("misBicicletas").setAttribute(
-								"class", "");
-					})
+			
+			function activarNav() {
+				document.getElementById("inicio").setAttribute("class",
+						"");
+				document.getElementById("mapaEstaciones").setAttribute(
+						"class", "active");
+				document.getElementById("listaEstaciones")
+						.setAttribute("class", "");
+				document.getElementById("misBicicletas").setAttribute(
+						"class", "");
+			}
 		</script>
 	</ui:define>
 
