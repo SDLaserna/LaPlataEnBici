@@ -88,7 +88,8 @@
 						<f:facet name="header">Estacionar Bicicleta</f:facet>
 						<h:form id="formOpcTabla" name="formOpcTabla">
 							<h:commandLink action="#{prestamoMbSess.devolverBicicleta}"
-								styleClass="btn btn-success">
+								styleClass="btn btn-success" 
+								disabled="#{estacion.cantEstacionamientosLibres == 0}">
 								<i class="fa fa-flag-checkered"></i> Estacionar
 								<f:param name="idEstacion" value="#{estacion.idEstacion}" />
 							</h:commandLink>
