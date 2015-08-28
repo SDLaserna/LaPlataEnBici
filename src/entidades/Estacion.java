@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.xml.bind.annotation.XmlTransient;
 
 import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.CascadeType;
@@ -97,6 +98,7 @@ public class Estacion {
 		this.activa = activa;
 	}
 
+	@XmlTransient
 	public List<Bicicleta> getBicicletas() {
 		return bicicletas;
 	}

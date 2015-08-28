@@ -11,7 +11,6 @@
 	<ui:define name="headConfig">
 		<script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
 		<script>
-			// 	var map;
 			var geocoder;
 			var map = new google.maps.Marker;
 			function initialize() {
@@ -25,32 +24,38 @@
 						document.getElementById('map-canvas'), mapOptions);
 				
 				activarNav();
-
+				
+				var marker;
+				var contenido;
 				$.getJSON("rest/log/estaciones", function(data) {
-					for(var i in data)
-					{	alert(data[i]['nombre']);
-						var marker = new google.maps.Marker({
-							position:new google.maps.LatLng(data[i]['ubicacion']['latitud'], data[i]['ubicacion']['longitud']),
-							map:map,
-							title: data[i]['nombre'],
-							icon : '/LaPlataEnBici/images/icons/estacion.png'
-						});
+					for(var i in data){	
+						marker = new google.maps.Marker({
+									position:new google.maps.LatLng(data[i]['ubicacion']['latitud'], data[i]['ubicacion']['longitud']),
+									map:map,
+									title: data[i]['nombre'],
+									icon : '/LaPlataEnBici/images/icons/estacion.png'
+								});
 			 
-						var infowindow = new google.maps.InfoWindow({
-							content: '<b>Datos de la estación: ' + data[i]['nombre'] + '</b><br/>'
-									+ 'Estado: ' + data[i]['estado'] + '. <br/>'
-									+ 'Cant. Bicicletas: ' + (data[i]['totalEstacionamientos'] - data[i]['cantEstacionamientosLibres']) + '. <br/>'
-									+ 'Cant. Estacionamientos libres: ' + data[i]['cantEstacionamientosLibres'] + '.'
-						});
-			 
-						Marcadores[i] = marker;
-						Informacion[i] = infowindow;
-			 
-						google.maps.event.addListener(Marcadores[i] , "click", function(){
-							Informacion[i].open(map,Marcadores[i] );
-						});
+						contenido = '<b>Datos de la estación: ' + data[i]['nombre'] + '</b><br/>'
+										+ 'Estado: ' + data[i]['estado'] + '. <br/>'
+										+ 'Cant. Bicicletas: ' + (data[i]['totalEstacionamientos'] - data[i]['cantEstacionamientosLibres']) + '. <br/>'
+										+ 'Cant. Estacionamientos libres: ' + data[i]['cantEstacionamientosLibres'] + '.'
+			 			
+						mostrarMensaje(marker, contenido);
 					}
 				});
+				
+				function mostrarMensaje(marker, msg) {
+		            // Crear ventana de información.
+		            var infowindow = new google.maps.InfoWindow({
+		                content : msg
+		            });
+		 
+		            // Crear evento para mostrar la ventana al dar click
+		            google.maps.event.addListener(marker, 'click', function(){
+		                infowindow.open(map, marker);
+		            });
+		        }
 
 			}
 

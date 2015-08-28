@@ -99,10 +99,19 @@ public class EstacionMbSess{
 				return "errorModificarEstacion";
 			}
 		}
+		
+		int index= this.getCoor().indexOf(",");
+		String latitud=this.getCoor().substring(1, index);
+		String longitud=this.getCoor().substring(index+1, this.getCoor().length()-1);
+		this.getEstacion().getUbicacion().setLatitud(latitud);
+		this.getEstacion().getUbicacion().setLongitud(longitud);
+		
 		this.estacionService.modificar(this.getEstacion());
+		
 		FacesMessage mensaje = new FacesMessage(
 				"Se modificaron los datos correctamente");
 		FacesContext.getCurrentInstance().addMessage("Alta", mensaje);
+		
 		this.setListaEstaciones(this.estacionService.listarActivas());
 		return "successModificarEstacion";
 	}
