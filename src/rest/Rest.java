@@ -57,7 +57,7 @@ public class Rest {
 	@Path("estaciones")
 	@Produces({MediaType.APPLICATION_JSON })
 	public List<Estacion> getEstaciones()throws IOException{
-		return this.getEstacionService().listarEstaciones();
+		return this.getEstacionService().listarActivas();
 	}
 
 	public EstacionService getEstacionService() {

@@ -28,7 +28,7 @@
 
 				$.getJSON("rest/log/estaciones", function(data) {
 					for(var i in data)
-					{	alert(data[i]['ubicacion']['calle']);
+					{	alert(data[i]['nombre']);
 						var marker = new google.maps.Marker({
 							position:new google.maps.LatLng(data[i]['ubicacion']['latitud'], data[i]['ubicacion']['longitud']),
 							map:map,
