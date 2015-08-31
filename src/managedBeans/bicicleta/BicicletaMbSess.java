@@ -12,10 +12,13 @@ import javax.faces.context.FacesContext;
 
 import entidades.Bicicleta;
 import entidades.Estacion;
+import entidades.HistorialBicicleta;
 import services.BicicletaService;
 import services.BicicletaServiceImp;
 import services.EstacionService;
 import services.EstacionServiceImp;
+import services.HistorialBicicletaService;
+import services.HistorialBicicletaServiceImp;
 
 @ManagedBean
 @SessionScoped
@@ -24,8 +27,10 @@ public class BicicletaMbSess {
 	private Bicicleta bicicleta;
 	private BicicletaService bicicletaService = new BicicletaServiceImp();
 	private EstacionService estacionService = new EstacionServiceImp();
+	private HistorialBicicletaService historialBicicletaService = new HistorialBicicletaServiceImp();
 	private List<Estacion> listaEstaciones = new ArrayList<Estacion>();
 	private List<Bicicleta> listaBicicletas = new ArrayList<Bicicleta>();
+	private List<HistorialBicicleta> listaHistorialBicicleta = new ArrayList<HistorialBicicleta>();
 	private Long idEstacion;
 
 	public BicicletaMbSess() {
@@ -89,14 +94,6 @@ public class BicicletaMbSess {
 		return "successModificarBicicleta";
 	}
 
-	public String visualizarDisponibilidad() {
-		Map<String, String> params = FacesContext.getCurrentInstance()
-				.getExternalContext().getRequestParameterMap();
-		String idBicicleta = params.get("idBicicleta");
-		Long idLong = Long.parseLong(idBicicleta);
-		return "successVisualizarDisponibilidad";
-	}
-
 	public String borradoLogico() {
 		Map<String, String> params = FacesContext.getCurrentInstance()
 				.getExternalContext().getRequestParameterMap();
@@ -111,7 +108,16 @@ public class BicicletaMbSess {
 		this.setListaBicicletas(this.bicicletaService.listarBicicletasActivas());
 		return "listarBicicletas";
 	}
-
+	
+	public String visualizarDisponibilidad() {
+		Map<String, String> params = FacesContext.getCurrentInstance()
+				.getExternalContext().getRequestParameterMap();
+		String idBicicleta = params.get("idBicicleta");
+		Long idLong = Long.parseLong(idBicicleta);
+		this.setListaHistorialBicicleta(this.historialBicicletaService.historialDeLaBicicleta(idLong));
+		return "successVisualizarDisponibilidad";
+	}
+	
 	public List<Estacion> getListaEstaciones() {
 		return listaEstaciones;
 	}
@@ -142,6 +148,14 @@ public class BicicletaMbSess {
 
 	public void setListaBicicletas(List<Bicicleta> listaBicicletas) {
 		this.listaBicicletas = listaBicicletas;
+	}
+
+	public List<HistorialBicicleta> getListaHistorialBicicleta() {
+		return listaHistorialBicicleta;
+	}
+
+	public void setListaHistorialBicicleta(List<HistorialBicicleta> listaHistorialBicicleta) {
+		this.listaHistorialBicicleta = listaHistorialBicicleta;
 	}
 
 }

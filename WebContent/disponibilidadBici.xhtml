@@ -52,44 +52,34 @@
 			<!-- /.box-header -->
 
 			<div class="box-body table-responsive">
-				<table id="example1" class="table table-bordered table-striped">
-					<thead>
-						<tr>
-							<th>Fecha</th>
-							<th>Hora</th>
-							<th>Estado</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td>25/01/2014</td>
-							<td>12:12:12 hs</td>
-							<td>Apta para el uso</td>
-						</tr>
-						<tr>
-							<td>25/05/2014</td>
-							<td>12:00:12 hs</td>
-							<td>Denunciada</td>
-						</tr>
-						<tr>
-							<td>25/08/2014</td>
-							<td>15:12:00 hs</td>
-							<td>En reparacion</td>
-						</tr>
-						<tr>
-							<td>30/08/2014</td>
-							<td>12:12:12 hs</td>
-							<td>Apta para el uso</td>
-						</tr>
-					</tbody>
-					<tfoot>
-						<tr>
-							<th>Fecha</th>
-							<th>Hora</th>
-							<th>Estado</th>
-						</tr>
-					</tfoot>
-				</table>
+				<h:outputText value="No hay historial para mostrar"
+					style="color:red; font-weight: bold;"
+					rendered="#{empty bicicletaMbSess.listaHistorialBicicleta}" />
+
+				<h:dataTable id="example1"
+					rendered="#{not empty bicicletaMbSess.listaHistorialBicicleta}"
+					value="#{bicicletaMbSess.listaHistorialBicicleta}" var="historial"
+					styleClass="table table-bordered table-striped">
+
+					<h:column>
+						<f:facet name="header">Fecha</f:facet>
+						<h:outputLabel value="#{historial.fechaHora}"
+							style="font-weight: normal;" id="Fecha">
+							<f:convertDateTime pattern="dd/MM/yyyy" />
+						</h:outputLabel>
+					</h:column>
+					<h:column>
+						<f:facet name="header">Hora</f:facet>
+						<h:outputLabel value="#{historial.fechaHora}"
+							style="font-weight: normal;" id="Hora">
+							<f:convertDateTime pattern="HH:mm:ss a" />
+						</h:outputLabel>
+					</h:column>
+					<h:column>
+						<f:facet name="header">Estado</f:facet>
+						#{historial.estado}
+					</h:column>
+				</h:dataTable>
 			</div>
 			<!-- /.box-body -->
 		</div>
