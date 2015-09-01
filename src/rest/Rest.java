@@ -15,9 +15,12 @@ import javax.ws.rs.core.Request;
 import javax.ws.rs.core.UriInfo;
 
 import entidades.Estacion;
+import entidades.HistorialEstacion;
 import entidades.Log;
 import services.EstacionService;
 import services.EstacionServiceImp;
+import services.HistorialEstacionService;
+import services.HistorialEstacionServiceImp;
 import services.LogService;
 import services.LogServiceImp;
 
@@ -31,10 +34,12 @@ public class Rest {
 	
 	private LogService logService;
 	private EstacionService estacionService;
+	private HistorialEstacionService historialEstacionService;
 	
 	public Rest(){
 		this.logService=new LogServiceImp();
 		this.setEstacionService(new EstacionServiceImp());
+		this.historialEstacionService = new HistorialEstacionServiceImp();
 	}
 	
 
@@ -58,6 +63,15 @@ public class Rest {
 	@Produces({MediaType.APPLICATION_JSON })
 	public List<Estacion> getEstaciones()throws IOException{
 		return this.getEstacionService().listarActivas();
+	}
+	
+	@GET
+	@Path("historialEstadoEstacion")
+	@Produces({MediaType.APPLICATION_JSON })
+	@Consumes(MediaType.APPLICATION_FORM_URLENCODED)
+	public Map<String,Integer> getHistorialEstadosEstacion(@QueryParam("idEstacion") String idEstacion)throws IOException{
+		Long idLong = Long.parseLong(idEstacion);
+		return this.historialEstacionService.historialDeLaEstacion(idLong);
 	}
 
 	public EstacionService getEstacionService() {

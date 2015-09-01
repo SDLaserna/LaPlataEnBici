@@ -19,10 +19,12 @@ import services.EstacionServiceImp;
 public class EstacionMbSess{
 	private EstacionService estacionService = new EstacionServiceImp();
 	private List<Estacion> listaEstaciones = new ArrayList<Estacion>();
+	private Map<String,Integer> listaHistorialEstacion;
 	private Estacion estacion;
 	private Domicilio ubicacion;
 	private String nombreActual;
 	private String coor;
+	private String idEstacion;
 
 
 	public EstacionMbSess() {
@@ -120,6 +122,7 @@ public class EstacionMbSess{
 		Map<String, String> params = FacesContext.getCurrentInstance()
 				.getExternalContext().getRequestParameterMap();
 		String idEstacion = params.get("idEstacion");
+		setIdEstacion(idEstacion);
 		Long idLong = Long.parseLong(idEstacion);
 		this.setEstacion(this.estacionService.obtenerEstacion(idLong));
 		return "successVisualizarEstadisticasEstacion";
@@ -144,5 +147,21 @@ public class EstacionMbSess{
 
 	public void setCoor(String coor) {
 		this.coor = coor;
+	}
+
+	public Map<String,Integer> getListaHistorialEstacion() {
+		return listaHistorialEstacion;
+	}
+
+	public void setListaHistorialEstacion(Map<String,Integer> listaHistorialEstacion) {
+		this.listaHistorialEstacion = listaHistorialEstacion;
+	}
+
+	public String getIdEstacion() {
+		return idEstacion;
+	}
+
+	public void setIdEstacion(String idEstacion) {
+		this.idEstacion = idEstacion;
 	}
 }
