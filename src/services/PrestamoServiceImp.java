@@ -34,6 +34,11 @@ public class PrestamoServiceImp implements PrestamoService {
 	public void modificar(Prestamo p) {
 		this.prestamoDAO.actualizar(p);
 	}
+
+	@Override
+	public boolean existeDeudor(Object id) {
+		return this.prestamoDAO.existeDeudor(id);
+	}
 	
 
 }

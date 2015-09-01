@@ -29,7 +29,7 @@ public aspect Auditor {
 	public void loggingAlta(JoinPoint joinpoint, Object elem){
 		this.prepararLog("Alta", joinpoint);
 	}
-	@Before("execution(* daos.GenericDAOImp.borrar(..)) && args(elem)")
+	@Before("execution(* daos.UsuarioDAOImp.borrarPermanenteUsuario(..)) && args(elem)")
 	public void loggingBaja(JoinPoint joinpoint, Object elem){
 		this.prepararLog("Baja", joinpoint);
 	}
@@ -44,7 +44,6 @@ public aspect Auditor {
 		EntityManagerFactory e = EMF.getEMF();
 		Object id = e.getPersistenceUnitUtil().getIdentifier(elem);
 		log.setIdEntidad((Long)id);
-		//log.setOperacion("Operacion: "+tipo);
 		log.setOperacion(tipo);
 		log.setTipoEntidad(elem.getClass().getSimpleName());	
 		this.logService.persistirLog(log);

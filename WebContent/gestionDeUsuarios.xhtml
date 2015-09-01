@@ -77,14 +77,17 @@
 					<h:column>
 						<f:facet name="header">Opciones</f:facet>
 						<h:form id="formOpcTabla" name="formOpcTabla">
+							<h:message for="formOpcTabla" style="color:red" />
 							<h:commandLink styleClass="btn btn-info"
 								action="#{usuarioMbSess.borradoLogico}">
 								<i class="fa fa-eraser"></i> Inhabilitacion Temporal
 							<f:param name="idUsuario" value="#{usuario.idPersona}" />
 							</h:commandLink>
 							<h:commandLink styleClass="btn btn-danger"
-								action="#{usuarioMbSess.listarUsuarios}">
-								<i class="fa fa-eraser"></i> Inhabilitacion Definitiva</h:commandLink>
+								action="#{usuarioMbSess.borradoDefinitivo}">
+								<i class="fa fa-eraser"></i> Inhabilitacion Definitiva
+								<f:param name="idUsuario" value="#{usuario.idPersona}" />							
+							</h:commandLink>
 						</h:form>
 					</h:column>
 

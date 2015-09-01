@@ -17,4 +17,9 @@ public class PrestamoDAOImp extends GenericDAOImp<Prestamo> implements PrestamoD
 		return this.entityManager.createQuery("select p from Prestamo p where p.usuario=" + idUsuario + " and p.estado= 'Iniciado'").getResultList();
 	}
 
+	@Override
+	public boolean existeDeudor(Object id) {
+		return !this.entityManager.createQuery("select p from Prestamo p where p.usuario.id="+id.toString()).getResultList().isEmpty();
+	}
+
 }

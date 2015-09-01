@@ -68,6 +68,11 @@
 			<from-outcome>listarUsuarios</from-outcome>
 			<to-view-id>/gestionDeUsuarios</to-view-id>
 		</navigation-case>
+		<navigation-case>
+			<from-action>#{usuarioMbSess.borradoDefinitivo}</from-action>
+			<from-outcome>listarUsuarios</from-outcome>
+			<to-view-id>/gestionDeUsuarios</to-view-id>
+		</navigation-case>		
 	</navigation-rule>
 	<!-- Fin Reglas para ABM/listado de Usuario -->
 

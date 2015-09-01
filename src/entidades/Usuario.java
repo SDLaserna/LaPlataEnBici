@@ -1,5 +1,6 @@
 package entidades;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.DiscriminatorValue;
@@ -7,7 +8,10 @@ import javax.persistence.Entity;
 
 @Entity
 @DiscriminatorValue("USR")
-public class Usuario extends Persona {
+public class Usuario extends Persona implements Serializable{
+
+	/*La hago serializable porque hibernate me pide que lo implemente para borrar :/ */
+	private static final long serialVersionUID = 1L;
 
 	public Usuario() {
 		this.setActiva(true);

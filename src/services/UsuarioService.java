@@ -17,4 +17,5 @@ public interface UsuarioService {
 	public List<Usuario> listarActivos();
 	public List<Usuario> listarInActivos();
 	public void habilitar(Usuario u);
+	public void borrarDefinitivo(Usuario u);
 }

@@ -34,7 +34,7 @@ public class UsuarioServiceImp implements UsuarioService {
 	public boolean existePersona(String email){
 		return this.usuarioDAO.existePersona(email);
 	}
-
+	
 	@Override
 	public void modificar(Usuario u) {
 		this.usuarioDAO.actualizar(u);
@@ -70,5 +70,12 @@ public class UsuarioServiceImp implements UsuarioService {
 	public void habilitar(Usuario u) {
 		u.setActiva(true);
 		this.usuarioDAO.actualizar(u);
+	}
+
+	@Override
+	public void borrarDefinitivo(Usuario u) {
+		
+		this.usuarioDAO.borrarPermanenteUsuario(u);
+		
 	}
 }

@@ -13,4 +13,9 @@ public class DenunciaServiceImp implements DenunciaService {
 		this.denunciaDAO.crear(d);
 	}
 
+	@Override
+	public boolean existeDenunciado(Object id) {
+		return this.denunciaDAO.existeDenunciado(id);
+	}
+
 }
