@@ -73,13 +73,25 @@ public class UsuarioMbSess {
 		String idUser = params.get("idUsuario");
 		Long idLong=Long.parseLong(idUser);	
 		Usuario userPersistente=this.usuarioService.obtenerUsuario(idLong);
+		
+		FacesContext facesContext = FacesContext.getCurrentInstance();
 		if(this.denunciaService.existeDenunciado(idLong) || 
 				this.prestamoService.existeDeudor(idLong)){
-			FacesMessage mensaje = new FacesMessage("El usuario contiene deudas o denuncias, se recomienda borrar temporalmente");
-			FacesContext.getCurrentInstance().addMessage("borradoDefinitivo", mensaje);
+			
+			FacesMessage mensaje = new FacesMessage(
+					FacesMessage.SEVERITY_ERROR,
+					"El usuario contiene denuncias o deudas pendientes, no se puede borrar de forma permanente",
+					"El usuario contiene denuncias o deudas pendientes, no se puede borrar de forma permanente");
+			facesContext.addMessage("Mensaje", mensaje);
+			
 		}
 		else{
-			this.usuarioService.borrarDefinitivo(userPersistente); /*Se lo mando asi para que el borrar del JPA pueda hacer reflexion y saber la entidad a la que me quiero referir, si le mando un Long solo me dice java.lang.IllegalArgumentException: class java.lang.Long is not an entity*/
+			this.usuarioService.borrarDefinitivo(userPersistente);
+			FacesMessage mensaje = new FacesMessage(
+					FacesMessage.SEVERITY_INFO,
+					"El usuario ha sido borrado permanentemente",
+					"El usuario ha sido borrado permanentemente");
+			facesContext.addMessage("Mensaje", mensaje);
 		}
 		this.setListaUsuarios(this.usuarioService.listarActivos());
 		return "listarUsuarios";
