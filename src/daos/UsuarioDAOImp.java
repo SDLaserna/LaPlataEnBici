@@ -2,10 +2,6 @@ package daos;
 
 import java.util.List;
 
-//import org.hibernate.Session;
-
-
-
 import javax.persistence.EntityTransaction;
 
 import entidades.Usuario;

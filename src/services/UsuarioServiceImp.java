@@ -28,7 +28,7 @@ public class UsuarioServiceImp implements UsuarioService {
 	/* Utilizamos los usuarios comunes para definir métodos que se refieren a 
 	 * las personas ya que a veces necesitamos preguntar por el total incluyendo 
 	 * usuarios comunes y admins y la clase Persona es abstracta para hacer un service
-	 * de persona*/
+	 * de persona */
 	
 	
 	public boolean existePersona(String email){
