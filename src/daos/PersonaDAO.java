@@ -9,4 +9,5 @@ public interface PersonaDAO<T> extends GenericDAO<T>{
 	public Persona obtenerPersona(String email);
 	public List<T> listarPersonasActivas(String entidad);
 	public List<T> listarPersonasInActivas(String entidad);
+	
 }
