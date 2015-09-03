@@ -8,7 +8,7 @@ import entidades.Persona;
 public abstract class PersonaDAOImp<T> extends GenericDAOImp<T> implements PersonaDAO<T>{
 
 	public boolean existePersona(String email){
-		return !this.entityManager.createQuery("select p from Persona p where p.email = '"+email+"' and p.activa = 1").getResultList().isEmpty();
+		return !this.entityManager.createQuery("select p from Persona p where p.email = '"+email+"'").getResultList().isEmpty();
 	}
 	
 	public Persona obtenerPersona(String email){

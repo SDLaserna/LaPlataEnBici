@@ -31,9 +31,56 @@ public class LoginMb {
 	
 	public String logueo() {
 		String resultado = "inicializado";
+
 		try {
 
-			if (this.usuarioService.existePersona(this.getEmail())) {
+			if (this.adminService.existeAdministrador(this.getEmail())) {
+				Administrador admin = this.adminService.obtenerAdministrador(this.getEmail());
+				if (admin.getClave().equals(this.getPassword())) {
+					this.httpServletRequest.getSession().setAttribute("personaSesion", admin);
+					this.httpServletRequest.getSession().setAttribute("rol", "admin");
+					resultado = "successAdministrador";
+				} else {
+					FacesMessage mensaje = new FacesMessage("Clave incorrecta");
+					FacesContext.getCurrentInstance().addMessage("loginForm", mensaje);
+					resultado = "login";
+				}
+			} else {
+				if (this.usuarioService.existeUsuario(this.getEmail())) {
+					Usuario usuario = this.usuarioService.obtenerUsuario(this.getEmail());
+					if (usuario.getClave().equals(this.getPassword())) {
+						this.httpServletRequest.getSession().setAttribute("personaSesion", usuario);
+						this.httpServletRequest.getSession().setAttribute("rol", "user");
+						resultado = "successUsuario";
+					} else {
+						FacesMessage mensaje = new FacesMessage("Contrasenia incorrecta");
+						FacesContext.getCurrentInstance().addMessage("loginForm", mensaje);
+						resultado = "login";
+					}
+				} else {
+
+					FacesMessage mensaje = new FacesMessage("Email inexistente ");
+					FacesContext.getCurrentInstance().addMessage("loginForm", mensaje);
+					resultado = "login";
+				}
+			}
+
+		} catch (Exception e) {
+			System.out.println("entre a la exception de logueo");
+		}
+
+		return resultado;
+
+	}
+		
+		
+		
+		
+		
+		/*
+		try {
+
+			if (this.usuarioService.existePersona(this.getEmail())) { 
 				if (this.usuarioService.existeUsuario(this.getEmail())) {
 					Usuario usuario = this.usuarioService.obtenerUsuario(this
 							.getEmail());
@@ -74,7 +121,7 @@ public class LoginMb {
 					}
 				}
 
-			} else {
+			 } else {
 				FacesMessage mensaje = new FacesMessage("Email inexistente");
 				FacesContext.getCurrentInstance().addMessage("loginForm", mensaje);
 				resultado = "login";
@@ -83,8 +130,8 @@ public class LoginMb {
 			e.printStackTrace();
 			System.out.println("entre a la exception");
 		}
-		return resultado;
-	}
+		return resultado; 
+	} */
 	
 	
 	public String getPassword() {
