@@ -1,7 +1,7 @@
 package daos;
 
 
-import java.util.Map;
+import java.util.List;
 
 import entidades.Log;
 
@@ -9,6 +9,5 @@ import entidades.Log;
 public interface LogDAO extends GenericDAO<Log>{
 	
 	void generarLog(Log l);
-//	List<Log> listarLogs(Object IdEntidad);
-	Map<String,Integer> listarLogs(String tipoEntidad);
+	List<Log> listarLogs(String tipoEntidad);
 }

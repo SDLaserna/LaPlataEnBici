@@ -1,10 +1,9 @@
 package daos;
 
-import java.util.Map;
-
+import java.util.List;
 import entidades.HistorialEstacion;
 
 public interface HistorialEstacionDAO extends GenericDAO<HistorialEstacion> {
-	public Map<String,Integer> historialDeLaEstacion(Long idEstacion);
+	public List<HistorialEstacion> historialDeLaEstacion(Long idEstacion);
 	
 }
