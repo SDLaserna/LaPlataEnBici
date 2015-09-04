@@ -33,7 +33,7 @@
 								"class", "");
 						document.getElementById("usuarios").setAttribute(
 								"class", "active");
-						document.getElementById("usuariosInhabilitados").setAttribute(
+						document.getElementById("prestamos").setAttribute(
 								"class", "");
 					})
 		</script>
@@ -49,23 +49,34 @@
 			<div class="box-header">
 				<h3 class="box-title">Lista de Usuarios</h3>
 			</div>
-			
+
 			<div style="margin-top: 3%; margin-bottom: 2%;">
-				<h:message for="Mensaje"
-					errorStyle="color: red; font-weight: bold;"
+				<h:message for="Mensaje" errorStyle="color: red; font-weight: bold;"
 					infoStyle="color: green; font-weight: bold;" />
 				<h:form id="Mensaje">
+					<h:commandLink
+						action="#{usuarioMbSess.listarUsuariosInhabilitados}"
+						styleClass="btn btn-info"
+						style="background-color: purple; 
+								border-color: aliceblue;">
+						<i class="fa fa-user-times fa-fw"> </i>
+						<span class="menu-title">Usuarios Inhabilitados</span>
+					</h:commandLink>
 				</h:form>
 			</div>
-			
+
 			<!-- 						/.box-header -->
 
 			<div class="box-body table-responsive">
 
 
-				<h:outputText value="No hay usuarios" style="color:red; font-weight: bold;" rendered="#{empty usuarioMbSess.listaUsuarios}" />
-				<h:dataTable id="example1" rendered="#{not empty usuarioMbSess.listaUsuarios}" value="#{usuarioMbSess.listaUsuarios}"
-					var="usuario" styleClass="table table-bordered table-striped">
+				<h:outputText value="No hay usuarios"
+					style="color:red; font-weight: bold;"
+					rendered="#{empty usuarioMbSess.listaUsuarios}" />
+				<h:dataTable id="example1"
+					rendered="#{not empty usuarioMbSess.listaUsuarios}"
+					value="#{usuarioMbSess.listaUsuarios}" var="usuario"
+					styleClass="table table-bordered table-striped">
 
 					<h:column>
 						<f:facet name="header">Nombre</f:facet>
@@ -95,7 +106,7 @@
 							<h:commandLink styleClass="btn btn-danger"
 								action="#{usuarioMbSess.borradoDefinitivo}">
 								<i class="fa fa-eraser"></i> Inhabilitacion Definitiva
-								<f:param name="idUsuario" value="#{usuario.idPersona}" />							
+								<f:param name="idUsuario" value="#{usuario.idPersona}" />
 							</h:commandLink>
 						</h:form>
 					</h:column>

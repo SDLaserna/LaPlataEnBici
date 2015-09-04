@@ -54,6 +54,12 @@ public class UsuarioMbSess {
 		Long idLong=Long.parseLong(idUser);	
 		Usuario userPersistente=this.usuarioService.obtenerUsuario(idLong);
 		this.usuarioService.habilitar(userPersistente);
+		FacesContext facesContext = FacesContext.getCurrentInstance();
+		FacesMessage mensaje = new FacesMessage(
+				FacesMessage.SEVERITY_INFO,
+				"El usuario ha sido habilitado correctamente",
+				"El usuario ha sido habilitado correctamente");
+		facesContext.addMessage("Mensaje", mensaje);
 		this.setListaUsuariosInhabilitados(this.usuarioService.listarInActivos());
 		return "listarUsuariosInhabilitados";
 	}
@@ -64,6 +70,12 @@ public class UsuarioMbSess {
 		Long idLong=Long.parseLong(idUser);	
 		Usuario userPersistente=this.usuarioService.obtenerUsuario(idLong);
 		this.usuarioService.borrarLogicamente(userPersistente);
+		FacesContext facesContext = FacesContext.getCurrentInstance();
+		FacesMessage mensaje = new FacesMessage(
+				FacesMessage.SEVERITY_INFO,
+				"El usuario ha sido borrado temporalmente",
+				"El usuario ha sido borrado temporalmente");
+		facesContext.addMessage("Mensaje", mensaje);
 		this.setListaUsuarios(this.usuarioService.listarActivos());
 		return "listarUsuarios";
 	}

@@ -215,6 +215,11 @@ public class PrestamoMbSess {
 		facesContext.addMessage("Seleccion", mensaje);
 		return "successDenunciarBicicleta";
 	}
+	
+	public String visualizarListaPrestamos(){
+		this.setListaPrestamos(this.prestamoService.listarPrestamos());
+		return "visualizarListaPrestamos";
+	}
 
 	public List<Prestamo> getListaPrestamos() {
 		return listaPrestamos;

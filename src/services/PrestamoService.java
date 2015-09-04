@@ -12,5 +12,6 @@ public interface PrestamoService {
 	public List<Prestamo> prestamosIniciadosDelUsuario(Long idUsuario);
 	public Prestamo obtenerPrestamo(Object id);
 	public void modificar(Prestamo p);
+	public List<Prestamo> listarPrestamos();
 
 }

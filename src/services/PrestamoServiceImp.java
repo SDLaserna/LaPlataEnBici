@@ -39,6 +39,11 @@ public class PrestamoServiceImp implements PrestamoService {
 	public boolean existeDeudor(Object id) {
 		return this.prestamoDAO.existeDeudor(id);
 	}
+
+	@Override
+	public List<Prestamo> listarPrestamos() {
+		return this.prestamoDAO.listar("Prestamo");
+	}
 	
 
 }
