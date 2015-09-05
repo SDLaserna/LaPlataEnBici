@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+<ui:composition template="/WEB-INF/defaultTemplate.xhtml">
+	<ui:define name="titulo">
+		Usuario Denuncia
+	</ui:define>
+
+	<ui:define name="headConfig">
+		<script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
+		<script>
+		$(document).ready(
+			
+			function activarNav() {
+				document.getElementById("inicio").setAttribute("class",
+						"");
+				document.getElementById("mapaEstaciones").setAttribute(
+						"class", "");
+				document.getElementById("listaEstaciones")
+						.setAttribute("class", "");
+				document.getElementById("misBicicletas").setAttribute(
+						"class", "active");
+			}
+		)	
+		
+		</script>
+	</ui:define>
+
+	<ui:define name="navegador">
+		<ui:include src="userNav.xhtml"></ui:include>
+	</ui:define>
+
+	<ui:define name="contenido">
+		<div class="col-lg-4" style="width:75%; margin-left:12%;">
+			<div class="panel panel-red" style="background: #fff; border-width:4px;">
+				<div class="panel-heading">Denuncia</div>
+				<div class="panel-body pan">
+					<h:form style="margin:2%;">
+						<h:inputTextarea id="Descripcion" rows="20" styleClass="form-control" value="#{prestamoMbSess.comentarioDenuncia}" required="true"></h:inputTextarea>
+						<h:commandLink action="#{prestamoMbSess.denunciarBicicleta}"
+								styleClass="btn btn-danger" style="margin:3%; margin-left:72%;">
+								<i class="fa fa-envelope-o"></i> Enviar
+						</h:commandLink>
+					</h:form>
+				</div>
+			</div>
+		</div>
+	</ui:define>
+</ui:composition>
+</html>

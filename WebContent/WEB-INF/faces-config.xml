@@ -114,6 +114,11 @@
 			<from-outcome>successVisualizarAltaBici</from-outcome>
 			<to-view-id>/altaBici.xhtml</to-view-id>
 		</navigation-case>
+		<navigation-case>
+			<from-action>#{bicicletaMbSess.visualizarDenuncias}</from-action>
+			<from-outcome>visualizarDenuncias</from-outcome>
+			<to-view-id>/listadoDenuncias.xhtml</to-view-id>
+		</navigation-case>
 	</navigation-rule>
 
 	<navigation-rule>
@@ -303,6 +308,11 @@
 			<from-outcome>successVisualizarEstacionarBicicleta</from-outcome>
 			<to-view-id>/estacionarBicicleta.xhtml</to-view-id>
 		</navigation-case>
+		<navigation-case>
+			<from-action>#{prestamoMbSess.visualizarDenunciaBicicleta}</from-action>
+			<from-outcome>visualizarDenunciaBicicleta</from-outcome>
+			<to-view-id>/denuncia.xhtml</to-view-id>
+		</navigation-case>
 	</navigation-rule>
 	
 	<navigation-rule>
@@ -310,6 +320,15 @@
 		<navigation-case>
 			<from-action>#{prestamoMbSess.devolverBicicleta}</from-action>
 			<from-outcome>successDevolverBicicleta</from-outcome>
+			<to-view-id>/bicicletasPrestadas.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	
+	<navigation-rule>
+		<from-view-id>/denuncia.xhtml</from-view-id>
+		<navigation-case>
+			<from-action>#{prestamoMbSess.denunciarBicicleta}</from-action>
+			<from-outcome>successDenunciarBicicleta</from-outcome>
 			<to-view-id>/bicicletasPrestadas.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>

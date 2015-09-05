@@ -11,10 +11,13 @@ import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 
 import entidades.Bicicleta;
+import entidades.Denuncia;
 import entidades.Estacion;
 import entidades.HistorialBicicleta;
 import services.BicicletaService;
 import services.BicicletaServiceImp;
+import services.DenunciaService;
+import services.DenunciaServiceImp;
 import services.EstacionService;
 import services.EstacionServiceImp;
 import services.HistorialBicicletaService;
@@ -27,10 +30,12 @@ public class BicicletaMbSess {
 	private Bicicleta bicicleta;
 	private BicicletaService bicicletaService = new BicicletaServiceImp();
 	private EstacionService estacionService = new EstacionServiceImp();
+	private DenunciaService denunciaService = new DenunciaServiceImp();
 	private HistorialBicicletaService historialBicicletaService = new HistorialBicicletaServiceImp();
 	private List<Estacion> listaEstaciones = new ArrayList<Estacion>();
 	private List<Bicicleta> listaBicicletas = new ArrayList<Bicicleta>();
 	private List<HistorialBicicleta> listaHistorialBicicleta = new ArrayList<HistorialBicicleta>();
+	private List<Denuncia> listaDenuncias = new ArrayList<Denuncia>();
 	private Long idEstacion;
 
 	public BicicletaMbSess() {
@@ -118,6 +123,15 @@ public class BicicletaMbSess {
 		return "successVisualizarDisponibilidad";
 	}
 	
+	public String visualizarDenuncias(){
+		Map<String, String> params = FacesContext.getCurrentInstance()
+				.getExternalContext().getRequestParameterMap();
+		String idBicicleta = params.get("idBicicleta");
+		Long idLong = Long.parseLong(idBicicleta);
+		this.setListaDenuncias(this.denunciaService.listarDenuncias(idLong));
+		return "visualizarDenuncias";
+	}
+	
 	public List<Estacion> getListaEstaciones() {
 		return listaEstaciones;
 	}
@@ -156,6 +170,14 @@ public class BicicletaMbSess {
 
 	public void setListaHistorialBicicleta(List<HistorialBicicleta> listaHistorialBicicleta) {
 		this.listaHistorialBicicleta = listaHistorialBicicleta;
+	}
+
+	public List<Denuncia> getListaDenuncias() {
+		return listaDenuncias;
+	}
+
+	public void setListaDenuncias(List<Denuncia> listaDenuncias) {
+		this.listaDenuncias = listaDenuncias;
 	}
 
 }

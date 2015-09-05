@@ -126,6 +126,14 @@
 								<i class="fa fa-eye"></i> Ver Disponibilidad
 										<f:param name="idBicicleta" value="#{bicicleta.idBicicleta}" />
 							</h:commandLink>
+							<h:commandLink
+								action="#{bicicletaMbSess.visualizarDenuncias}"
+								styleClass="btn btn-info"
+								style="background-color: orangered; 
+									border-color: aliceblue;">
+								<i class="fa fa-eye"></i> Ver Denuncias
+										<f:param name="idBicicleta" value="#{bicicleta.idBicicleta}" />
+							</h:commandLink>
 						</h:form>
 					</h:column>
 				</h:dataTable>

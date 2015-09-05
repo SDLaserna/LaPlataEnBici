@@ -38,6 +38,7 @@ public class PrestamoMbSess {
 	private List<Prestamo> listaPrestamos = new ArrayList<Prestamo>();
 	private List<Bicicleta> listaBicicletas = new ArrayList<Bicicleta>();
 	private List<Estacion> listaEstaciones = new ArrayList<Estacion>();
+	private String comentarioDenuncia;
 	private Long idEstacion;
 	private Long idPrestamo;
 
@@ -183,6 +184,15 @@ public class PrestamoMbSess {
 		return "successDevolverBicicleta";
 	}
 	
+	public String visualizarDenunciaBicicleta(){
+		FacesContext facesContext = FacesContext.getCurrentInstance();
+		Map<String, String> params = facesContext
+				.getExternalContext().getRequestParameterMap();
+		String idPrestamo = params.get("idPrestamo");
+		this.setIdPrestamo(Long.parseLong(idPrestamo));
+		return "visualizarDenunciaBicicleta";
+	}
+	
 	public String denunciarBicicleta(){
 		FacesContext facesContext = FacesContext.getCurrentInstance();
 
@@ -191,18 +201,13 @@ public class PrestamoMbSess {
 		Usuario usuario = (Usuario) httpServletRequest.getSession()
 				.getAttribute("personaSesion");
 		
-		Map<String, String> params = facesContext
-				.getExternalContext().getRequestParameterMap();
-		String idPrestamo = params.get("idPrestamo");
-		this.setIdPrestamo(Long.parseLong(idPrestamo));
-		
 		Prestamo prestamo = this.prestamoService.obtenerPrestamo(this.getIdPrestamo());
 		
 		Bicicleta bici = prestamo.getBicicleta();
 		
 		Date fechaActual = new Date();
 		
-		Denuncia denuncia = new Denuncia(usuario,bici,fechaActual,"");
+		Denuncia denuncia = new Denuncia(usuario,bici,fechaActual, this.getComentarioDenuncia());
 		this.denunciaService.persistir(denuncia);
 		
 		bici.setEstado("Denunciada");
@@ -210,8 +215,8 @@ public class PrestamoMbSess {
 		
 		FacesMessage mensaje = new FacesMessage(
 				FacesMessage.SEVERITY_INFO,
-				"La denuncia a la bicicleta por mal estado se realizo correctamente",
-				"La denuncia a la bicicleta por mal estado se realizo correctamente");
+				"La denuncia a la bicicleta se envio correctamente",
+				"La denuncia a la bicicleta se envio correctamente");
 		facesContext.addMessage("Seleccion", mensaje);
 		return "successDenunciarBicicleta";
 	}
@@ -259,6 +264,14 @@ public class PrestamoMbSess {
 
 	public void setIdPrestamo(Long idPrestamo) {
 		this.idPrestamo = idPrestamo;
+	}
+
+	public String getComentarioDenuncia() {
+		return comentarioDenuncia;
+	}
+
+	public void setComentarioDenuncia(String comentarioDenuncia) {
+		this.comentarioDenuncia = comentarioDenuncia;
 	}
 
 }
